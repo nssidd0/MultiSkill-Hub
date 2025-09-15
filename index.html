@@ -117,7 +117,31 @@
       text-decoration: underline;
     }
 
-    /* Responsive Design */
+    /* Contact Form */
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .contact-form button {
+      background-color: #004080;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #0059b3;
+    }
+
+    /* Responsive */
     @media (max-width: 600px) {
       .logo img {
         height: 40px;
@@ -185,19 +209,44 @@
   </section>
 
   <section id="contact" class="service">
-    <h2>📞 Contact</h2>
-    <p><strong>NS SIDD</strong></p>
-    <p>📍 Location: Malad West, Mumbai, Maharashtra, 400095.</p>
-    <p><a class="map-link" href="https://maps.app.goo.gl/Jsf8b2gEgABnqZgz9?g_st=ac" target="_blank">View on Google Maps</a></p>
-    <p>📱 Phone / WhatsApp: <a href="https://wa.me/919082009795" target="_blank">9082009795</a></p>
-    <p>📧 Email: nssidd0@gmail.com</p>
-    <a class="contact-button" href="https://wa.me/919082009795" target="_blank">Chat on WhatsApp</a>
+    <h2>📞 Contact Form</h2>
+    <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+      <label for="name">👤 Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="phone">📱 Mobile Number:</label>
+      <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" maxlength="10" />
+
+      <label for="message">✉️ Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Send on WhatsApp</button>
+    </form>
   </section>
 
   <footer>
     <p>&copy; 2025 One Point Solutions by NS SIDD. All rights reserved.</p>
     <p><a href="#contact" style="color: #ffffff; text-decoration: underline;">Contact Us</a> | <a href="https://wa.me/919082009795" target="_blank" style="color: #ffffff; text-decoration: underline;">WhatsApp</a></p>
   </footer>
+
+  <script>
+    function sendToWhatsApp(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const whatsappNumber = "919082009795"; // NS SIDD WhatsApp number
+      const url = `https://wa.me/${whatsappNumber}?text=` + 
+        encodeURIComponent(`New Inquiry from Website:
+
+👤 Name: ${name}
+📱 Phone: ${phone}
+📝 Message: ${message}`);
+
+      window.open(url, "_blank");
+    }
+  </script>
 
 </body>
 </html>
