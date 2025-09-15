@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="One Point Solutions by NS SIDD – Computer Classes, Fitness Training, Graphic Design, Document Support in Malad West, Mumbai.">
   <title>One Point Solutions by NS SIDD</title>
   <style>
     body {
@@ -11,6 +12,10 @@
       padding: 0;
       background-color: #f8f9fa;
       color: #333;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     header {
@@ -33,6 +38,9 @@
     nav {
       background-color: #004080;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     nav a {
@@ -87,6 +95,26 @@
       color: #004080;
       text-decoration: underline;
     }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        padding: 12px;
+      }
+
+      .service {
+        padding: 15px;
+      }
+
+      header h1 {
+        font-size: 24px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -137,6 +165,7 @@
 
   <footer>
     <p>&copy; 2025 One Point Solutions by NS SIDD. All rights reserved.</p>
+    <p><a href="#contact" style="color: #ffffff; text-decoration: underline;">Contact Us</a> | <a href="https://wa.me/919082009795" target="_blank" style="color: #ffffff; text-decoration: underline;">WhatsApp</a></p>
   </footer>
 
 </body>
