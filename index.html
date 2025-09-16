@@ -235,6 +235,42 @@ footer a {
   color: var(--white);
   text-decoration: underline;
 }
+    .menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  padding: 5px 10px;
+  display: none; /* hidden by default */
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background-color: var(--primary-color);
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  nav a {
+    display: block;
+    padding: 12px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .header-text {
+    text-align: center;
+    flex: 1;
+    font-size: 14px;
+  }
+}
+
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -264,28 +300,36 @@ footer a {
 <body>
 
   <header>
-  <div class="header-container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-    <div class="logo" style="display: flex; align-items: center;">
-      <img src="nssiddlogo.png" alt="One Point Solutions Logo by NS SIDD" style="height: 60px; margin-right: 15px; background-color: #fff; padding: 5px; border-radius: 5px;" />
-      <div class="header-text" style="line-height: 1.4;">
-        <h1 style="margin: 0; font-size: 24px;">One Point Solutions</h1>
-        <p style="margin: 2px 0;">By NS SIDD</p>
-        <p style="margin: 2px 0;">All-in-One: Computer • Fitness • Design • Documents</p>
-      </div>
+  <div class="header-container">
+    <!-- Left: Logo -->
+    <div class="logo">
+      <img src="nssiddlogo.png" alt="One Point Solutions Logo by NS SIDD" />
     </div>
 
-    <nav style="margin-top: 10px;">
-      <a href="#computer">Computer</a>
-      <a href="#fitness">Fitness</a>
-      <a href="#design">Design</a>
-      <a href="#documents">Documents</a>
-      <a href="#contact">Contact</a>
-      <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a>
-      <a href="https://certificates-downloader.netlify.app/" target="_blank">Download Certificate</a>
-      <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
-    </nav>
+    <!-- Center: Text -->
+    <div class="header-text">
+      <h1>One Point Solutions</h1>
+      <p>By NS SIDD</p>
+      <p>All-in-One: Computer • Fitness • Design • Documents</p>
+    </div>
+
+    <!-- Right: Hamburger Menu -->
+    <div class="menu-icon" onclick="toggleNav()">&#9776;</div>
   </div>
+
+  <!-- Navigation -->
+  <nav id="mainNav">
+    <a href="#computer">Computer</a>
+    <a href="#fitness">Fitness</a>
+    <a href="#design">Design</a>
+    <a href="#documents">Documents</a>
+    <a href="#contact">Contact</a>
+    <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a>
+    <a href="https://certificates-downloader.netlify.app/" target="_blank">Download Certificate</a>
+    <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
+  </nav>
 </header>
+
 
   <section id="services">
 
@@ -457,6 +501,10 @@ footer a {
   </p>
 </footer>
 <script>
+  function toggleNav() {
+  const nav = document.getElementById("mainNav");
+  nav.classList.toggle("show");
+}
 function sendToWhatsApp(event) {
   event.preventDefault();
 
