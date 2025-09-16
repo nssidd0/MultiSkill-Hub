@@ -464,7 +464,10 @@ function sendToWhatsApp(event) {
   const phone = document.getElementById("phone").value;
   const message = document.getElementById("message").value;
 
-  const text = `Hello NS SIDD,%0AMy name is ${name}.%0AContact: ${phone}%0AMessage: ${message}`;
+  const text = `Hello NS SIDD,
+  My name is ${name}.
+  Contact: ${phone}
+  Message: ${message}`;
   const whatsappURL = `https://wa.me/919082009795?text=${encodeURIComponent(text)}`;
 
   window.open(whatsappURL, "_blank");
