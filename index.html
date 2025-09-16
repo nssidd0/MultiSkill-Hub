@@ -50,63 +50,69 @@ body {
 }
 
 /* Header */
-header {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: var(--white);
-  padding: 15px 20px 5px;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.header-container {
+.custom-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: linear-gradient(135deg, #004080, #003366);
+  color: white;
+  padding: 10px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   flex-wrap: wrap;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
+.left .logo {
+  height: 50px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-.logo img {
-  height: 55px;
-  margin-right: 15px;
+.center {
+  text-align: center;
+  flex: 1;
 }
 
-.header-text h1 {
+.center h1 {
   margin: 0;
+  font-size: 20px;
+}
+
+.center p {
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+.right .menu-icon {
   font-size: 28px;
+  cursor: pointer;
 }
-
-.header-text p {
-  margin: 4px 0;
-  font-size: 15px;
-}
-
+    
 /* Navigation */
 nav {
-  background-color: var(--primary-color);
+  width: 100%;
+  background-color: #004080;
   text-align: center;
-  margin-top: 10px;
+  transition: max-height 0.3s ease;
 }
 
 nav a {
-  display: inline-block;
-  padding: 15px 25px;
-  color: var(--white);
+  display: block;
+  padding: 12px;
+  color: white;
   text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  border-top: 1px solid #0059b3;
 }
 
 nav a:hover {
-  background-color: var(--accent-color);
+  background-color: #0059b3;
 }
-
+    /* Toggle Hidden Menu */
+.hidden {
+  display: none;
+}
 /* Accordion Buttons */
 .accordion {
   background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
@@ -263,28 +269,30 @@ footer a {
 </head>
 <body>
 
-  <header>
-  <div class="header-container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-    <div class="logo" style="display: flex; align-items: center;">
-      <img src="nssiddlogo.png" alt="One Point Solutions Logo by NS SIDD" style="height: 60px; margin-right: 15px; background-color: #fff; padding: 5px; border-radius: 5px;" />
-      <div class="header-text" style="line-height: 1.4;">
-        <h1 style="margin: 0; font-size: 24px;">One Point Solutions</h1>
-        <p style="margin: 2px 0;">By NS SIDD</p>
-        <p style="margin: 2px 0;">All-in-One: Computer • Fitness • Design • Documents</p>
-      </div>
-    </div>
-
-    <nav style="margin-top: 10px;">
-      <a href="#computer">Computer</a>
-      <a href="#fitness">Fitness</a>
-      <a href="#design">Design</a>
-      <a href="#documents">Documents</a>
-      <a href="#contact">Contact</a>
-      <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a>
-      <a href="https://certificates-downloader.netlify.app/" target="_blank">Download Certificate</a>
-      <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
-    </nav>
+  <header class="custom-header">
+  <div class="left">
+    <img src="nssiddlogo.png" alt="Logo" class="logo" />
   </div>
+
+  <div class="center">
+    <h1>One Point Solutions by NS SIDD</h1>
+    <p>All-in-One Computer</p>
+  </div>
+
+  <div class="right">
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  </div>
+
+  <nav id="menu" class="hidden">
+    <a href="#computer">Computer</a>
+    <a href="#fitness">Fitness</a>
+    <a href="#design">Design</a>
+    <a href="#documents">Documents</a>
+    <a href="#contact">Contact</a>
+    <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a>
+    <a href="https://certificates-downloader.netlify.app/" target="_blank">Download Certificate</a>
+    <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
+  </nav>
 </header>
 
   <section id="services">
@@ -457,6 +465,10 @@ footer a {
   </p>
 </footer>
 <script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  menu.classList.toggle('hidden');
+}
 function sendToWhatsApp(event) {
   event.preventDefault();
 
