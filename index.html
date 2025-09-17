@@ -1,287 +1,502 @@
-<!-- ✅ START of Corrected HTML -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ Basic SEO -->
   <title>One Point Solutions by NS SIDD – Computer, Fitness, Design & Docs</title>
   <meta name="description" content="Affordable Computer Classes, Fitness Training, Graphic Design & Document Support by NS SIDD in Malad West, Mumbai. All-in-One Trusted Services.">
   <meta name="keywords" content="Computer classes Malad, NS SIDD, fitness trainer Malad, graphic design services, online form filling, resume making, Tally classes, government form help, Photoshop basics, Typing training">
   <meta name="author" content="NS SIDD">
+
+  <!-- ✅ Open Graph / Facebook / WhatsApp -->
   <meta property="og:title" content="One Point Solutions by NS SIDD – All-in-One Services in Malad West" />
   <meta property="og:description" content="Join NS SIDD's One Point Solutions: Computer Training, Personal Fitness Coaching, Graphic Design, and Document Help in Malad, Mumbai." />
-  <meta property="og:image" content="https://yourhost.com/images/nssidd-preview.jpg" />
-  <meta property="og:url" content="https://one-point-solutions-by-ns-sidd.netlify.app/" />
+  <meta property="og:image" content="https://yourhost.com/images/nssidd-preview.jpg" /> <!-- 🖼️ Replace with actual image URL -->
+  <meta property="og:url" content="https://one-point-solutions-by-ns-sidd.netlify.app/" /> <!-- 🔗 Your future site URL -->
   <meta property="og:type" content="website" />
+
+  <!-- ✅ Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="One Point Solutions – NS SIDD's All-in-One Hub in Mumbai" />
   <meta name="twitter:description" content="Affordable classes, fitness, design & document support in Malad West. By NS SIDD." />
-  <meta name="twitter:image" content="https://example.com/nssidd-preview.jpg" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="twitter:image" content="https://example.com/nssidd-preview.jpg" /> <!-- 🖼️ Same as OG image -->
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" /> <!-- Add your own favicon -->
+
+  <!-- ✅ Font (Optional - adds clean look) -->
   <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet" />
 
+  <!-- ✅ Stylesheet (your CSS stays here) -->
   <style>
     :root {
-      --primary-color: #004080;
-      --secondary-color: #003366;
-      --accent-color: #0059b3;
-      --text-color: #333;
-      --bg-light: #f8f9fa;
-      --white: #ffffff;
-    }
+  --primary-color: #004080;
+  --secondary-color: #003366;
+  --accent-color: #0059b3;
+  --text-color: #333;
+  --bg-light: #f8f9fa;
+  --white: #ffffff;
+}
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-light);
-      color: var(--text-color);
-      scroll-behavior: smooth;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-light);
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
 
-    header {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: var(--white);
-      padding: 15px 20px 5px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 15px 20px 5px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-    }
+.logo {
+  display: flex;
+  align-items: center;
+}
 
-    .logo img {
-      height: 55px;
-      margin-right: 15px;
-    }
+.logo img {
+  height: 55px;
+  margin-right: 15px;
+}
 
-    .header-text h1 {
-      margin: 0;
-      font-size: 28px;
-    }
+.header-text h1 {
+  margin: 0;
+  font-size: 28px;
+}
 
-    .header-text p {
-      margin: 4px 0;
-      font-size: 15px;
-    }
+.header-text p {
+  margin: 4px 0;
+  font-size: 15px;
+}
 
-    nav {
-      background-color: var(--primary-color);
-      text-align: center;
-      margin-top: 10px;
-    }
+/* Navigation */
+nav {
+  background-color: var(--primary-color);
+  text-align: center;
+  margin-top: 10px;
+}
 
-    nav a {
-      display: inline-block;
-      padding: 15px 25px;
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
+nav a {
+  display: inline-block;
+  padding: 15px 25px;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
 
-    nav a:hover {
-      background-color: var(--accent-color);
-    }
+nav a:hover {
+  background-color: var(--accent-color);
+}
 
-    .accordion {
-      background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
-      color: var(--white);
-      cursor: pointer;
-      padding: 18px 20px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      font-size: 18px;
-      font-weight: bold;
-      transition: 0.4s ease;
-      margin-top: 20px;
-      border-radius: 6px;
-      box-shadow: 0 4px 6px rgba(0, 64, 128, 0.2);
-    }
+/* Accordion Buttons */
+.accordion {
+  background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
+  color: var(--white);
+  cursor: pointer;
+  padding: 18px 20px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.4s ease;
+  margin-top: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 64, 128, 0.2);
+}
 
-    .accordion:hover {
-      background: var(--accent-color);
-    }
+.accordion:hover {
+  background: var(--accent-color);
+}
 
-    .accordion.active {
-      background-color: var(--secondary-color);
-    }
+.accordion.active {
+  background-color: var(--secondary-color);
+}
 
-    .panel {
-      padding: 0 20px;
-      background-color: var(--white);
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-      border-left: 6px solid var(--primary-color);
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      border-radius: 0 0 6px 6px;
-    }
+/* Accordion Panels */
+.panel {
+  padding: 0 20px;
+  background-color: var(--white);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  border-left: 6px solid var(--primary-color);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-radius: 0 0 6px 6px;
+}
 
-    section {
-      padding: 30px 20px;
-      max-width: 950px;
-      margin: auto;
-    }
+/* Services Section */
+section {
+  padding: 30px 20px;
+  max-width: 950px;
+  margin: auto;
+}
 
-    .service {
-      background-color: var(--white);
-      margin: 20px 0;
-      padding: 25px;
-      border-left: 6px solid var(--primary-color);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border-radius: 6px;
-    }
+.service {
+  background-color: var(--white);
+  margin: 20px 0;
+  padding: 25px;
+  border-left: 6px solid var(--primary-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 6px;
+}
 
-    .service h2 {
-      margin-top: 0;
-      color: var(--primary-color);
-    }
+.service h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
 
-    th, td {
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
 
-    th {
-      background-color: #f1f1f1;
-    }
+th {
+  background-color: #f1f1f1;
+}
 
-    .contact-button, .contact-form button {
-      display: inline-block;
-      background-color: var(--primary-color);
-      color: var(--white);
-      padding: 12px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      margin-top: 15px;
-    }
+/* Buttons */
+.contact-button, .contact-form button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
 
-    .contact-button:hover, .contact-form button:hover {
-      background-color: var(--accent-color);
-    }
+.contact-button:hover, .contact-form button:hover {
+  background-color: var(--accent-color);
+}
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+/* Contact Form */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  font-size: 28px;
+  padding: 12px 16px;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+/* Footer */
+footer {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
 
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      font-size: 28px;
-      padding: 12px 16px;
-      border-radius: 50%;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-    }
+footer a {
+  color: var(--white);
+  text-decoration: underline;
+}
 
-    footer {
-      background-color: var(--secondary-color);
-      color: var(--white);
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
+/* Responsive */
+@media (max-width: 600px) {
+  .logo img {
+    height: 40px;
+  }
 
-    footer a {
-      color: var(--white);
-      text-decoration: underline;
-    }
+  .header-text h1 {
+    font-size: 22px;
+  }
 
-    @media (max-width: 600px) {
-      .logo img {
-        height: 40px;
-      }
+  nav a {
+    display: block;
+    padding: 12px;
+  }
 
-      .header-text h1 {
-        font-size: 22px;
-      }
+  .service {
+    padding: 20px;
+  }
 
-      nav a {
-        display: block;
-        padding: 12px;
-      }
-
-      .service {
-        padding: 20px;
-      }
-
-      .accordion {
-        font-size: 16px;
-      }
-    }
+  .accordion {
+    font-size: 16px;
+  }
+}
   </style>
 </head>
-
 <body>
 
-<!-- ✅ Content continues... -->
-<!-- ✅ Paste your main content starting from <header> to </script> -->
-<!-- ✅ That part is already perfect, just be sure to remove extra </table> tags -->
+  <header>
+  <div class="header-container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+    <div class="logo" style="display: flex; align-items: center;">
+      <img src="nssiddlogo.png" alt="One Point Solutions Logo by NS SIDD" style="height: 60px; margin-right: 15px; background-color: #fff; padding: 5px; border-radius: 5px;" />
+      <div class="header-text" style="line-height: 1.4;">
+        <h1 style="margin: 0; font-size: 24px;">One Point Solutions</h1>
+        <p style="margin: 2px 0;">By NS SIDD</p>
+        <p style="margin: 2px 0;">All-in-One: Computer • Fitness • Design • Documents</p>
+      </div>
+    </div>
 
-<!-- ✅ JS -->
+    <nav style="margin-top: 10px;">
+      <a href="#computer">Computer</a>
+      <a href="#fitness">Fitness</a>
+      <a href="#design">Design</a>
+      <a href="#documents">Documents</a>
+      <a href="#contact">Contact</a>
+      <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a>
+      <a href="https://certificates-downloader.netlify.app/" target="_blank">Download Certificate</a>
+      <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
+    </nav>
+  </div>
+</header>
+
+  <section id="services">
+
+  <button class="accordion">💻 Computer Classes</button>
+  <div class="panel">
+    <h2>💻 Computer Classes</h2>
+    <p>Master essential computer skills with practical, hands-on training. From beginners to job-ready skills, we’ve got you covered!</p>
+
+    <h3>📘 Courses Offered:</h3>
+    <ul>
+      <li>✅ Basic Computer & Internet Usage</li>
+      <li>✅ MS Office (Word, Excel, PowerPoint)</li>
+      <li>✅ English & Hindi Typing Practice</li>
+      <li>✅ Tally + GST</li>
+      <li>✅ Photoshop Basics</li>
+      <li>✅ 100+ Courses Available</li>
+    </ul>
+    </table>
+
+    <h3>⭐ Why Learn With Us?</h3>
+    <ul>
+      <li>✔️ One-on-One Attention</li>
+      <li>✔️ Flexible Timings</li>
+      <li>✔️ Certificate After Completion</li>
+      <li>✔️ Real Practice on Projects</li>
+    </ul>
+
+    <a class="contact-button" href="https://wa.me/919082009795?text=Hi%2C%20I%20am%20interested%20in%20Computer%20Classes." target="_blank">💻 Chat on WhatsApp About Classes</a>
+  </div>
+
+  <button class="accordion">🏋️‍♂️ Fitness Training</button>
+  <div class="panel">
+    <h2>🏋️‍♂️ Fitness Personal Training</h2>
+    <p>Get fit the right way with customized personal training – suitable for beginners, weight loss, muscle gain, and general wellness.</p>
+
+    <h3>💪 Services Offered:</h3>
+    <ul>
+      <li>✅ Personalized Home Workout Plans</li>
+      <li>✅ Gym Workout Coaching</li>
+      <li>✅ Weight Loss & Muscle Gain Programs</li>
+      <li>✅ Diet Consultation & Tracking</li>
+      <li>✅ Online Video Training & Support</li>
+    </ul>
+
+    <h3>💰 Packages & Pricing:</h3>
+    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+      <tr style="background-color: #f1f1f1;">
+        <th style="text-align:left; padding: 8px; border: 1px solid #ccc;">Package</th>
+        <th style="text-align:left; padding: 8px; border: 1px solid #ccc;">Details</th>
+        <th style="text-align:left; padding: 8px; border: 1px solid #ccc;">Fees (INR)</th>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid #ccc;">Basic</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">Home Workout Plan + 1 Diet Chart</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">₹2199</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid #ccc;">Standard</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">Weekly Follow-up + 2 Diet Charts</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">₹5499</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; border: 1px solid #ccc;">Premium</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">Personal Training + Daily Guidance</td>
+        <td style="padding: 8px; border: 1px solid #ccc;">₹15199</td>
+      </tr>
+    </table>
+
+    <h3>🏆 Why Choose NS SIDD Fitness?</h3>
+    <ul>
+      <li>✔️ Certified Trainer</li>
+      <li>✔️ Daily Monitoring via WhatsApp</li>
+      <li>✔️ Practical & Achievable Goals</li>
+      <li>✔️ Online + Offline Options</li>
+    </ul>
+
+    <a class="contact-button" href="https://wa.me/919082009795?text=Hi%20NS%20SIDD%2C%20I%20want%20more%20info%20about%20Fitness%20Training." target="_blank">🏋️‍♂️ Chat on WhatsApp About Fitness</a>
+  </div>
+
+  <button class="accordion">🎨 Graphic Design</button>
+<div class="panel">
+  <h2>🎨 Graphic Design</h2>
+  <p>Professional, Creative & Affordable Design Services – Customised as per your needs!</p>
+
+  <h3>🛠️ Services We Offer:</h3>
+  <ul>
+    <li>✅ Logo Design (Personal & Business)</li>
+    <li>✅ Visiting Cards / Business Cards</li>
+    <li>✅ Posters & Banners (for events, ads, sales)</li>
+    <li>✅ Social Media Posts (Instagram, Facebook, WhatsApp)</li>
+    <li>✅ Wedding & Invitation Cards (Digital)</li>
+    <li>✅ Menu Cards, Flyers, Certificates, Brochures</li>
+  </ul>
+  </table>
+
+  <h3>💡 Why Choose Us?</h3>
+  <ul>
+    <li>✔️ Affordable & Fast Delivery</li>
+    <li>✔️ Custom Designs – No Templates</li>
+    <li>✔️ Free Revisions (Limited)</li>
+    <li>✔️ Designs delivered in JPG/PNG/PDF/PSD</li>
+  </ul>
+
+  <a class="contact-button" href="https://wa.me/919082009795?text=Hi%20NS%20SIDD%2C%20I%20am%20interested%20in%20Graphic%20Design%20services." target="_blank">🎨 Chat on WhatsApp About Design</a>
+</div>
+
+  <button class="accordion">📄 Document Services</button>
+  <div class="panel">
+    <h2>📄 Government & Private Document Services</h2>
+    <p>Get hassle-free support for filling forms, applying online, making resumes, and more – fast, affordable, and trusted service in Malad West, Mumbai.</p>
+
+    <h3>🧾 Services Offered:</h3>
+    <ul>
+      <li>✅ Aadhar / PAN / Voter Update Assistance</li>
+      <li>✅ Online Government Job Form Filling</li>
+      <li>✅ Resume / CV Making (Freshers & Professionals)</li>
+      <li>✅ Online Applications – Licence, Passport, etc.</li>
+      <li>✅ Typing, Printing, Scanning Services</li>
+    </ul>
+    </table>
+
+    <h3>📌 Notes:</h3>
+    <ul>
+      <li>✔️ Fast Turnaround</li>
+      <li>✔️ Affordable Charges</li>
+      <li>✔️ 100% Assistance until done</li>
+      <li>✔️ Personal Guidance for Every Form</li>
+    </ul>
+
+    <a class="contact-button" href="https://wa.me/919082009795?text=Hi%2C%20I%20need%20help%20with%20documents%20and%20online%20form%20filling." target="_blank">📄 Chat on WhatsApp About Documents</a>
+  </div>
+
+</section>
+<section id="more-links" class="service">
+  <h2>🌐 Access Other Services</h2>
+  <p>Explore more services provided by NS SIDD:</p>
+
+  <ul>
+    <li><a href="https://exam-porta.netlify.app/" target="_blank">📝 Exam Portal – Online Exam Platform</a></li>
+    <li><a href="https://certificates-downloader.netlify.app/" target="_blank">📜 Certificate Download – For Students</a></li>
+    <li><a href="https://ns-sidd-fitness.netlify.app/" target="_blank">💪 Fitness Site – NS SIDD Fitness</a></li>
+  </ul>
+</section>
+
+  <section id="contact" class="service">
+    <h2>📞 Contact Form</h2>
+    <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+      <label for="name">👤 Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="phone">📱 Mobile Number:</label>
+      <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" maxlength="10" />
+
+      <label for="message">✉️ Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Send on WhatsApp</button>
+    </form>
+  </section>
+<a href="https://wa.me/919082009795" class="floating-whatsapp" target="_blank" title="Chat with NS SIDD">💬</a>
+  <footer>
+  <p>&copy; 2025 One Point Solutions by NS SIDD. All rights reserved.</p>
+  <p>
+    <a href="#contact">Contact Us</a> | 
+    <a href="https://wa.me/919082009795" target="_blank">WhatsApp</a> |
+    <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a> |
+    <a href="https://certificates-downloader.netlify.app/" target="_blank">Certificates</a> |
+    <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
+  </p>
+</footer>
 <script>
 function sendToWhatsApp(event) {
   event.preventDefault();
+
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
   const message = document.getElementById("message").value;
-  const text = `Hello NS SIDD,\nMy name is ${name}.\nContact: ${phone}\nMessage: ${message}`;
+
+  const text = `Hello NS SIDD,
+  My name is ${name}.
+  Contact: ${phone}
+  Message: ${message}`;
   const whatsappURL = `https://wa.me/919082009795?text=${encodeURIComponent(text)}`;
+
   window.open(whatsappURL, "_blank");
 }
+  const accordions = document.querySelectorAll(".accordion");
 
-const accordions = document.querySelectorAll(".accordion");
-accordions.forEach((acc) => {
-  acc.addEventListener("click", function () {
-    this.classList.toggle("active");
-    const panel = this.nextElementSibling;
-    document.querySelectorAll(".panel").forEach(p => {
-      if (p !== panel) {
-        p.style.maxHeight = null;
-        p.previousElementSibling.classList.remove("active");
+  accordions.forEach((acc) => {
+    acc.addEventListener("click", function () {
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+
+      document.querySelectorAll(".panel").forEach(p => {
+        if (p !== panel) {
+          p.style.maxHeight = null;
+          p.previousElementSibling.classList.remove("active");
+        }
+      });
+
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.style.paddingTop = "20px";
+        panel.style.paddingBottom = "20px";
       }
     });
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-      panel.style.paddingTop = "20px";
-      panel.style.paddingBottom = "20px";
-    }
   });
-});
 </script>
+
+
 </body>
 </html>
