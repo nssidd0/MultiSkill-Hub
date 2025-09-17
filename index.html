@@ -134,39 +134,52 @@ nav a:hover {
 
 /* Accordion Buttons */
 .accordion {
-  background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
-  color: var(--white);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--primary-color);
   cursor: pointer;
   padding: 18px 20px;
   width: 100%;
   text-align: left;
-  border: none;
   font-size: 18px;
   font-weight: bold;
-  transition: 0.4s ease;
-  margin-top: 20px;
-  border-radius: 6px;
-  box-shadow: 0 4px 6px rgba(0, 64, 128, 0.2);
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.accordion:hover {
-  background: var(--accent-color);
-}
-
+.accordion:hover,
 .accordion.active {
-  background-color: var(--secondary-color);
+  background: rgba(255, 255, 255, 0.3);
+  color: var(--secondary-color);
 }
 
 /* Accordion Panels */
 .panel {
-  padding: 0 20px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-out;
+  transition: all 0.4s ease-out;
   border-left: 6px solid var(--primary-color);
   margin-bottom: 20px;
   border-radius: 0 0 6px 6px;
+
+  /* ✅ Add these for proper collapse */
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  visibility: hidden;
 }
+.panel.open {
+  max-height: 1000px; /* enough height for content */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  opacity: 1;
+  visibility: visible;
+}
+
 
 /* Services Section */
 section {
@@ -487,39 +500,33 @@ function sendToWhatsApp(event) {
   const phone = document.getElementById("phone").value;
   const message = document.getElementById("message").value;
 
-  const text = `Hello NS SIDD,
-  My name is ${name}.
-  Contact: ${phone}
-  Message: ${message}`;
+  const text = `Hello NS SIDD,\nMy name is ${name}.\nContact: ${phone}\nMessage: ${message}`;
   const whatsappURL = `https://wa.me/919082009795?text=${encodeURIComponent(text)}`;
 
   window.open(whatsappURL, "_blank");
 }
-  const accordions = document.querySelectorAll(".accordion");
 
-  accordions.forEach((acc) => {
-    acc.addEventListener("click", function () {
-      this.classList.toggle("active");
-      const panel = this.nextElementSibling;
+// ✅ Accordion JS
+const accordions = document.querySelectorAll(".accordion");
 
-      document.querySelectorAll(".panel").forEach(p => {
-        if (p !== panel) {
-          p.style.maxHeight = null;
-          p.previousElementSibling.classList.remove("active");
-        }
-      });
+accordions.forEach((acc) => {
+  acc.addEventListener("click", function () {
+    const panel = this.nextElementSibling;
 
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        panel.style.paddingTop = "20px";
-        panel.style.paddingBottom = "20px";
+    // Close all others
+    document.querySelectorAll(".panel").forEach(p => {
+      if (p !== panel) {
+        p.classList.remove("open");
+        p.previousElementSibling.classList.remove("active");
       }
     });
-  });
-</script>
 
+    // Toggle current
+    panel.classList.toggle("open");
+    this.classList.toggle("active");
+  });
+});
+</script>
 
 </body>
 </html>
