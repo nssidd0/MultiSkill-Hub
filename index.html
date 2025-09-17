@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ✅ Basic SEO -->
   <title>One Point Solutions by NS SIDD – Computer, Fitness, Design & Docs</title>
@@ -110,6 +110,48 @@ header {
 }
 
 /* Navigation */
+.navbar {
+  position: relative;
+  text-align: center;
+}
+
+.menu-toggle {
+  display: block;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  padding: 10px;
+}
+
+.nav-links {
+  display: none;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-links a {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-links a:last-child {
+  border-bottom: none;
+}
+
+.nav-links.active {
+  display: flex;
+}
+
 nav {
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
@@ -135,6 +177,25 @@ nav a:hover {
   color: white;
   border-radius: 6px;
 }
+.hamburger {
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  #navLinks {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+  }
+  #navLinks.active {
+    max-height: 500px;
+  }
+  #navLinks a {
+    display: block;
+    padding: 10px 0;
+  }
+
 
 /* Accordion Buttons */
 .accordion {
@@ -314,16 +375,20 @@ footer a {
       </div>
     </div>
 
-    <nav style="margin-top: 10px;">
-      <a href="#computer">Computer</a>
-      <a href="#fitness">Fitness</a>
-      <a href="#design">Design</a>
-      <a href="#documents">Documents</a>
-      <a href="#contact">Contact</a>
-      <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a>
-      <a href="https://certificates-downloader.netlify.app/" target="_blank">Download Certificate</a>
-      <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
-    </nav>
+    <nav>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <div id="navLinks" class="nav-links">
+    <a href="#computer">Computer</a>
+    <a href="#fitness">Fitness</a>
+    <a href="#design">Design</a>
+    <a href="#documents">Documents</a>
+    <a href="#contact">Contact</a>
+    <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a>
+    <a href="https://certificates-downloader.netlify.app/" target="_blank">Download Certificate</a>
+    <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
+  </div>
+</nav>
+
   </div>
 </header>
 
@@ -497,6 +562,11 @@ footer a {
   </p>
 </footer>
 <script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('active');
+  }
+
 function sendToWhatsApp(event) {
   event.preventDefault();
 
