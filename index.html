@@ -42,6 +42,7 @@
 }
 
 body {
+  overflow-x: hidden;
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
@@ -80,8 +81,9 @@ header {
 
 .header-container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   flex-wrap: wrap;
 }
 
@@ -91,8 +93,8 @@ header {
 }
 
 .logo img {
-  height: 55px;
-  margin-right: 15px;
+  height: 60px;
+  margin-right: 10px;
 }
 .header-text {
   text-align: center;
@@ -101,12 +103,12 @@ header {
 
 .header-text h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .header-text p {
-  margin: 4px 0;
-  font-size: 15px;
+  margin: 0;
+  font-size: 14px;
 }
 
 /* Navigation */
@@ -137,7 +139,15 @@ header {
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-
+.nav-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  z-index: 999;
+}
 .nav-links a {
   display: block;
   padding: 12px 20px;
@@ -156,8 +166,6 @@ header {
   display: block;
 }
 
-
-
 nav {
   position: relative;
   text-align: center;
@@ -169,8 +177,6 @@ nav {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
-
-
 
 nav a {
   color: black; /* black text */
@@ -187,24 +193,24 @@ nav a:hover {
   border-radius: 6px;
 }
 .hamburger {
-  width: 30px;
-  height: 22px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
+  width: 25px;
+  height: 20px;
   cursor: pointer;
-  z-index: 1100;
-  position: relative;
+  margin-left: auto;
 }
 
 .hamburger span {
   height: 3px;
-  background-color: #000;
-  border-radius: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
   transition: 0.4s;
 }
 
-/* Animate to 'X' when active */
+/* Toggle animation (hamburger to X) */
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -217,18 +223,68 @@ nav a:hover {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-  /*#navLinks {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-  }
-  #navLinks.active {
-    max-height: 500px;
-  }*/
-  #navLinks a {
-    display: block;
-    padding: 10px 0;
-  }
+  .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.hamburger {
+  width: 30px;
+  height: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 20px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  height: 3px;
+  background-color: #000;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+/* Toggle animation (hamburger to X) */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Nav links position */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 10px 0;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links.active {
+  display: block;
+}
+
+.nav-links a {
+  margin: 5px 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
 .nav-links a:hover {
   background-color: #e6f0ff;
   color: #004080;
@@ -396,6 +452,26 @@ footer a {
     font-size: 16px;
   }
 }
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+  }
+}
 
 </style>
 
@@ -403,24 +479,26 @@ footer a {
 <body>
 
   <header>
-  <div class="header-container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-    <div class="logo" style="display: flex; align-items: center;">
-      <img src="nssiddlogo.png" alt="One Point Solutions Logo by NS SIDD" style="height: 60px; margin-right: 15px; background-color: #fff; padding: 5px; border-radius: 5px;" />
-<div class="header-text" style="line-height: 1.4; text-align: center; width: 100%;">
-        <h1 style="margin: 0; font-size: 24px;">One Point Solutions</h1>
-        <p style="margin: 2px 0;">By NS SIDD</p>
-        <p style="margin: 2px 0;">All-in-One: Computer • Fitness • Design • Documents</p>
+  <div class="header-container">
+    <div class="logo">
+      <img src="nssiddlogo.png" alt="One Point Solutions Logo by NS SIDD" />
+      <div class="header-text">
+        <h1>One Point Solutions</h1>
+        <p>By NS SIDD</p>
+        <p>All-in-One: Computer • Fitness • Design • Documents</p>
       </div>
     </div>
 
-    <nav>
-  <div class="hamburger" onclick="toggleMenu(this)">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+    <!-- HAMBURGER BUTTON -->
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 
-  <div id="navLinks" class="nav-links">
+  <!-- NAVIGATION LINKS -->
+  <nav class="nav-links" id="navLinks">
     <a href="#computer">Computer</a>
     <a href="#fitness">Fitness</a>
     <a href="#design">Design</a>
@@ -429,11 +507,9 @@ footer a {
     <a href="https://exam-porta.netlify.app/" target="_blank">Exam Portal</a>
     <a href="https://certificates-downloader.netlify.app/" target="_blank">Download Certificate</a>
     <a href="https://ns-sidd-fitness.netlify.app/" target="_blank">Fitness Site</a>
-  </div>
-</nav>
-
-  </div>
+  </nav>
 </header>
+
 
   <section id="services">
 
@@ -605,14 +681,10 @@ footer a {
   </p>
 </footer>
 <script>
-  function toggleMenu(el) {
-  const nav = document.getElementById('navLinks');
-  nav.classList.toggle('active');
-
-  if (el) {
-    el.classList.toggle('active');
+  function toggleMenu(x) {
+    x.classList.toggle("active");
+    document.getElementById("navLinks").classList.toggle("active");
   }
-}
 
 
 function sendToWhatsApp(event) {
