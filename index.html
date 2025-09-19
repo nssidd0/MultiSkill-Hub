@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" href="favicon.png" /> <!-- Add your own favicon -->
 
   <!-- ✅ Font (Optional - adds clean look) -->
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
   <!-- ✅ Stylesheet (your CSS stays here) -->
   <!-- ✅ Updated CSS inside <style> tag -->
@@ -43,7 +43,7 @@
 
 body {
   overflow-x: hidden;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--bg-light);
@@ -102,14 +102,18 @@ header {
 }
 
 .header-text h1 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 600;
+  color: var(--primary-color);
   margin: 0;
-  font-size: 24px;
 }
 
 .header-text p {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  color: #444;
   margin: 0;
-  font-size: 14px;
 }
+
 
 /* Navigation */
 .navbar {
@@ -320,25 +324,18 @@ nav a:hover {
 .panel {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.4s ease-out;
-  border-left: 6px solid var(--primary-color);
-  margin-bottom: 20px;
-  border-radius: 0 0 6px 6px;
-
-  /* ✅ Add these for proper collapse */
-  padding-top: 0;
-  padding-bottom: 0;
   opacity: 0;
   visibility: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease, opacity 0.3s ease;
 }
+
 .panel.open {
-  max-height: 1000px; /* enough height for content */
+  max-height: 1000px;
   padding-top: 20px;
   padding-bottom: 20px;
   opacity: 1;
   visibility: visible;
 }
-
 
 /* Services Section */
 section {
@@ -401,18 +398,13 @@ th {
 }
 
 .floating-whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25D366;
-  color: white;
-  font-size: 28px;
-  padding: 12px 16px;
-  border-radius: 50%;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
 /* Footer */
