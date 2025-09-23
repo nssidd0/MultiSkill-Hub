@@ -2,21 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Naved Ahmad Siddiqui – Multiservice Professional offering Fitness, Tech Training, Govt. Documentation, and more in Mumbai." />
+<meta property="og:title" content="Naved Ahmad Siddiqui – Fitness & Tech Expert in Mumbai">
+<meta property="og:description" content="Offering fitness, computer training, document assistance, and more.">
+<meta property="og:image" content="https://via.placeholder.com/600x400.png?text=Naved+Siddiqui+Portfolio">
+<meta property="og:url" content="https://your-website.com">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="your-favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://your-website.com" />
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+
+
   <title>Naved Ahmad Siddiqui | Portfolio</title>
   <style>
-    :root {
+    html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+}
+
+    :root[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --primary-color: #00bfa5;
+  --card-bg: #1e1e1e;
+}
+
+:root {
       --bg-color: #ffffff;
       --text-color: #111111;
       --primary-color: #008080;
       --card-bg: #f5f5f5;
-    }
-
-    body.dark {
-      --bg-color: #121212;
-      --text-color: #f0f0f0;
-      --primary-color: #00bfa5;
-      --card-bg: #1e1e1e;
     }
 
     * {
@@ -26,6 +43,13 @@
       font-family: 'Segoe UI', sans-serif;
     }
 
+body.dark {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --primary-color: #00bfa5;
+      --card-bg: #1e1e1e;
+    }
+    
     body {
       background: var(--bg-color);
       color: var(--text-color);
@@ -64,6 +88,14 @@
   font-weight: bold;
   user-select: none;
 }
+.filter-btn {
+  margin: 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .filter-btn.active {
   background: var(--primary-color);
   color: #fff;
@@ -79,7 +111,7 @@
     }
 
     header h1 {
-      font-size: 36px;
+      font-size: clamp(24px, 5vw, 36px);
     }
 
     header p {
@@ -88,6 +120,9 @@
     }
 
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
       background: #222;
       text-align: center;
       padding: 10px 0;
@@ -137,18 +172,55 @@
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      opacity: 1;
     }
 
     .card:hover {
       transform: translateY(-5px);
     }
 
+    .card_title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card-tech {
+  background-color: #e0f7fa;
+}
+.card-fitness {
+  background-color: #fce4ec;
+}
+
+    .card[style*="display: none"] {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
+    .whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 999;
+  text-align: center;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  background: #128C7E;
+}
+
   </style>
 </head>
 <body>
@@ -160,7 +232,7 @@
 
 <div style="text-align:center; margin:20px 0;">
   <label style="font-weight:bold; margin-right:10px;">🌐 Language:</label>
-  <select id="languageSelect" onchange="changeLanguage()" style="padding:5px 10px; border-radius:5px;">
+  <select id="languageSelect" aria-label="Change Language" onchange="changeLanguage()" style="padding:5px 10px; border-radius:5px;">
     <option value="en">English</option>
     <option value="hi">हिन्दी</option>
     <option value="ur">اردو</option>
@@ -179,20 +251,19 @@
   </nav>
 
   <div class="toggle-container">
-    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    <button class="toggle-btn" aria-label="Toggle dark mode" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
   </div>
     <section id="about">
-    <h2>About Me</h2>
-    <p style="text-align:center; max-width: 800px; margin: auto;">
+    <h2><span data-lang-key="about">About Me</span></h2>
+    <span data-lang-key="aboutText">
       Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai.
       From personal fitness to tech training, I offer a wide range of services tailored
       to meet your needs. Whether you need a strong body, a stunning website,
       or official document help — I’ve got you covered.
-    </p>
+    </span>
   </section>
 
 <section id="services">
-  <h2>My Services</h2>
 
   <!-- Filter Buttons -->
   <div style="text-align:center; margin-bottom: 25px;">
@@ -205,64 +276,64 @@
 
 <h2><span data-lang-key="services">My Services</span></h2>
 
-<p><span data-lang-key="aboutText">Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional...</span></p>
+<p><span data-lang-key="servicesIntro">Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional...</span></p>
 
 <!-- And so on... -->
 
   <div class="grid">
-    <div class="card fitness">
-      <h3>🏋️‍♂️ Personal Fitness Trainer</h3>
+    <div class="card card-fitness">
+      <h3 class="card_title">🏋️‍♂️ Personal Fitness Trainer</h3>
       <p>Customized workout plans, one-on-one training, fat loss, muscle gain & home sessions available.</p>
     </div>
 
-    <div class="card fitness">
-      <h3>💆‍♂️ Body Massage</h3>
+    <div class="card card-fitness">
+      <h3 class="card_title">💆‍♂️ Body Massage</h3>
       <p>Relaxing and therapeutic massages to relieve stress, body pain, and improve blood circulation.</p>
     </div>
 
-    <div class="card tech">
-      <h3>💻 Computer Classes</h3>
+    <div class="card card-tech">
+      <h3 class="card_title">💻 Computer Classes</h3>
       <p>Basic to advanced computer training for students and adults – MS Office, Internet, Tally, etc.</p>
     </div>
 
-    <div class="card tech">
-      <h3>🎨 Graphic Design</h3>
+    <div class="card card-tech">
+      <h3 class="card_title">🎨 Graphic Design</h3>
       <p>Professional logos, brochures, banners, and social media graphics designed with creativity and precision.</p>
     </div>
 
-    <div class="card documents">
-      <h3>📄 Govt. & Private Documentation</h3>
+    <div class="card card-documents">
+      <h3 class="card_title">📄 Govt. & Private Documentation</h3>
       <p>Help with Aadhar, PAN, Passport, Ration Card, forms, printing, scanning, etc.</p>
     </div>
 
-    <div class="card tech">
-      <h3>🌐 Website Development</h3>
+    <div class="card card-tech">
+      <h3 class="card_title">🌐 Website Development</h3>
       <p>Affordable website design & development for small businesses, portfolios, and blogs.</p>
     </div>
 
-    <div class="card driver">
-      <h3>🚗 Driver Services</h3>
+    <div class="card card-driver">
+      <h3 class="card_title">🚗 Driver Services</h3>
       <p>Experienced driver for Ola, Uber, Rapido & private hire. Safe, punctual and professional service.</p>
     </div>
 
-    <div class="card">
-      <h3>✨ And Many More...</h3>
-      <p>Need something else? Just ask! I handle multiple other services as per client requirements.</p>
-    </div>
+    <div class="card card-misc">
+  <h3 class="card_title">✨ And Many More...</h3>
+  <p>Need something else? Just ask! I handle multiple other services as per client requirements.</p>
+</div>
   </div>
 </section>
 
   <section id="gallery">
-    <h2>Gallery</h2>
+    <h2><span data-lang-key="gallery">Gallery</span></h2>
     <div class="grid">
-      <div class="card"><img src="https://via.placeholder.com/300x200?text=Service+1" alt="Gallery 1" style="width:100%; border-radius:8px;"></div>
-      <div class="card"><img src="https://via.placeholder.com/300x200?text=Service+2" alt="Gallery 2" style="width:100%; border-radius:8px;"></div>
-      <div class="card"><img src="https://via.placeholder.com/300x200?text=Service+3" alt="Gallery 3" style="width:100%; border-radius:8px;"></div>
-      <div class="card"><img src="https://via.placeholder.com/300x200?text=Service+4" alt="Gallery 4" style="width:100%; border-radius:8px;"></div>
+      <div class="card"><img src="https://via.placeholder.com/300x200?text=Service+1" alt="Personal fitness training session" loading="lazy" style="width:100%; border-radius:8px;"></div>
+      <div class="card"><img src="https://via.placeholder.com/300x200?text=Service+2" alt="Computer classes in Mumbai" loading="lazy" style="width:100%; border-radius:8px;"></div>
+      <div class="card"><img src="https://via.placeholder.com/300x200?text=Service+3" alt="Government documentation help" loading="lazy" style="width:100%; border-radius:8px;"></div>
+      <div class="card"><img src="https://via.placeholder.com/300x200?text=Service+4" alt="Private driver service in Mumbai" loading="lazy" style="width:100%; border-radius:8px;"></div>
     </div>
   </section>
     <section id="testimonials">
-    <h2>Testimonials</h2>
+    <h2><span data-lang-key="testimonials">Testimonials</span></h2>
     <div class="grid">
       <div class="card">
         <p>"Naved bhai ka workout plan bahut effective hai. Sirf 3 mahine me fat loss ho gaya!"</p>
@@ -280,11 +351,11 @@
   </section>
 
   <section id="contact">
-    <h2>Contact Me</h2>
+    <h2><span data-lang-key="contact">Contact Me</span></h2>
     <div style="text-align:center;">
       <p><strong>Phone:</strong> <a href="tel:+919082009795">+91 9082009795</a></p>
       <p><strong>Email:</strong> <a href="mailto:nssidd0@gmail.com">nssidd0@gmail.com</a></p>
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/919082009795" target="_blank">Chat on WhatsApp</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/919082009795" aria-label="Chat on WhatsApp" target="_blank">Chat on WhatsApp</a></p>
     </div>
 
     <iframe
@@ -296,53 +367,51 @@
     </iframe>
     <div style="max-width:600px; margin: 30px auto;">
       <form action="https://formsubmit.co/nssidd0@gmail.com" method="POST" id="contactForm" style="display:flex; flex-direction:column; gap:15px;">
-    <input type="text" name="name" placeholder="Your Name" required
+    
+    <label for="fullName" data-lang-key="fullName">Your Name</label>
+<input type="text" id="fullName" name="name" placeholder="Your Name" data-lang-placeholder="fullNamePlaceholder" required
            style="padding:12px; border-radius:6px; border:1px solid #ccc;"/>
     
-    <input type="email" name="email" placeholder="Your Email" required
+    <label for="email" data-lang-key="email">Your Email</label>
+<input type="email" id="email" name="email" placeholder="Your Email" data-lang-placeholder="emailPlaceholder" required
            style="padding:12px; border-radius:6px; border:1px solid #ccc;"/>
     
-    <textarea name="message" placeholder="Your Message" required rows="5"
+    <label for="message" data-lang-key="message">Your Message</label>
+<textarea id="message" name="message" placeholder="Your Message" required rows="5"
               style="padding:12px; border-radius:6px; border:1px solid #ccc;"></textarea>
     
-    <button type="submit"
-            style="padding:12px; border:none; background:var(--primary-color); color:#fff; font-weight:bold; border-radius:6px; cursor:pointer;">
+    <button type="submit" data-lang-key="send" style="padding:12px; border:none; background:var(--primary-color); color:#fff; font-weight:bold; border-radius:6px; cursor:pointer;">
       Send Message
     </button>
   </form>
 
-  <p id="formStatus" style="text-align:center; margin-top:10px;"></p>
+  <p id="formStatus" aria-live="polite" style="text-align:center; margin-top:10px;"></p>
 </div>
   </section>
     <footer style="background:#222; color:#fff; text-align:center; padding:20px; margin-top:40px;">
-    <p>© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
+    <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
   </footer>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/919082009795" class="whatsapp-float" target="_blank" title="Chat on WhatsApp"
-     style="position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; padding: 12px 15px; border-radius: 50%; font-size: 22px; text-decoration: none; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 999;">
-    💬
-  </a>
+  <a href="https://wa.me/919082009795"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat with Naved on WhatsApp">
+   💬
+</a>
+
+<!-- Lightbox overlay HTML -->
+<div id="lightbox-overlay">
+  <span class="close-btn" onclick="closeLightbox()">&times;</span>
+  <img src="" alt="Expanded Image" loading="lazy">
+</div>
 
   <!-- Dark Mode Script -->
   <script>
     function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-    }
-    
-    // Contact form handling
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const name = this.name.value;
-  const email = this.email.value;
-  const message = this.message.value;
-
-  // 👇 Replace this with real backend/API later
-  document.getElementById('formStatus').textContent = "Thank you, " + name + "! Your message has been sent (demo only).";
-  
-  this.reset();
-});
+  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+  document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
+}
 
 // Lightbox functions
 const lightboxOverlay = document.getElementById('lightbox-overlay');
@@ -352,6 +421,7 @@ document.querySelectorAll('#gallery img').forEach(img => {
   img.style.cursor = 'pointer';
   img.addEventListener('click', () => {
     lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
     lightboxOverlay.style.display = 'flex';
   });
 });
@@ -360,6 +430,16 @@ function closeLightbox() {
   lightboxOverlay.style.display = 'none';
   lightboxImage.src = '';
 }
+
+// Close on background click
+lightboxOverlay.addEventListener('click', e => {
+  if (e.target === lightboxOverlay) closeLightbox();
+});
+
+// Close on ESC key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
 
 // Services filtering
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -390,50 +470,137 @@ filterButtons.forEach(button => {
 
 const translations = {
   en: {
-    services: "My Services",
-    aboutText: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional...",
-    contact: "Contact Me",
-    gallery: "Gallery",
-    testimonials: "Testimonials",
-    // add more keys as needed
-  },
+  about: "About Me",
+  aboutText: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai...",
+  services: "My Services",
+  servicesIntro: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional offering various services...",
+  contact: "Contact Me",
+  fullName: "Your Name",
+  fullNamePlaceholder: "Enter your name",
+  send: "Send Message",
+  footer: "© 2025 Naved Ahmad Siddiqui. All rights reserved.",
+  gallery: "Gallery",
+  testimonials: "Testimonials",
+},
   hi: {
     services: "मेरी सेवाएं",
-    aboutText: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल...",
+    servicesIntro: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल...",
     contact: "संपर्क करें",
+    fullName: "आपका नाम",
+    fullNamePlaceholder: "अपना नाम दर्ज करें",
+    send: "संदेश भेजें",
+    footer: "© 2025 नवेद अहमद सिद्दीकी. सर्वाधिकार सुरक्षित।",
     gallery: "गेलरी",
     testimonials: "प्रशंसापत्र",
   },
   ur: {
-    services: "میری خدمات",
-    aboutText: "السلام علیکم! میں نوید احمد صدیقی ہوں، ممبئی کا ایک ہنر مند پیشہ ور...",
-    contact: "رابطہ کریں",
-    gallery: "گیلری",
-    testimonials: "تعریفیں",
-  },
-  ar: {
-    services: "خدماتي",
-    aboutText: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي...",
-    contact: "اتصل بي",
-    gallery: "معرض الصور",
-    testimonials: "الشهادات",
-  }
+  services: "میری خدمات",
+  servicesIntro: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص...",
+  about: "میرے بارے میں",
+  aboutText: "السلام علیکم! میں نوید احمد صدیقی ہوں، ممبئی کا ایک ہنر مند پیشہ ور...",
+  contact: "رابطہ کریں",
+  fullName: "آپ کا نام",
+  fullNamePlaceholder: "اپنا نام درج کریں",
+  send: "پیغام بھیجیں",
+  footer: "© 2025 نوید احمد صدیقی. جملہ حقوق محفوظ ہیں۔",
+  gallery: "گیلری",
+  testimonials: "تعریفیں",
+},
+ar: {
+  services: "خدماتي",
+  servicesIntro: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي...",
+  about: "من أنا",
+  aboutText: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي...",
+  contact: "اتصل بي",
+  fullName: "اسمك",
+  fullNamePlaceholder: "أدخل اسمك",
+  send: "أرسل رسالة",
+  footer: "© 2025 نويد أحمد صديقي. جميع الحقوق محفوظة.",
+  gallery: "معرض الصور",
+  testimonials: "الشهادات",,
+}
 };
 
 function changeLanguage() {
   const selectedLang = document.getElementById("languageSelect").value;
+
+  // ✅ Set HTML lang attribute
+  document.documentElement.lang = selectedLang;
+
+  localStorage.setItem('selectedLang', selectedLang);
+
+  // Text translation
   document.querySelectorAll("[data-lang-key]").forEach(el => {
     const key = el.getAttribute("data-lang-key");
-    el.textContent = translations[selectedLang][key] || translations["en"][key];
+    el.textContent = translations[selectedLang][key]
+    || translations["en"][key]
+    || key;
+  });
+
+  // Placeholder translation
+  document.querySelectorAll("[data-lang-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-lang-placeholder");
+    el.placeholder = translations[selectedLang][key]
+      || translations["en"][key]
+      || key;
   });
 }
 
-
   </script>
-<div id="lightbox-overlay">
-  <span class="close-btn" onclick="closeLightbox()">&times;</span>
-  <img src="" alt="Expanded Image" />
-</div>
 
+  <!-- Lightbox script -->
+  <script>
+window.addEventListener('DOMContentLoaded', () => {
+  // Load saved language
+  const savedLang = localStorage.getItem('selectedLang') || 'en';
+  document.getElementById("languageSelect").value = savedLang;
+  changeLanguage();
+
+  // Lightbox
+  const lightboxOverlay = document.getElementById('lightbox-overlay');
+  const lightboxImage = lightboxOverlay.querySelector('img');
+
+  document.querySelectorAll('#gallery img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+      lightboxOverlay.style.display = 'flex';
+    });
+  });
+
+  lightboxOverlay.addEventListener('click', e => {
+    if (e.target === lightboxOverlay) {
+      lightboxOverlay.style.display = 'none';
+      lightboxImage.src = '';
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      lightboxOverlay.style.display = 'none';
+      lightboxImage.src = '';
+    }
+  });
+});
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Naved Ahmad Siddiqui",
+  "jobTitle": "Multiservice Professional",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "400095",
+    "addressCountry": "IN"
+  },
+  "telephone": "+91-9082009795",
+  "email": "nssidd0@gmail.com",
+  "url": "https://your-website.com"
+}
+</script>
 </body>
 </html>
