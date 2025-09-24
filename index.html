@@ -7,10 +7,10 @@
 <meta property="og:title" content="Naved Ahmad Siddiqui – Fitness & Tech Expert in Mumbai">
 <meta property="og:description" content="Offering fitness, computer training, document assistance, and more.">
 <meta property="og:image" content="https://via.placeholder.com/600x400.png?text=Naved+Siddiqui+Portfolio">
-<meta property="og:url" content="https://your-website.com">
+<meta property="og:url" content="https://navedsiddiqui.in">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="your-favicon.ico" type="image/x-icon">
-<link rel="canonical" href="https://your-website.com" />
+<link rel="canonical" href="https://navedsiddiqui.in" />
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 
@@ -42,13 +42,6 @@
       box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
     }
-
-body.dark {
-      --bg-color: #121212;
-      --text-color: #f0f0f0;
-      --primary-color: #00bfa5;
-      --card-bg: #1e1e1e;
-    }
     
     body {
       background: var(--bg-color);
@@ -57,6 +50,11 @@ body.dark {
       line-height: 1.6;
     }
     
+    img {
+  max-width: 100%;
+  height: auto;
+}
+
     /* Lightbox Styles */
 #lightbox-overlay {
   position: fixed;
@@ -126,6 +124,7 @@ body.dark {
       background: #222;
       text-align: center;
       padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     nav a {
@@ -281,42 +280,42 @@ body.dark {
 <!-- And so on... -->
 
   <div class="grid">
-    <div class="card card-fitness">
+    <div class="card card-fitness" data-category="fitness">
       <h3 class="card_title">🏋️‍♂️ Personal Fitness Trainer</h3>
       <p>Customized workout plans, one-on-one training, fat loss, muscle gain & home sessions available.</p>
     </div>
 
-    <div class="card card-fitness">
+    <div class="card card-fitness" data-category="fitness">
       <h3 class="card_title">💆‍♂️ Body Massage</h3>
       <p>Relaxing and therapeutic massages to relieve stress, body pain, and improve blood circulation.</p>
     </div>
 
-    <div class="card card-tech">
+    <div class="card card-tech" data-category="tech">
       <h3 class="card_title">💻 Computer Classes</h3>
       <p>Basic to advanced computer training for students and adults – MS Office, Internet, Tally, etc.</p>
     </div>
 
-    <div class="card card-tech">
+    <div class="card card-tech" data-category="tech">
       <h3 class="card_title">🎨 Graphic Design</h3>
       <p>Professional logos, brochures, banners, and social media graphics designed with creativity and precision.</p>
     </div>
 
-    <div class="card card-documents">
+    <div class="card card-documents" data-category="documents">
       <h3 class="card_title">📄 Govt. & Private Documentation</h3>
       <p>Help with Aadhar, PAN, Passport, Ration Card, forms, printing, scanning, etc.</p>
     </div>
 
-    <div class="card card-tech">
+    <div class="card card-tech" data-category="tech">
       <h3 class="card_title">🌐 Website Development</h3>
       <p>Affordable website design & development for small businesses, portfolios, and blogs.</p>
     </div>
 
-    <div class="card card-driver">
+    <div class="card card-driver" data-category="driver">
       <h3 class="card_title">🚗 Driver Services</h3>
       <p>Experienced driver for Ola, Uber, Rapido & private hire. Safe, punctual and professional service.</p>
     </div>
 
-    <div class="card card-misc">
+    <div class="card card-misc" data-category="misc">
   <h3 class="card_title">✨ And Many More...</h3>
   <p>Need something else? Just ask! I handle multiple other services as per client requirements.</p>
 </div>
@@ -367,7 +366,8 @@ body.dark {
     </iframe>
     <div style="max-width:600px; margin: 30px auto;">
       <form action="https://formsubmit.co/nssidd0@gmail.com" method="POST" id="contactForm" style="display:flex; flex-direction:column; gap:15px;">
-    
+        <input type="hidden" name="_next" value="https://your-website.com/thank-you.html">
+
     <label for="fullName" data-lang-key="fullName">Your Name</label>
 <input type="text" id="fullName" name="name" placeholder="Your Name" data-lang-placeholder="fullNamePlaceholder" required
            style="padding:12px; border-radius:6px; border:1px solid #ccc;"/>
@@ -379,6 +379,8 @@ body.dark {
     <label for="message" data-lang-key="message">Your Message</label>
 <textarea id="message" name="message" placeholder="Your Message" required rows="5"
               style="padding:12px; border-radius:6px; border:1px solid #ccc;"></textarea>
+              <input type="hidden" name="_captcha" value="false">
+
     
     <button type="submit" data-lang-key="send" style="padding:12px; border:none; background:var(--primary-color); color:#fff; font-weight:bold; border-radius:6px; cursor:pointer;">
       Send Message
@@ -458,11 +460,13 @@ filterButtons.forEach(button => {
         card.style.display = 'block';
       } else {
         // Check if card has class matching filter
-        if (card.classList.contains(filter)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+        const cardCategory = card.getAttribute('data-category');
+if (filter === 'all' || cardCategory === filter) {
+  card.style.display = 'block';
+} else {
+  card.style.display = 'none';
+}
+
       }
     });
   });
@@ -517,7 +521,7 @@ ar: {
   send: "أرسل رسالة",
   footer: "© 2025 نويد أحمد صديقي. جميع الحقوق محفوظة.",
   gallery: "معرض الصور",
-  testimonials: "الشهادات",,
+  testimonials: "الشهادات",
 }
 };
 
@@ -526,6 +530,13 @@ function changeLanguage() {
 
   // ✅ Set HTML lang attribute
   document.documentElement.lang = selectedLang;
+
+  // RTL Support
+  if (['ar', 'ur'].includes(selectedLang)) {
+    document.documentElement.dir = "rtl";
+  } else {
+    document.documentElement.dir = "ltr";
+  }
 
   localStorage.setItem('selectedLang', selectedLang);
 
@@ -599,7 +610,7 @@ window.addEventListener('DOMContentLoaded', () => {
   },
   "telephone": "+91-9082009795",
   "email": "nssidd0@gmail.com",
-  "url": "https://your-website.com"
+  "url": "https://navedsiddiqui.in"
 }
 </script>
 </body>
