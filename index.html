@@ -28,7 +28,7 @@
       --bg-color: #121212;
       --text-color: #f0f0f0;
       --primary-color: #00bfa5;
-      --card-bg: rgba(30, 30, 30, 0.6); /* Glassmorphism base for dark */
+      --card-bg: rgba(30, 30, 30, 0.6);
       --frosted-bg: rgba(255, 255, 255, 0.1);
       --blur-amount: blur(15px);
       --border-color: rgba(255, 255, 255, 0.2);
@@ -38,7 +38,7 @@
       --bg-color: #ffffff;
       --text-color: #111111;
       --primary-color: #008080;
-      --card-bg: rgba(255, 255, 255, 0.6); /* Glassmorphism base for light */
+      --card-bg: rgba(255, 255, 255, 0.6);
       --frosted-bg: rgba(255, 255, 255, 0.3);
       --blur-amount: blur(15px);
       --border-color: rgba(255, 255, 255, 0.5);
@@ -56,10 +56,9 @@
       color: var(--text-color);
       transition: all 0.3s ease;
       line-height: 1.6;
-      position: relative; /* For glassmorphism layering */
+      position: relative;
     }
 
-    /* Add a subtle background for glass effect visibility */
     body::before {
       content: '';
       position: fixed;
@@ -77,7 +76,6 @@
       height: auto;
     }
 
-    /* Lightbox Styles */
     #lightbox-overlay {
       position: fixed;
       top: 0;
@@ -139,8 +137,8 @@
       color: var(--text-color);
     }
 
-    .form-button {
-      padding: 12px;
+    .form-button, .card-button {
+      padding: 10px 15px;
       border: none;
       background: var(--primary-color);
       color: #fff;
@@ -148,9 +146,10 @@
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.3s ease;
+      margin: 5px;
     }
 
-    .form-button:hover {
+    .form-button:hover, .card-button:hover {
       box-shadow: 0 4px 12px rgba(0, 128, 128, 0.3);
     }
 
@@ -235,7 +234,7 @@
       background: var(--card-bg);
       backdrop-filter: var(--blur-amount);
       border: 1px solid var(--border-color);
-      border-radius: 20px; /* Softer corners for glassmorphism */
+      border-radius: 20px;
       padding: 20px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
@@ -253,11 +252,11 @@
     }
 
     .card-tech {
-      background-color: rgba(224, 247, 250, 0.4); /* Adjusted for glass */
+      background-color: rgba(224, 247, 250, 0.4);
     }
 
     .card-fitness {
-      background-color: rgba(252, 228, 236, 0.4); /* Adjusted for glass */
+      background-color: rgba(252, 228, 236, 0.4);
     }
 
     .hidden {
@@ -366,7 +365,6 @@
   </section>
 
   <section id="services">
-    <!-- Filter Buttons -->
     <div style="text-align:center; margin-bottom: 25px;">
       <button class="filter-btn active" data-filter="all" aria-label="Filter by all services">All</button>
       <button class="filter-btn" data-filter="fitness" aria-label="Filter by fitness services">Fitness</button>
@@ -393,6 +391,10 @@
       <div class="card card-tech" data-category="tech">
         <h3 class="card_title">💻 Computer Classes</h3>
         <p>Basic to advanced computer training for students and adults – MS Office, Internet, Tally, etc.</p>
+        <div style="margin-top: 10px;">
+          <button class="card-button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbz3R3MzYbBFMUSeK3w2_65AL2RSo041fE73rsIYQv13s5Xh12kmo2XKxZto54QUUC1Y/exec'">Exam</button>
+          <button class="card-button" onclick="window.location.href='https://certificates-downloader.netlify.app/'">Certificate</button>
+        </div>
       </div>
 
       <div class="card card-tech" data-category="tech">
@@ -479,7 +481,7 @@
         <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" data-lang-placeholder="emailPlaceholder" required>
     
         <label for="message" data-lang-key="message">Your Message</label>
-        <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
+    <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
 
         <button type="submit" class="form-button" data-lang-key="send">Send Message</button>
       </form>
@@ -490,14 +492,12 @@
 
   <footer style="background:var(--frosted-bg); backdrop-filter: var(--blur-amount); color:var(--text-color); text-align:center; padding:20px; margin-top:40px; border-top: 1px solid var(--border-color);">
     <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
-    <!-- Add social media links here as examples; replace with actual links -->
     <div>
       <a href="www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color); margin:0 10px;">LinkedIn</a>
       <a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color); margin:0 10px;">Instagram</a>
     </div>
   </footer>
 
-  <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/919082009795"
      class="whatsapp-float"
      target="_blank"
@@ -505,20 +505,17 @@
      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" style="width:24px; height:24px;">
   </a>
 
-  <!-- Lightbox overlay HTML -->
   <div id="lightbox-overlay">
     <span class="close-btn" onclick="closeLightbox()">&times;</span>
     <img src="" alt="Expanded Image" loading="lazy">
   </div>
 
-  <!-- Scripts -->
   <script defer>
     function toggleDarkMode() {
       const isDark = document.documentElement.getAttribute("data-theme") === "dark";
       document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
     }
 
-    // Lightbox functions
     const lightboxOverlay = document.getElementById('lightbox-overlay');
     const lightboxImage = lightboxOverlay.querySelector('img');
 
@@ -536,23 +533,19 @@
       lightboxImage.src = '';
     }
 
-    // Close on background click
     lightboxOverlay.addEventListener('click', e => {
       if (e.target === lightboxOverlay) closeLightbox();
     });
 
-    // Close on ESC key
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
     });
 
-    // Services filtering
     const filterButtons = document.querySelectorAll('.filter-btn');
     const serviceCards = document.querySelectorAll('#services .card');
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        // Remove active class from all buttons
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
 
@@ -650,20 +643,13 @@
 
     function changeLanguage() {
       const selectedLang = document.getElementById("languageSelect").value;
-
-      // Set HTML lang attribute
       document.documentElement.lang = selectedLang;
-
-      // RTL Support
       if (['ar', 'ur'].includes(selectedLang)) {
         document.documentElement.dir = "rtl";
       } else {
         document.documentElement.dir = "ltr";
       }
-
       localStorage.setItem('selectedLang', selectedLang);
-
-      // Text translation
       document.querySelectorAll("[data-lang-key]").forEach(el => {
         const key = el.getAttribute("data-lang-key");
         el.textContent = translations[selectedLang][key] || translations["en"][key] || "Translation missing";
@@ -671,8 +657,6 @@
           console.warn(`Translation missing for key "${key}" in language "${selectedLang}"`);
         }
       });
-
-      // Placeholder translation
       document.querySelectorAll("[data-lang-placeholder]").forEach(el => {
         const key = el.getAttribute("data-lang-placeholder");
         el.placeholder = translations[selectedLang][key] || translations["en"][key] || "Translation missing";
@@ -683,12 +667,10 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      // Load saved language
       const savedLang = localStorage.getItem('selectedLang') || 'en';
       document.getElementById("languageSelect").value = savedLang;
       changeLanguage();
 
-      // Map lazy loading
       const mapIframe = document.querySelector('.map');
       const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
@@ -698,7 +680,6 @@
       });
       observer.observe(mapIframe);
 
-      // Form submission
       document.getElementById('contactForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -735,15 +716,35 @@
         }
       });
 
-      // Service Worker Registration
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then(registration => {
-            console.log('Service Worker registered with scope:', registration.scope);
-          }).catch(error => {
-            console.error('Service Worker registration failed:', error);
-          });
+        window.addEventListener('load', async () => {
+          const registerServiceWorker = async (attempts = 3, delay = 1000) => {
+            for (let i = 0; i < attempts; i++) {
+              try {
+                const response = await fetch('/sw.js', { method: 'HEAD', cache: 'no-store' });
+                if (!response.ok) {
+                  console.error(`Service Worker file (/sw.js) not found or inaccessible: ${response.status} ${response.statusText}`);
+                  return;
+                }
+                const registration = await navigator.serviceWorker.register('/sw.js');
+                console.log('Service Worker registered with scope:', registration.scope);
+                return;
+              } catch (error) {
+                console.error(`Service Worker registration attempt ${i + 1} failed:`, error.message, error);
+                if (i < attempts - 1) {
+                  await new Promise(resolve => setTimeout(resolve, delay));
+                }
+              }
+            }
+            console.error('Service Worker registration failed after all attempts.');
+            // Optional: Notify user
+            // document.getElementById('formStatus').textContent = 'Offline support is currently unavailable.';
+            // document.getElementById('formStatus').classList.add('error');
+          };
+          registerServiceWorker();
         });
+      } else {
+        console.log('Service Workers are not supported in this browser.');
       }
     });
   </script>
