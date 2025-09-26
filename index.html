@@ -10,11 +10,12 @@
   <meta property="og:image" content="https://via.placeholder.com/600x400.png?text=Naved+Siddiqui+Portfolio">
   <meta property="og:url" content="https://navedsiddiqui.in">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://navedsiddiqui.in" />
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <title>Naved Ahmad Siddiqui | Portfolio</title>
   <style>
@@ -213,7 +214,8 @@
       background-color: #fce4ec;
     }
 
-    .card[style*="display: none"] {
+    .hidden {
+      display: none;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -223,6 +225,13 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
+    }
+
+    #gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     .whatsapp-float {
@@ -260,7 +269,9 @@
 </head>
 <body>
   <noscript>
-    <p style="text-align: center; color: red;">JavaScript is required for full functionality of this site, including dark mode, service filtering, and form submission.</p>
+    <div style="text-align: center; background: #ffebee; color: #d32f2f; padding: 15px; font-weight: bold;">
+      JavaScript is required for full functionality of this site, including dark mode, service filtering, and form submission. Please enable JavaScript in your browser settings.
+    </div>
   </noscript>
 
   <header>
@@ -361,10 +372,10 @@
   <section id="gallery">
     <h2><span data-lang-key="gallery">Gallery</span></h2>
     <div class="grid">
-      <div class="card"><img src="Personal fitness training session.jpg" alt="Personal fitness training session" loading="lazy" width="300" height="200" style="width:100%; border-radius:8px;" role="button" aria-label="View enlarged personal fitness training session image"></div>
-      <div class="card"><img src="Computer classes in Mumbai.jpg" alt="Computer classes in Mumbai" loading="lazy" width="300" height="200" style="width:100%; border-radius:8px;" role="button" aria-label="View enlarged computer classes in Mumbai image"></div>
-      <div class="card"><img src="Government documentation help.jpg" alt="Government documentation help" loading="lazy" width="300" height="200" style="width:100%; border-radius:8px;" role="button" aria-label="View enlarged government documentation help image"></div>
-      <div class="card"><img src="Private driver service in Mumbai.jpg" alt="Private driver service in Mumbai" loading="lazy" width="300" height="200" style="width:100%; border-radius:8px;" role="button" aria-label="View enlarged private driver service in Mumbai image"></div>
+      <div class="card"><img src="/images/personal-fitness-training-session.jpg" alt="Personal fitness training session" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged personal fitness training session image"></div>
+      <div class="card"><img src="/images/computer-classes-in-mumbai.jpg" alt="Computer classes in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged computer classes in Mumbai image"></div>
+      <div class="card"><img src="/images/government-documentation-help.jpg" alt="Government documentation help" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged government documentation help image"></div>
+      <div class="card"><img src="/images/private-driver-service-in-mumbai.jpg" alt="Private driver service in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged private driver service in Mumbai image"></div>
     </div>
   </section>
 
@@ -398,12 +409,15 @@
       style="width:100%; height:300px; margin-top:20px; border-radius:10px; border:0;"
       data-src="https://www.google.com/maps?q=Mumbai,+Maharashtra+400095&output=embed"
       allowfullscreen=""
-      loading="lazy">
+      loading="lazy"
+      aria-label="Map showing location in Mumbai, Maharashtra 400095"
+      title="Map of Mumbai, Maharashtra 400095">
     </iframe>
 
     <div style="max-width:600px; margin: 30px auto;">
       <form action="https://formsubmit.co/nssidd0@gmail.com" method="POST" id="contactForm" style="display:flex; flex-direction:column; gap:15px;">
         <input type="hidden" name="_next" value="https://navedsiddiqui.in/thank-you.html">
+        <input type="text" name="_honeypot" style="display:none;" tabindex="-1">
 
         <label for="fullName" data-lang-key="fullName">Your Name</label>
         <input type="text" id="fullName" name="name" class="form-input" placeholder="Your Name" data-lang-placeholder="fullNamePlaceholder" required>
@@ -413,7 +427,6 @@
     
         <label for="message" data-lang-key="message">Your Message</label>
         <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
-        <input type="hidden" name="_captcha" value="false">
 
         <button type="submit" class="form-button" data-lang-key="send">Send Message</button>
       </form>
@@ -426,8 +439,8 @@
     <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
     <!-- Add social media links here as examples; replace with actual links -->
     <div>
-      <a href="https://www.linkedin.com/in/yourprofile" style="color:#fff; margin:0 10px;">LinkedIn</a>
-      <a href="https://www.instagram.com/yourprofile" style="color:#fff; margin:0 10px;">Instagram</a>
+      <a href="www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:#fff; margin:0 10px;">LinkedIn</a>
+      <a href="https://www.instagram.com/nssiddtutorial" style="color:#fff; margin:0 10px;">Instagram</a>
     </div>
   </footer>
 
@@ -495,9 +508,9 @@
         serviceCards.forEach(card => {
           const cardCategory = card.getAttribute('data-category');
           if (filter === 'all' || cardCategory === filter) {
-            card.style.display = 'block';
+            card.classList.remove('hidden');
           } else {
-            card.style.display = 'none';
+            card.classList.add('hidden');
           }
         });
       });
@@ -518,6 +531,7 @@
         emailPlaceholder: "Enter your email",
         message: "Your Message",
         send: "Send Message",
+        sending: "Sending...",
         footer: "© 2025 Naved Ahmad Siddiqui. All rights reserved.",
         successMessage: "Message sent successfully!",
         errorMessage: "Failed to send message. Please try again."
@@ -536,6 +550,7 @@
         emailPlaceholder: "अपना ईमेल दर्ज करें",
         message: "आपका संदेश",
         send: "संदेश भेजें",
+        sending: "भेज रहा है...",
         footer: "© 2025 नवेद अहमद सिद्दीकी. सर्वाधिकार सुरक्षित।",
         successMessage: "संदेश सफलतापूर्वक भेजा गया!",
         errorMessage: "संदेश भेजने में विफल। कृपया फिर से प्रयास करें।"
@@ -554,6 +569,7 @@
         emailPlaceholder: "اپنا ای میل درج کریں",
         message: "آپ کا پیغام",
         send: "پیغام بھیجیں",
+        sending: "بھیج رہا ہے...",
         footer: "© 2025 نوید احمد صدیقی. جملہ حقوق محفوظ ہیں۔",
         successMessage: "پیغام کامیابی سے بھیج دیا گیا!",
         errorMessage: "پیغام بھیجنے میں ناکامی۔ براہ کرم دوبارہ کوشش کریں۔"
@@ -572,6 +588,7 @@
         emailPlaceholder: "أدخل بريدك الإلكتروني",
         message: "رسالتك",
         send: "أرسل رسالة",
+        sending: "جارٍ الإرسال...",
         footer: "© 2025 نويد أحمد صديقي. جميع الحقوق محفوظة.",
         successMessage: "تم إرسال الرسالة بنجاح!",
         errorMessage: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
@@ -597,12 +614,18 @@
       document.querySelectorAll("[data-lang-key]").forEach(el => {
         const key = el.getAttribute("data-lang-key");
         el.textContent = translations[selectedLang][key] || translations["en"][key] || "Translation missing";
+        if (!translations[selectedLang][key]) {
+          console.warn(`Translation missing for key "${key}" in language "${selectedLang}"`);
+        }
       });
 
       // Placeholder translation
       document.querySelectorAll("[data-lang-placeholder]").forEach(el => {
         const key = el.getAttribute("data-lang-placeholder");
         el.placeholder = translations[selectedLang][key] || translations["en"][key] || "Translation missing";
+        if (!translations[selectedLang][key]) {
+          console.warn(`Translation missing for placeholder key "${key}" in language "${selectedLang}"`);
+        }
       });
     }
 
@@ -628,7 +651,12 @@
         const form = e.target;
         const formData = new FormData(form);
         const formStatus = document.getElementById('formStatus');
+        const formButton = form.querySelector('.form-button');
         const selectedLang = document.getElementById("languageSelect").value;
+
+        formButton.disabled = true;
+        formButton.textContent = translations[selectedLang].sending || 'Sending...';
+
         try {
           const response = await fetch(form.action, {
             method: 'POST',
@@ -640,25 +668,39 @@
             formStatus.classList.remove('error');
             form.reset();
           } else {
-            formStatus.textContent = translations[selectedLang].errorMessage || 'Failed to send message. Please try again.';
+            formStatus.textContent = translations[selectedLang].errorMessage || `Failed to send message: ${response.statusText}`;
             formStatus.classList.add('error');
             formStatus.classList.remove('success');
           }
         } catch (error) {
-          formStatus.textContent = translations[selectedLang].errorMessage || 'An error occurred. Please try again.';
+          formStatus.textContent = translations[selectedLang].errorMessage || `An error occurred: ${error.message}. Please try again.`;
           formStatus.classList.add('error');
           formStatus.classList.remove('success');
+        } finally {
+          formButton.disabled = false;
+          formButton.textContent = translations[selectedLang].send || 'Send Message';
         }
       });
+
+      // Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          }).catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+        });
+      }
     });
   </script>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-X"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'UA-XXXXX-X');
+    gtag('config', 'G-XXXXXXX');
   </script>
 
   <script type="application/ld+json">
