@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Naved Ahmad Siddiqui – Multiservice Professional offering Fitness, Tech Training, Govt. Documentation, and more in Mumbai." />
+  <meta name="keywords" content="Naved Siddiqui, fitness trainer Mumbai, computer classes Mumbai, website development, documentation services, body massage Mumbai, graphic design, driver services Mumbai">
   <meta property="og:title" content="Naved Ahmad Siddiqui – Fitness & Tech Expert in Mumbai">
   <meta property="og:description" content="Offering fitness, computer training, document assistance, and more.">
   <meta property="og:image" content="https://via.placeholder.com/600x400.png?text=Naved+Siddiqui+Portfolio">
@@ -13,6 +14,7 @@
   <link rel="canonical" href="https://navedsiddiqui.in" />
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
+  <link rel="manifest" href="/manifest.json">
 
   <title>Naved Ahmad Siddiqui | Portfolio</title>
   <style>
@@ -241,9 +243,25 @@
     .whatsapp-float:hover {
       background: #128C7E;
     }
+
+    a:focus, button:focus, .filter-btn:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    #formStatus.success {
+      color: green;
+    }
+
+    #formStatus.error {
+      color: red;
+    }
   </style>
 </head>
 <body>
+  <noscript>
+    <p style="text-align: center; color: red;">JavaScript is required for full functionality of this site, including dark mode, service filtering, and form submission.</p>
+  </noscript>
 
   <header>
     <h1>Naved Ahmad Siddiqui</h1>
@@ -261,7 +279,7 @@
     </div>
   </header>
 
-  <nav>
+  <nav role="navigation">
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#gallery">Gallery</a>
@@ -406,6 +424,11 @@
 
   <footer style="background:#222; color:#fff; text-align:center; padding:20px; margin-top:40px;">
     <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
+    <!-- Add social media links here as examples; replace with actual links -->
+    <div>
+      <a href="https://www.linkedin.com/in/yourprofile" style="color:#fff; margin:0 10px;">LinkedIn</a>
+      <a href="https://www.instagram.com/yourprofile" style="color:#fff; margin:0 10px;">Instagram</a>
+    </div>
   </footer>
 
   <!-- WhatsApp Floating Button -->
@@ -413,7 +436,7 @@
      class="whatsapp-float"
      target="_blank"
      aria-label="Chat with Naved on WhatsApp">
-     💬
+     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" style="width:24px; height:24px;">
   </a>
 
   <!-- Lightbox overlay HTML -->
@@ -423,7 +446,7 @@
   </div>
 
   <!-- Scripts -->
-  <script>
+  <script defer>
     function toggleDarkMode() {
       const isDark = document.documentElement.getAttribute("data-theme") === "dark";
       document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
@@ -496,6 +519,8 @@
         message: "Your Message",
         send: "Send Message",
         footer: "© 2025 Naved Ahmad Siddiqui. All rights reserved.",
+        successMessage: "Message sent successfully!",
+        errorMessage: "Failed to send message. Please try again."
       },
       hi: {
         about: "मेरे बारे में",
@@ -512,6 +537,8 @@
         message: "आपका संदेश",
         send: "संदेश भेजें",
         footer: "© 2025 नवेद अहमद सिद्दीकी. सर्वाधिकार सुरक्षित।",
+        successMessage: "संदेश सफलतापूर्वक भेजा गया!",
+        errorMessage: "संदेश भेजने में विफल। कृपया फिर से प्रयास करें।"
       },
       ur: {
         about: "میرے بارے میں",
@@ -528,6 +555,8 @@
         message: "آپ کا پیغام",
         send: "پیغام بھیجیں",
         footer: "© 2025 نوید احمد صدیقی. جملہ حقوق محفوظ ہیں۔",
+        successMessage: "پیغام کامیابی سے بھیج دیا گیا!",
+        errorMessage: "پیغام بھیجنے میں ناکامی۔ براہ کرم دوبارہ کوشش کریں۔"
       },
       ar: {
         about: "من أنا",
@@ -544,6 +573,8 @@
         message: "رسالتك",
         send: "أرسل رسالة",
         footer: "© 2025 نويد أحمد صديقي. جميع الحقوق محفوظة.",
+        successMessage: "تم إرسال الرسالة بنجاح!",
+        errorMessage: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
       }
     };
 
@@ -597,22 +628,37 @@
         const form = e.target;
         const formData = new FormData(form);
         const formStatus = document.getElementById('formStatus');
+        const selectedLang = document.getElementById("languageSelect").value;
         try {
           const response = await fetch(form.action, {
             method: 'POST',
             body: formData
           });
           if (response.ok) {
-            formStatus.textContent = 'Message sent successfully!';
+            formStatus.textContent = translations[selectedLang].successMessage || 'Message sent successfully!';
+            formStatus.classList.add('success');
+            formStatus.classList.remove('error');
             form.reset();
           } else {
-            formStatus.textContent = 'Failed to send message. Please try again.';
+            formStatus.textContent = translations[selectedLang].errorMessage || 'Failed to send message. Please try again.';
+            formStatus.classList.add('error');
+            formStatus.classList.remove('success');
           }
         } catch (error) {
-          formStatus.textContent = 'An error occurred. Please try again.';
+          formStatus.textContent = translations[selectedLang].errorMessage || 'An error occurred. Please try again.';
+          formStatus.classList.add('error');
+          formStatus.classList.remove('success');
         }
       });
     });
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXX-X');
   </script>
 
   <script type="application/ld+json">
