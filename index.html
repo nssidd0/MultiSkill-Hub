@@ -28,14 +28,20 @@
       --bg-color: #121212;
       --text-color: #f0f0f0;
       --primary-color: #00bfa5;
-      --card-bg: #1e1e1e;
+      --card-bg: rgba(30, 30, 30, 0.6); /* Glassmorphism base for dark */
+      --frosted-bg: rgba(255, 255, 255, 0.1);
+      --blur-amount: blur(15px);
+      --border-color: rgba(255, 255, 255, 0.2);
     }
 
     :root {
       --bg-color: #ffffff;
       --text-color: #111111;
       --primary-color: #008080;
-      --card-bg: #f5f5f5;
+      --card-bg: rgba(255, 255, 255, 0.6); /* Glassmorphism base for light */
+      --frosted-bg: rgba(255, 255, 255, 0.3);
+      --blur-amount: blur(15px);
+      --border-color: rgba(255, 255, 255, 0.5);
     }
 
     * {
@@ -50,6 +56,20 @@
       color: var(--text-color);
       transition: all 0.3s ease;
       line-height: 1.6;
+      position: relative; /* For glassmorphism layering */
+    }
+
+    /* Add a subtle background for glass effect visibility */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--bg-color) 100%);
+      opacity: 0.1;
+      z-index: -1;
     }
     
     img {
@@ -95,8 +115,11 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      background: #ccc;
-      color: #000;
+      background: var(--frosted-bg);
+      color: var(--text-color);
+      backdrop-filter: var(--blur-amount);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
     }
 
     .filter-btn.active {
@@ -110,7 +133,10 @@
     .form-input {
       padding: 12px;
       border-radius: 6px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--border-color);
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      color: var(--text-color);
     }
 
     .form-button {
@@ -121,13 +147,21 @@
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-button:hover {
+      box-shadow: 0 4px 12px rgba(0, 128, 128, 0.3);
     }
 
     header {
-      background: var(--primary-color);
-      color: #fff;
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
       text-align: center;
       padding: 60px 20px 40px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
 
     header h1 {
@@ -143,17 +177,20 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      background: #222;
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
       text-align: center;
       padding: 10px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      border-bottom: 1px solid var(--border-color);
     }
 
     nav a {
-      color: #fff;
+      color: var(--text-color);
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
@@ -166,14 +203,20 @@
     }
 
     .toggle-btn {
-      background: var(--card-bg);
-      border: none;
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      border: 1px solid var(--border-color);
       padding: 8px 16px;
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
       color: var(--text-color);
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     section {
@@ -190,15 +233,18 @@
 
     .card {
       background: var(--card-bg);
-      border-radius: 10px;
+      backdrop-filter: var(--blur-amount);
+      border: 1px solid var(--border-color);
+      border-radius: 20px; /* Softer corners for glassmorphism */
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       opacity: 1;
     }
 
     .card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     }
 
     .card_title {
@@ -207,11 +253,11 @@
     }
 
     .card-tech {
-      background-color: #e0f7fa;
+      background-color: rgba(224, 247, 250, 0.4); /* Adjusted for glass */
     }
 
     .card-fitness {
-      background-color: #fce4ec;
+      background-color: rgba(252, 228, 236, 0.4); /* Adjusted for glass */
     }
 
     .hidden {
@@ -232,6 +278,11 @@
       height: 200px;
       object-fit: cover;
       border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    #gallery img:hover {
+      transform: scale(1.05);
     }
 
     .whatsapp-float {
@@ -243,14 +294,16 @@
       padding: 12px 16px;
       border-radius: 50%;
       font-size: 24px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
       z-index: 999;
       text-align: center;
       text-decoration: none;
+      transition: all 0.3s ease;
     }
 
     .whatsapp-float:hover {
       background: #128C7E;
+      transform: translateY(-3px);
     }
 
     a:focus, button:focus, .filter-btn:focus {
@@ -372,10 +425,10 @@
   <section id="gallery">
     <h2><span data-lang-key="gallery">Gallery</span></h2>
     <div class="grid">
-      <div class="card"><img src="/images/personal-fitness-training-session.jpg" alt="Personal fitness training session" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged personal fitness training session image"></div>
-      <div class="card"><img src="/images/computer-classes-in-mumbai.jpg" alt="Computer classes in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged computer classes in Mumbai image"></div>
-      <div class="card"><img src="/images/government-documentation-help.jpg" alt="Government documentation help" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged government documentation help image"></div>
-      <div class="card"><img src="/images/private-driver-service-in-mumbai.jpg" alt="Private driver service in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged private driver service in Mumbai image"></div>
+      <div class="card"><img src="Personal fitness training session.jpg" alt="Personal fitness training session" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged personal fitness training session image"></div>
+      <div class="card"><img src="Computer classes in Mumbai.jpg" alt="Computer classes in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged computer classes in Mumbai image"></div>
+      <div class="card"><img src="Government documentation help.jpg" alt="Government documentation help" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged government documentation help image"></div>
+      <div class="card"><img src="Private driver service in Mumbai.jpg" alt="Private driver service in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged private driver service in Mumbai image"></div>
     </div>
   </section>
 
@@ -435,12 +488,12 @@
     </div>
   </section>
 
-  <footer style="background:#222; color:#fff; text-align:center; padding:20px; margin-top:40px;">
+  <footer style="background:var(--frosted-bg); backdrop-filter: var(--blur-amount); color:var(--text-color); text-align:center; padding:20px; margin-top:40px; border-top: 1px solid var(--border-color);">
     <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
     <!-- Add social media links here as examples; replace with actual links -->
     <div>
-      <a href="www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:#fff; margin:0 10px;">LinkedIn</a>
-      <a href="https://www.instagram.com/nssiddtutorial" style="color:#fff; margin:0 10px;">Instagram</a>
+      <a href="www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color); margin:0 10px;">LinkedIn</a>
+      <a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color); margin:0 10px;">Instagram</a>
     </div>
   </footer>
 
