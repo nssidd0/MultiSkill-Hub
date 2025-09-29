@@ -18,6 +18,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <title>Naved Ahmad Siddiqui | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYu6r03S/31fO12A7C3+A58S6fW0g01v5t0jR8kYg1v6/w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     html {
       scroll-behavior: smooth;
@@ -75,6 +76,214 @@
       max-width: 100%;
       height: auto;
     }
+
+    /* --- Fixed Top Bar --- */
+    #top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 10px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #brand-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      height: 40px; /* Adjust height to fit top bar */
+    }
+
+    #brand-logo img {
+      height: 100%; /* Make image fill the height */
+      width: auto;
+      object-fit: contain;
+    }
+
+    .right-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .control-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      color: var(--text-color);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .control-button:hover {
+      background: var(--primary-color);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .lang-container {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      overflow: hidden; 
+    }
+    .lang-container:hover {
+        background: var(--primary-color);
+        color: #fff;
+        transform: scale(1.05);
+    }
+    .lang-container #languageSelect {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border: none;
+      background: transparent;
+      color: var(--text-color);
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.8em; 
+      text-align: center;
+      line-height: 1;
+      position: absolute; 
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      left: 0;
+      top: 0;
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lang-container #languageSelect option {
+        color: var(--text-color);
+        background: var(--bg-color);
+    }
+    :root[data-theme="dark"] .lang-container #languageSelect option {
+        color: #f0f0f0;
+        background: #121212;
+    }
+
+    /* --- Advanced Mobile Nav Menu Styling --- */
+    #menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); 
+      z-index: 997; 
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+    }
+    #menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #nav-menu {
+      position: fixed;
+      top: 0; 
+      right: 0;
+      width: 300px; 
+      max-width: 80%; 
+      /* --- CHANGE 1: Menu height adjusted to content + scroll --- */
+      max-height: 100vh; /* Max height is full viewport */
+      overflow-y: auto; /* Scroll if content exceeds height */
+      /* -------------------------------------------------------- */
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      border-left: 1px solid var(--border-color);
+      box-shadow: -8px 0 25px rgba(0,0,0,0.2);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+      z-index: 998;
+      padding: 80px 20px 20px; 
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    #nav-menu.open {
+      transform: translateX(0);
+    }
+
+    #nav-menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 12px 15px;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+      display: block;
+      font-size: 1.1em;
+      border: 1px solid transparent; 
+    }
+
+    #nav-menu a:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    /* --- End Advanced Mobile Nav Menu Styling --- */
+
+    /* Header for Main Content */
+    header {
+      background: transparent;
+      color: var(--text-color);
+      text-align: center;
+      padding: 100px 20px 40px; 
+    }
+
+    header h1 {
+      font-size: clamp(28px, 6vw, 42px);
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    /* --- Adjusted Section Spacing --- */
+    section {
+      padding: 40px 20px; 
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 25px; 
+    }
+    /* --- End Adjusted Section Spacing --- */
 
     #lightbox-overlay {
       position: fixed;
@@ -153,83 +362,6 @@
       box-shadow: 0 4px 12px rgba(0, 128, 128, 0.3);
     }
 
-    header {
-      background: var(--frosted-bg);
-      backdrop-filter: var(--blur-amount);
-      border-bottom: 1px solid var(--border-color);
-      color: var(--text-color);
-      text-align: center;
-      padding: 60px 20px 40px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    header h1 {
-      font-size: clamp(24px, 5vw, 36px);
-    }
-
-    header p {
-      font-size: 18px;
-      opacity: 0.9;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: var(--frosted-bg);
-      backdrop-filter: var(--blur-amount);
-      text-align: center;
-      padding: 10px 0;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    nav a {
-      color: var(--text-color);
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--primary-color);
-    }
-
-    .toggle-container {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .toggle-btn {
-      background: var(--frosted-bg);
-      backdrop-filter: var(--blur-amount);
-      border: 1px solid var(--border-color);
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      color: var(--text-color);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
-
-    .toggle-btn:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 30px;
-    }
-
     .card {
       background: var(--card-bg);
       backdrop-filter: var(--blur-amount);
@@ -284,28 +416,39 @@
       transform: scale(1.05);
     }
 
+    /* --- Improved WhatsApp Float Styling --- */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background: #25D366;
       color: white;
-      padding: 12px 16px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      font-size: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5); 
       z-index: 999;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .whatsapp-float img {
+      width: 32px;
+      height: 32px;
+      filter: invert(1); 
     }
 
     .whatsapp-float:hover {
       background: #128C7E;
-      transform: translateY(-3px);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 12px 25px rgba(18, 140, 126, 0.6);
     }
+    /* --- End WhatsApp Float Styling --- */
 
-    a:focus, button:focus, .filter-btn:focus {
+    a:focus, button:focus, .filter-btn:focus, .control-button:focus, #languageSelect:focus {
       outline: 2px solid var(--primary-color);
       outline-offset: 2px;
     }
@@ -317,54 +460,75 @@
     #formStatus.error {
       color: red;
     }
+
+    /* Small screen adjustments for the brand logo to keep it neat */
+    @media (max-width: 480px) {
+        #brand-logo img {
+            height: 30px; /* Smaller logo on small screens */
+        }
+    }
   </style>
 </head>
 <body>
   <noscript>
     <div style="text-align: center; background: #ffebee; color: #d32f2f; padding: 15px; font-weight: bold;">
-      JavaScript is required for full functionality of this site, including dark mode, service filtering, and form submission. Please enable JavaScript in your browser settings.
+      JavaScript is required for full functionality of this site. Please enable JavaScript in your browser settings.
     </div>
   </noscript>
 
-  <header>
+  <div id="top-bar">
+    <a href="#" id="brand-logo" aria-label="Naved Ahmad Siddiqui Home">
+        <img src="https://drive.google.com/thumbnail?id=10txJpC8LUL_uXPFBijA7y9kK-2gWG0iD" alt="Naved Ahmad Siddiqui Logo">
+    </a>
     <h1>Naved Ahmad Siddiqui</h1>
-    <p>Mumbai, Maharashtra 400095 | Contact: 9082009795</p>
-    <p>Multiservice Professional – Fitness, Tech & More</p>
+    <div class="right-controls">
+        <div class="lang-container control-button" role="button" aria-label="Change Language">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="ur">UR</option>
+                <option value="ar">AR</option>
+            </select>
+        </div>
+        
+        <button class="control-button" aria-label="Toggle dark mode" onclick="toggleDarkMode()">
+            <span id="darkModeIcon">🌙</span>
+        </button>
 
-    <div style="text-align:center; margin:20px 0;">
-      <label style="font-weight:bold; margin-right:10px;">🌐 Language:</label>
-      <select id="languageSelect" aria-label="Change Language" onchange="changeLanguage()" style="padding:5px 10px; border-radius:5px;">
-        <option value="en">English</option>
-        <option value="hi">हिन्दी</option>
-        <option value="ur">اردو</option>
-        <option value="ar">العربية</option>
-      </select>
+        <button class="control-button" id="menuToggle" aria-label="Toggle navigation menu" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-  </header>
+  </div>
 
-  <nav role="navigation">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#contact">Contact</a>
+  <div id="menu-overlay" onclick="closeMenu()"></div> 
+
+  <nav id="nav-menu" role="navigation">
+    <a href="#about" onclick="closeMenu()"><span data-lang-key="about">About</span></a>
+    <a href="#services" onclick="closeMenu()"><span data-lang-key="services">Services</span></a>
+    <a href="#gallery" onclick="closeMenu()"><span data-lang-key="gallery">Gallery</span></a>
+    <a href="#testimonials" onclick="closeMenu()"><span data-lang-key="testimonials">Testimonials</span></a>
+    <a href="#contact" onclick="closeMenu()"><span data-lang-key="contact">Contact</span></a>
   </nav>
 
-  <div class="toggle-container">
-    <button class="toggle-btn" aria-label="Toggle dark mode" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
-  </div>
+  <header>
+    <!-- <h1>Naved Ahmad Siddiqui</h1> -->
+    <p>Multiservice Professional – Fitness, Tech & More</p>
+  </header>
 
   <section id="about">
     <h2><span data-lang-key="about">About Me</span></h2>
-    <span data-lang-key="aboutText">
+    <p><span data-lang-key="aboutText">
       Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai.
       From personal fitness to tech training, I offer a wide range of services tailored
       to meet your needs. Whether you need a strong body, a stunning website,
       or official document help — I’ve got you covered.
-    </span>
+    </span></p>
   </section>
 
   <section id="services">
+    <h2><span data-lang-key="services">My Services</span></h2>
+    
     <div style="text-align:center; margin-bottom: 25px;">
       <button class="filter-btn active" data-filter="all" aria-label="Filter by all services">All</button>
       <button class="filter-btn" data-filter="fitness" aria-label="Filter by fitness services">Fitness</button>
@@ -372,10 +536,7 @@
       <button class="filter-btn" data-filter="documents" aria-label="Filter by documents services">Documents</button>
       <button class="filter-btn" data-filter="driver" aria-label="Filter by driver services">Driver</button>
     </div>
-
-    <h2><span data-lang-key="services">My Services</span></h2>
-
-    <p><span data-lang-key="servicesIntro">Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional...</span></p>
+    <p style="text-align: center; margin-bottom: 25px;"><span data-lang-key="servicesIntro">Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional offering various services...</span></p>
 
     <div class="grid">
       <div class="card card-fitness" data-category="fitness">
@@ -458,6 +619,7 @@
   <section id="contact">
     <h2><span data-lang-key="contact">Contact Me</span></h2>
     <div style="text-align:center;">
+      <p><strong><span data-lang-key="location">Location:</span></strong> Mumbai, Maharashtra 400095</p>
       <p><strong>Phone:</strong> <a href="tel:+919082009795">+91 9082009795</a></p>
       <p><strong>Email:</strong> <a href="mailto:nssidd0@gmail.com">nssidd0@gmail.com</a></p>
     </div>
@@ -475,16 +637,16 @@
     <div style="max-width:600px; margin: 30px auto;">
       <form action="https://formsubmit.co/nssidd0@gmail.com" method="POST" id="contactForm" style="display:flex; flex-direction:column; gap:15px;">
         <input type="hidden" name="_next" value="https://navedsiddiqui.in/thank-you.html">
-        <input type="text" name="_honeypot" style="display:none;" tabindex="-1">
+        <input type="hidden" name="_honeypot" style="display:none;" tabindex="-1">
 
         <label for="fullName" data-lang-key="fullName">Your Name</label>
         <input type="text" id="fullName" name="name" class="form-input" placeholder="Your Name" data-lang-placeholder="fullNamePlaceholder" required>
-    
+        
         <label for="email" data-lang-key="email">Your Email</label>
         <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" data-lang-placeholder="emailPlaceholder" required>
-    
+        
         <label for="message" data-lang-key="message">Your Message</label>
-    <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
+        <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
 
         <button type="submit" class="form-button" data-lang-key="send">Send Message</button>
       </form>
@@ -502,22 +664,58 @@
   </footer>
 
   <a href="https://wa.me/919082009795"
-     class="whatsapp-float"
-     target="_blank"
-     aria-label="Chat with Naved on WhatsApp">
-     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" style="width:24px; height:24px;">
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Chat with Naved on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon">
   </a>
 
   <div id="lightbox-overlay">
-    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <span class="close-btn" onclick="closeLightbox()">×</span>
     <img src="" alt="Expanded Image" loading="lazy">
   </div>
 
   <script defer>
+    const navMenu = document.getElementById('nav-menu');
+    const menuToggle = document.getElementById('menuToggle');
+    const menuOverlay = document.getElementById('menu-overlay'); 
+    const darkModeIcon = document.getElementById('darkModeIcon');
+
+    function toggleMenu() {
+        navMenu.classList.toggle('open');
+        menuOverlay.classList.toggle('open'); 
+        const isMenuOpen = navMenu.classList.contains('open');
+        menuToggle.querySelector('i').className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
+        menuToggle.setAttribute('aria-expanded', isMenuOpen);
+        // Removed document.body.style.overflow = isMenuOpen ? 'hidden' : ''; 
+        // as the menu no longer takes full height, hiding body scroll is less necessary
+    }
+
+    function closeMenu() {
+        navMenu.classList.remove('open');
+        menuOverlay.classList.remove('open'); 
+        menuToggle.querySelector('i').className = 'fas fa-bars';
+        menuToggle.setAttribute('aria-expanded', 'false');
+        // Removed document.body.style.overflow = '';
+    }
+
     function toggleDarkMode() {
       const isDark = document.documentElement.getAttribute("data-theme") === "dark";
       document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
+      darkModeIcon.textContent = isDark ? '🌙' : '☀️';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
     }
+
+    // Set initial dark mode state
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        darkModeIcon.textContent = '☀️';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        darkModeIcon.textContent = '🌙';
+    }
+
 
     const lightboxOverlay = document.getElementById('lightbox-overlay');
     const lightboxImage = lightboxOverlay.querySelector('img');
@@ -574,6 +772,7 @@
         gallery: "Gallery",
         testimonials: "Testimonials",
         contact: "Contact Me",
+        location: "Location:",
         fullName: "Your Name",
         fullNamePlaceholder: "Enter your name",
         email: "Your Email",
@@ -593,6 +792,7 @@
         gallery: "गेलरी",
         testimonials: "प्रशंसापत्र",
         contact: "संपर्क करें",
+        location: "स्थान:",
         fullName: "आपका नाम",
         fullNamePlaceholder: "अपना नाम दर्ज करें",
         email: "आपका ईमेल",
@@ -612,6 +812,7 @@
         gallery: "گیلری",
         testimonials: "تعریفیں",
         contact: "رابطہ کریں",
+        location: "مقام:",
         fullName: "آپ کا نام",
         fullNamePlaceholder: "اپنا نام درج کریں",
         email: "آپ کا ای میل",
@@ -631,6 +832,7 @@
         gallery: "معرض الصور",
         testimonials: "الشهادات",
         contact: "اتصل بي",
+        location: "الموقع:",
         fullName: "اسمك",
         fullNamePlaceholder: "أدخل اسمك",
         email: "بريدك الإلكتروني",
@@ -683,6 +885,7 @@
       });
       observer.observe(mapIframe);
 
+      // Contact Form Submission (unchanged)
       document.getElementById('contactForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -719,6 +922,7 @@
         }
       });
 
+      // Service Worker (unchanged)
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
           const registerServiceWorker = async (attempts = 3, delay = 1000) => {
@@ -740,9 +944,6 @@
               }
             }
             console.error('Service Worker registration failed after all attempts.');
-            // Optional: Notify user
-            // document.getElementById('formStatus').textContent = 'Offline support is currently unavailable.';
-            // document.getElementById('formStatus').classList.add('error');
           };
           registerServiceWorker();
         });
