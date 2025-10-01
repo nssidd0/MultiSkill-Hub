@@ -1,983 +1,993 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Naved Ahmad Siddiqui – Multiservice Professional offering Fitness, Tech Training, Govt. Documentation, and more in Mumbai." />
-  <meta name="keywords" content="Naved Siddiqui, fitness trainer Mumbai, computer classes Mumbai, website development, documentation services, body massage Mumbai, graphic design, driver services Mumbai">
-  <meta property="og:title" content="Naved Ahmad Siddiqui – Fitness & Tech Expert in Mumbai">
-  <meta property="og:description" content="Offering fitness, computer training, document assistance, and more.">
-  <meta property="og:image" content="https://via.placeholder.com/600x400.png?text=Naved+Siddiqui+Portfolio">
-  <meta property="og:url" content="https://navedsiddiqui.in">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="https://navedsiddiqui.in" />
-  <meta name="robots" content="index, follow">
-  <meta property="og:type" content="website">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-  <title>Naved Ahmad Siddiqui | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYu6r03S/31fO12A7C3+A58S6fW0g01v5t0jR8kYg1v6/w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 60px;
-    }
-
-    :root[data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #f0f0f0;
-      --primary-color: #00bfa5;
-      --card-bg: rgba(30, 30, 30, 0.6);
-      --frosted-bg: rgba(255, 255, 255, 0.1);
-      --blur-amount: blur(15px);
-      --border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #111111;
-      --primary-color: #008080;
-      --card-bg: rgba(255, 255, 255, 0.6);
-      --frosted-bg: rgba(255, 255, 255, 0.3);
-      --blur-amount: blur(15px);
-      --border-color: rgba(255, 255, 255, 0.5);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    
-    body {
-      background: var(--bg-color);
-      color: var(--text-color);
-      transition: all 0.3s ease;
-      line-height: 1.6;
-      position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--bg-color) 100%);
-      opacity: 0.1;
-      z-index: -1;
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* --- Fixed Top Bar --- */
-    #top-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--frosted-bg);
-      backdrop-filter: var(--blur-amount);
-      border-bottom: 1px solid var(--border-color);
-      color: var(--text-color);
-      padding: 10px 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    #brand-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      height: 40px; /* Adjust height to fit top bar */
-    }
-
-    #brand-logo img {
-      height: 100%; /* Make image fill the height */
-      width: auto;
-      object-fit: contain;
-    }
-
-    .right-controls {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .control-button {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--border-color);
-      background: var(--frosted-bg);
-      backdrop-filter: var(--blur-amount);
-      color: var(--text-color);
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .control-button:hover {
-      background: var(--primary-color);
-      color: #fff;
-      transform: scale(1.05);
-    }
-
-    .lang-container {
-      position: relative;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--border-color);
-      background: var(--frosted-bg);
-      backdrop-filter: var(--blur-amount);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      overflow: hidden; 
-    }
-    .lang-container:hover {
-        background: var(--primary-color);
-        color: #fff;
-        transform: scale(1.05);
-    }
-    .lang-container #languageSelect {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      border: none;
-      background: transparent;
-      color: var(--text-color);
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 0.8em; 
-      text-align: center;
-      line-height: 1;
-      position: absolute; 
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      left: 0;
-      top: 0;
-      display: flex; 
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lang-container #languageSelect option {
-        color: var(--text-color);
-        background: var(--bg-color);
-    }
-    :root[data-theme="dark"] .lang-container #languageSelect option {
-        color: #f0f0f0;
-        background: #121212;
-    }
-
-    /* --- Advanced Mobile Nav Menu Styling --- */
-    #menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5); 
-      z-index: 997; 
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-    }
-    #menu-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #nav-menu {
-      position: fixed;
-      top: 0; 
-      right: 0;
-      width: 300px; 
-      max-width: 80%; 
-      /* --- CHANGE 1: Menu height adjusted to content + scroll --- */
-      max-height: 100vh; /* Max height is full viewport */
-      overflow-y: auto; /* Scroll if content exceeds height */
-      /* -------------------------------------------------------- */
-      background: var(--frosted-bg);
-      backdrop-filter: var(--blur-amount);
-      border-left: 1px solid var(--border-color);
-      box-shadow: -8px 0 25px rgba(0,0,0,0.2);
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
-      z-index: 998;
-      padding: 80px 20px 20px; 
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    #nav-menu.open {
-      transform: translateX(0);
-    }
-
-    #nav-menu a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: bold;
-      padding: 12px 15px;
-      border-radius: 8px;
-      transition: background 0.3s ease, color 0.3s ease;
-      display: block;
-      font-size: 1.1em;
-      border: 1px solid transparent; 
-    }
-
-    #nav-menu a:hover {
-      background: var(--primary-color);
-      color: white;
-      border-color: var(--primary-color);
-    }
-    /* --- End Advanced Mobile Nav Menu Styling --- */
-
-    /* Header for Main Content */
-    header {
-      background: transparent;
-      color: var(--text-color);
-      text-align: center;
-      padding: 100px 20px 40px; 
-    }
-
-    header h1 {
-      font-size: clamp(28px, 6vw, 42px);
-      margin-bottom: 5px;
-    }
-
-    header p {
-      font-size: 18px;
-      opacity: 0.9;
-    }
-
-    /* --- Adjusted Section Spacing --- */
-    section {
-      padding: 10px 10px; 
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 20px; 
-    }
-    /* --- End Adjusted Section Spacing --- */
-
-    #lightbox-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-    }
-
-    #lightbox-overlay img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #000;
-    }
-
-    #lightbox-overlay .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      user-select: none;
-    }
-
-    .filter-btn {
-      margin: 5px;
-      padding: 8px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background: var(--frosted-bg);
-      color: var(--text-color);
-      backdrop-filter: var(--blur-amount);
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-    }
-
-    .filter-btn.active {
-      background: var(--primary-color);
-      color: #fff;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: background 0.3s ease;
-    }
-
-    .form-input {
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-      background: var(--frosted-bg);
-      backdrop-filter: var(--blur-amount);
-      color: var(--text-color);
-    }
-
-    .form-button, .card-button {
-      padding: 10px 15px;
-      border: none;
-      background: var(--primary-color);
-      color: #fff;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin: 5px;
-    }
-
-    .form-button:hover, .card-button:hover {
-      box-shadow: 0 4px 12px rgba(0, 128, 128, 0.3);
-    }
-
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: var(--blur-amount);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      opacity: 1;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-    }
-
-    .card_title {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .card-tech {
-      background-color: rgba(224, 247, 250, 0.4);
-    }
-
-    .card-fitness {
-      background-color: rgba(252, 228, 236, 0.4);
-    }
-
-    .hidden {
-      display: none;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    #gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    #gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    /* --- Improved WhatsApp Float Styling --- */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5); 
-      z-index: 999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    .whatsapp-float img {
-      width: 32px;
-      height: 32px;
-      filter: invert(1); 
-    }
-
-    .whatsapp-float:hover {
-      background: #128C7E;
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 12px 25px rgba(18, 140, 126, 0.6);
-    }
-    /* --- End WhatsApp Float Styling --- */
-
-    a:focus, button:focus, .filter-btn:focus, .control-button:focus, #languageSelect:focus {
-      outline: 2px solid var(--primary-color);
-      outline-offset: 2px;
-    }
-
-    #formStatus.success {
-      color: green;
-    }
-
-    #formStatus.error {
-      color: red;
-    }
-
-    /* Small screen adjustments for the brand logo to keep it neat */
-    @media (max-width: 480px) {
-        #brand-logo img {
-            height: 30px; /* Smaller logo on small screens */
-        }
-    }
-  </style>
-</head>
-<body>
-  <noscript>
-    <div style="text-align: center; background: #ffebee; color: #d32f2f; padding: 15px; font-weight: bold;">
-      JavaScript is required for full functionality of this site. Please enable JavaScript in your browser settings.
-    </div>
-  </noscript>
-
-  <div id="top-bar">
-    <a href="#" id="brand-logo" aria-label="Naved Ahmad Siddiqui Home">
-        <img src="https://drive.google.com/thumbnail?id=10txJpC8LUL_uXPFBijA7y9kK-2gWG0iD" alt="Naved Ahmad Siddiqui Logo">
-    </a>
-    <h1>Naved Ahmad Siddiqui</h1>
-    <div class="right-controls">
-        <div class="lang-container control-button" role="button" aria-label="Change Language">
-            <select id="languageSelect" onchange="changeLanguage()">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="ur">UR</option>
-                <option value="ar">AR</option>
-            </select>
-        </div>
-        
-        <button class="control-button" aria-label="Toggle dark mode" onclick="toggleDarkMode()">
-            <span id="darkModeIcon">🌙</span>
-        </button>
-
-        <button class="control-button" id="menuToggle" aria-label="Toggle navigation menu" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
-  </div>
-
-  <div id="menu-overlay" onclick="closeMenu()"></div> 
-
-  <nav id="nav-menu" role="navigation">
-    <a href="#about" onclick="closeMenu()"><span data-lang-key="about">About</span></a>
-    <a href="#services" onclick="closeMenu()"><span data-lang-key="services">Services</span></a>
-    <a href="#gallery" onclick="closeMenu()"><span data-lang-key="gallery">Gallery</span></a>
-    <a href="#testimonials" onclick="closeMenu()"><span data-lang-key="testimonials">Testimonials</span></a>
-    <a href="#contact" onclick="closeMenu()"><span data-lang-key="contact">Contact</span></a>
-  </nav>
-
-  <header>
-    <!-- <h1>Naved Ahmad Siddiqui</h1> -->
-    <p>Multiservice Professional – Fitness, Tech & More</p>
-  </header>
-
-  <section id="about">
-    <h2><span data-lang-key="about">About Me</span></h2>
-    <p><span data-lang-key="aboutText">
-      Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai.
-      From personal fitness to tech training, I offer a wide range of services tailored
-      to meet your needs. Whether you need a strong body, a stunning website,
-      or official document help — I’ve got you covered.
-    </span></p>
-  </section>
-
-  <section id="services">
-    <h2><span data-lang-key="services">My Services</span></h2>
-    
-    <div style="text-align:center; margin-bottom: 25px;">
-      <button class="filter-btn active" data-filter="all" aria-label="Filter by all services">All</button>
-      <button class="filter-btn" data-filter="fitness" aria-label="Filter by fitness services">Fitness</button>
-      <button class="filter-btn" data-filter="tech" aria-label="Filter by tech services">Tech</button>
-      <button class="filter-btn" data-filter="documents" aria-label="Filter by documents services">Documents</button>
-      <button class="filter-btn" data-filter="driver" aria-label="Filter by driver services">Driver</button>
-    </div>
-    <p style="text-align: center; margin-bottom: 25px;"><span data-lang-key="servicesIntro">Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional offering various services...</span></p>
-
-    <div class="grid">
-      <div class="card card-fitness" data-category="fitness">
-        <h3 class="card_title">🏋️‍♂️ Personal Fitness Trainer</h3>
-        <p>Customized workout plans, one-on-one training, fat loss, muscle gain & home sessions available.</p>
-        <div style="margin-top: 10px;">
-          <button class="card-button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbwgkXR9eCLsvJnFELjbG8X-jSH3L-nT5xghgh-dvF2A890DTP1reCjFoB7RU-Gix2Q/exec'">Book</button>
-        </div>
-      </div>
-
-      <div class="card card-fitness" data-category="fitness">
-        <h3 class="card_title">💆‍♂️ Body Massage</h3>
-        <p>Relaxing and therapeutic massages to relieve stress, body pain, and improve blood circulation.</p>
-      </div>
-
-      <div class="card card-tech" data-category="tech">
-        <h3 class="card_title">💻 Computer Classes</h3>
-        <p>Basic to advanced computer training for students and adults – MS Office, Internet, Tally, etc.</p>
-        <div style="margin-top: 10px;">
-          <button class="card-button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbz3R3MzYbBFMUSeK3w2_65AL2RSo041fE73rsIYQv13s5Xh12kmo2XKxZto54QUUC1Y/exec'">Exam</button>
-          <button class="card-button" onclick="window.location.href='https://certificates-downloader.netlify.app/'">Certificate</button>
-        </div>
-      </div>
-
-      <div class="card card-tech" data-category="tech">
-        <h3 class="card_title">🎨 Graphic Design</h3>
-        <p>Professional logos, brochures, banners, and social media graphics designed with creativity and precision.</p>
-      </div>
-
-      <div class="card card-documents" data-category="documents">
-        <h3 class="card_title">📄 Govt. & Private Documentation</h3>
-        <p>Help with Aadhar, PAN, Passport, Ration Card, forms, printing, scanning, etc.</p>
-      </div>
-
-      <div class="card card-tech" data-category="tech">
-        <h3 class="card_title">🌐 Website Development</h3>
-        <p>Affordable website design & development for small businesses, portfolios, and blogs.</p>
-      </div>
-
-      <div class="card card-driver" data-category="driver">
-        <h3 class="card_title">🚗 Driver Services</h3>
-        <p>Experienced driver for Ola, Uber, Rapido & private hire. Safe, punctual and professional service.</p>
-      </div>
-
-      <div class="card card-misc" data-category="misc">
-        <h3 class="card_title">✨ And Many More...</h3>
-        <p>Need something else? Just ask! I handle multiple other services as per client requirements.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery">
-    <h2><span data-lang-key="gallery">Gallery</span></h2>
-    <div class="grid">
-      <div class="card"><img src="Personal fitness training session.jpg" alt="Personal fitness training session" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged personal fitness training session image"></div>
-      <div class="card"><img src="Computer classes in Mumbai.jpg" alt="Computer classes in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged computer classes in Mumbai image"></div>
-      <div class="card"><img src="Government documentation help.jpg" alt="Government documentation help" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged government documentation help image"></div>
-      <div class="card"><img src="Private driver service in Mumbai.jpg" alt="Private driver service in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged private driver service in Mumbai image"></div>
-    </div>
-  </section>
-
-  <section id="testimonials">
-    <h2><span data-lang-key="testimonials">Testimonials</span></h2>
-    <div class="grid">
-      <div class="card">
-        <p>"Naved bhai ka workout plan bahut effective hai. Sirf 3 mahine me fat loss ho gaya!"</p>
-        <p><strong>– Rahul S.</strong></p>
-      </div>
-      <div class="card">
-        <p>"Website banwane ke liye contact kiya tha, time pe delivery mili. Design bhi top-class!"</p>
-        <p><strong>– Priya T.</strong></p>
-      </div>
-      <div class="card">
-        <p>"Government documents ka kaam fast aur sahi tarike se kiya. Highly recommended!"</p>
-        <p><strong>– Imran K.</strong></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2><span data-lang-key="contact">Contact Me</span></h2>
-    <div style="text-align:center;">
-      <p><strong><span data-lang-key="location">Location:</span></strong> Mumbai, Maharashtra 400095</p>
-      <p><strong>Phone:</strong> <a href="tel:+919082009795">+91 9082009795</a></p>
-      <p><strong>Email:</strong> <a href="mailto:nssidd0@gmail.com">nssidd0@gmail.com</a></p>
-    </div>
-
-    <iframe
-      class="map"
-      style="width:100%; height:300px; margin-top:20px; border-radius:10px; border:0;"
-      data-src="https://www.google.com/maps?q=Mumbai,+Maharashtra+400095&output=embed"
-      allowfullscreen=""
-      loading="lazy"
-      aria-label="Map showing location in Mumbai, Maharashtra 400095"
-      title="Map of Mumbai, Maharashtra 400095">
-    </iframe>
-
-    <div style="max-width:600px; margin: 30px auto;">
-      <form action="https://formsubmit.co/nssidd0@gmail.com" method="POST" id="contactForm" style="display:flex; flex-direction:column; gap:15px;">
-        <input type="hidden" name="_next" value="https://navedsiddiqui.in/thank-you.html">
-        <input type="hidden" name="_honeypot" style="display:none;" tabindex="-1">
-
-        <label for="fullName" data-lang-key="fullName">Your Name</label>
-        <input type="text" id="fullName" name="name" class="form-input" placeholder="Your Name" data-lang-placeholder="fullNamePlaceholder" required>
-        
-        <label for="email" data-lang-key="email">Your Email</label>
-        <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" data-lang-placeholder="emailPlaceholder" required>
-        
-        <label for="message" data-lang-key="message">Your Message</label>
-        <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
-
-        <button type="submit" class="form-button" data-lang-key="send">Send Message</button>
-      </form>
-
-      <p id="formStatus" aria-live="polite" style="text-align:center; margin-top:10px;"></p>
-    </div>
-  </section>
-
-  <footer style="background:var(--frosted-bg); backdrop-filter: var(--blur-amount); color:var(--text-color); text-align:center; padding:20px; margin-top:40px; border-top: 1px solid var(--border-color);">
-    <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
-    <div>
-      <a href="www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color); margin:0 10px;">LinkedIn</a>
-      <a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color); margin:0 10px;">Instagram</a>
-    </div>
-  </footer>
-
-  <a href="https://wa.me/919082009795"
-    class="whatsapp-float"
-    target="_blank"
-    aria-label="Chat with Naved on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon">
-  </a>
-
-  <div id="lightbox-overlay">
-    <span class="close-btn" onclick="closeLightbox()">×</span>
-    <img src="" alt="Expanded Image" loading="lazy">
-  </div>
-
-  <script defer>
-    const navMenu = document.getElementById('nav-menu');
-    const menuToggle = document.getElementById('menuToggle');
-    const menuOverlay = document.getElementById('menu-overlay'); 
-    const darkModeIcon = document.getElementById('darkModeIcon');
-
-    function toggleMenu() {
-        navMenu.classList.toggle('open');
-        menuOverlay.classList.toggle('open'); 
-        const isMenuOpen = navMenu.classList.contains('open');
-        menuToggle.querySelector('i').className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
-        menuToggle.setAttribute('aria-expanded', isMenuOpen);
-        // Removed document.body.style.overflow = isMenuOpen ? 'hidden' : ''; 
-        // as the menu no longer takes full height, hiding body scroll is less necessary
-    }
-
-    function closeMenu() {
-        navMenu.classList.remove('open');
-        menuOverlay.classList.remove('open'); 
-        menuToggle.querySelector('i').className = 'fas fa-bars';
-        menuToggle.setAttribute('aria-expanded', 'false');
-        // Removed document.body.style.overflow = '';
-    }
-
-    function toggleDarkMode() {
-      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-      document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
-      darkModeIcon.textContent = isDark ? '🌙' : '☀️';
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
-    }
-
-    // Set initial dark mode state
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        darkModeIcon.textContent = '☀️';
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        darkModeIcon.textContent = '🌙';
-    }
-
-
-    const lightboxOverlay = document.getElementById('lightbox-overlay');
-    const lightboxImage = lightboxOverlay.querySelector('img');
-
-    document.querySelectorAll('#gallery img').forEach(img => {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', () => {
-        lightboxImage.src = img.src;
-        lightboxImage.alt = img.alt;
-        lightboxOverlay.style.display = 'flex';
-      });
-    });
-
-    function closeLightbox() {
-      lightboxOverlay.style.display = 'none';
-      lightboxImage.src = '';
-    }
-
-    lightboxOverlay.addEventListener('click', e => {
-      if (e.target === lightboxOverlay) closeLightbox();
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const serviceCards = document.querySelectorAll('#services .card');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        const filter = button.getAttribute('data-filter');
-
-        serviceCards.forEach(card => {
-          const cardCategory = card.getAttribute('data-category');
-          if (filter === 'all' || cardCategory === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-      });
-    });
-
-    const translations = {
-      en: {
-        about: "About Me",
-        aboutText: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai. From personal fitness to tech training, I offer a wide range of services tailored to meet your needs. Whether you need a strong body, a stunning website, or official document help — I’ve got you covered.",
-        services: "My Services",
-        servicesIntro: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional offering various services...",
-        gallery: "Gallery",
-        testimonials: "Testimonials",
-        contact: "Contact Me",
-        location: "Location:",
-        fullName: "Your Name",
-        fullNamePlaceholder: "Enter your name",
-        email: "Your Email",
-        emailPlaceholder: "Enter your email",
-        message: "Your Message",
-        send: "Send Message",
-        sending: "Sending...",
-        footer: "© 2025 Naved Ahmad Siddiqui. All rights reserved.",
-        successMessage: "Message sent successfully!",
-        errorMessage: "Failed to send message. Please try again."
-      },
-      hi: {
-        about: "मेरे बारे में",
-        aboutText: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल। व्यक्तिगत फिटनेस से लेकर टेक ट्रेनिंग तक, मैं आपकी जरूरतों के अनुसार विभिन्न सेवाएं प्रदान करता हूं। चाहे आपको मजबूत शरीर चाहिए, एक शानदार वेबसाइट, या आधिकारिक दस्तावेज़ मदद — मैंने आपको कवर किया है।",
-        services: "मेरी सेवाएं",
-        servicesIntro: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल...",
-        gallery: "गेलरी",
-        testimonials: "प्रशंसापत्र",
-        contact: "संपर्क करें",
-        location: "स्थान:",
-        fullName: "आपका नाम",
-        fullNamePlaceholder: "अपना नाम दर्ज करें",
-        email: "आपका ईमेल",
-        emailPlaceholder: "अपना ईमेल दर्ज करें",
-        message: "आपका संदेश",
-        send: "संदेश भेजें",
-        sending: "भेज रहा है...",
-        footer: "© 2025 नवेद अहमद सिद्दीकी. सर्वाधिकार सुरक्षित।",
-        successMessage: "संदेश सफलतापूर्वक भेजा गया!",
-        errorMessage: "संदेश भेजने में विफल। कृपया फिर से प्रयास करें।"
-      },
-      ur: {
-        about: "میرے بارے میں",
-        aboutText: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص۔ ذاتی فٹنس سے لے کر ٹیک ٹریننگ تک، میں آپ کی ضروریات کے مطابق وسیع خدمات پیش کرتا ہوں۔ چاہے آپ کو مضبوط جسم چاہیے، ایک شاندار ویب سائٹ، یا سرکاری دستاویز کی مدد — میں آپ کو کور کرتا ہوں۔",
-        services: "میری خدمات",
-        servicesIntro: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص...",
-        gallery: "گیلری",
-        testimonials: "تعریفیں",
-        contact: "رابطہ کریں",
-        location: "مقام:",
-        fullName: "آپ کا نام",
-        fullNamePlaceholder: "اپنا نام درج کریں",
-        email: "آپ کا ای میل",
-        emailPlaceholder: "اپنا ای میل درج کریں",
-        message: "آپ کا پیغام",
-        send: "پیغام بھیجیں",
-        sending: "بھیج رہا ہے...",
-        footer: "© 2025 نوید احمد صدیقی. جملہ حقوق محفوظ ہیں۔",
-        successMessage: "پیغام کامیابی سے بھیج دیا گیا!",
-        errorMessage: "پیغام بھیجنے میں ناکامی۔ براہ کرم دوبارہ کوشش کریں۔"
-      },
-      ar: {
-        about: "من أنا",
-        aboutText: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي. من اللياقة البدنية الشخصية إلى التدريب التقني، أقدم مجموعة واسعة من الخدمات المصممة لتلبية احتياجاتك. سواء كنت بحاجة إلى جسم قوي، موقع إلكتروني مذهل، أو مساعدة في الوثائق الرسمية — أنا مغطيك.",
-        services: "خدماتي",
-        servicesIntro: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي...",
-        gallery: "معرض الصور",
-        testimonials: "الشهادات",
-        contact: "اتصل بي",
-        location: "الموقع:",
-        fullName: "اسمك",
-        fullNamePlaceholder: "أدخل اسمك",
-        email: "بريدك الإلكتروني",
-        emailPlaceholder: "أدخل بريدك الإلكتروني",
-        message: "رسالتك",
-        send: "أرسل رسالة",
-        sending: "جارٍ الإرسال...",
-        footer: "© 2025 نويد أحمد صديقي. جميع الحقوق محفوظة.",
-        successMessage: "تم إرسال الرسالة بنجاح!",
-        errorMessage: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
-      }
-    };
-
-    function changeLanguage() {
-      const selectedLang = document.getElementById("languageSelect").value;
-      document.documentElement.lang = selectedLang;
-      if (['ar', 'ur'].includes(selectedLang)) {
-        document.documentElement.dir = "rtl";
-      } else {
-        document.documentElement.dir = "ltr";
-      }
-      localStorage.setItem('selectedLang', selectedLang);
-      document.querySelectorAll("[data-lang-key]").forEach(el => {
-        const key = el.getAttribute("data-lang-key");
-        el.textContent = translations[selectedLang][key] || translations["en"][key] || "Translation missing";
-        if (!translations[selectedLang][key]) {
-          console.warn(`Translation missing for key "${key}" in language "${selectedLang}"`);
-        }
-      });
-      document.querySelectorAll("[data-lang-placeholder]").forEach(el => {
-        const key = el.getAttribute("data-lang-placeholder");
-        el.placeholder = translations[selectedLang][key] || translations["en"][key] || "Translation missing";
-        if (!translations[selectedLang][key]) {
-          console.warn(`Translation missing for placeholder key "${key}" in language "${selectedLang}"`);
-        }
-      });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('selectedLang') || 'en';
-      document.getElementById("languageSelect").value = savedLang;
-      changeLanguage();
-
-      const mapIframe = document.querySelector('.map');
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          mapIframe.src = mapIframe.dataset.src;
-          observer.disconnect();
-        }
-      });
-      observer.observe(mapIframe);
-
-      // Contact Form Submission (unchanged)
-      document.getElementById('contactForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const formStatus = document.getElementById('formStatus');
-        const formButton = form.querySelector('.form-button');
-        const selectedLang = document.getElementById("languageSelect").value;
-
-        formButton.disabled = true;
-        formButton.textContent = translations[selectedLang].sending || 'Sending...';
-
-        try {
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: formData
-          });
-          if (response.ok) {
-            formStatus.textContent = translations[selectedLang].successMessage || 'Message sent successfully!';
-            formStatus.classList.add('success');
-            formStatus.classList.remove('error');
-            form.reset();
-          } else {
-            formStatus.textContent = translations[selectedLang].errorMessage || `Failed to send message: ${response.statusText}`;
-            formStatus.classList.add('error');
-            formStatus.classList.remove('success');
-          }
-        } catch (error) {
-          formStatus.textContent = translations[selectedLang].errorMessage || `An error occurred: ${error.message}. Please try again.`;
-          formStatus.classList.add('error');
-          formStatus.classList.remove('success');
-        } finally {
-          formButton.disabled = false;
-          formButton.textContent = translations[selectedLang].send || 'Send Message';
-        }
-      });
-
-      // Service Worker (unchanged)
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', async () => {
-          const registerServiceWorker = async (attempts = 3, delay = 1000) => {
-            for (let i = 0; i < attempts; i++) {
-              try {
-                const response = await fetch('/sw.js', { method: 'HEAD', cache: 'no-store' });
-                if (!response.ok) {
-                  console.error(`Service Worker file (/sw.js) not found or inaccessible: ${response.status} ${response.statusText}`);
-                  return;
-                }
-                const registration = await navigator.serviceWorker.register('/sw.js');
-                console.log('Service Worker registered with scope:', registration.scope);
-                return;
-              } catch (error) {
-                console.error(`Service Worker registration attempt ${i + 1} failed:`, error.message, error);
-                if (i < attempts - 1) {
-                  await new Promise(resolve => setTimeout(resolve, delay));
-                }
-              }
-            }
-            console.error('Service Worker registration failed after all attempts.');
-          };
-          registerServiceWorker();
-        });
-      } else {
-        console.log('Service Workers are not supported in this browser.');
-      }
-    });
-  </script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Naved Ahmad Siddiqui",
-      "jobTitle": "Multiservice Professional",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mumbai",
-        "addressRegion": "Maharashtra",
-        "postalCode": "400095",
-        "addressCountry": "IN"
-      },
-      "telephone": "+91-9082009795",
-      "email": "nssidd0@gmail.com",
-      "url": "https://navedsiddiqui.in"
-    }
-  </script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="description" content="Naved Ahmad Siddiqui – Multiservice Professional offering Fitness, Tech Training, Govt. Documentation, and more in Mumbai." />
+		<meta name="keywords" content="Naved Siddiqui, fitness trainer Mumbai, computer classes Mumbai, website development, documentation services, body massage Mumbai, graphic design, driver services Mumbai" />
+		<meta property="og:title" content="Naved Ahmad Siddiqui – Fitness & Tech Expert in Mumbai" />
+		<meta property="og:description" content="Offering fitness, computer training, document assistance, and more." />
+		<meta property="og:image" content="https://via.placeholder.com/600x400.png?text=Naved+Siddiqui+Portfolio" />
+		<meta property="og:url" content="https://navedsiddiqui.in" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="canonical" href="https://navedsiddiqui.in" />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="website" />
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<title>Naved Ahmad Siddiqui | Portfolio</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+			integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYu6r03S/31fO12A7C3+A58S6fW0g01v5t0jR8kYg1v6/w=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<style>
+			html {
+			  scroll-behavior: smooth;
+			  scroll-padding-top: 60px;
+			}
+
+			:root[data-theme="dark"] {
+			  --bg-color: #121212;
+			  --text-color: #f0f0f0;
+			  --primary-color: #00bfa5;
+			  --card-bg: rgba(30, 30, 30, 0.6);
+			  --frosted-bg: rgba(255, 255, 255, 0.1);
+			  --blur-amount: blur(15px);
+			  --border-color: rgba(255, 255, 255, 0.2);
+			}
+
+			:root {
+			  --bg-color: #ffffff;
+			  --text-color: #111111;
+			  --primary-color: #008080;
+			  --card-bg: rgba(255, 255, 255, 0.6);
+			  --frosted-bg: rgba(255, 255, 255, 0.3);
+			  --blur-amount: blur(15px);
+			  --border-color: rgba(255, 255, 255, 0.5);
+			}
+
+			* {
+			  margin: 0;
+			  padding: 0;
+			  box-sizing: border-box;
+			  font-family: 'Segoe UI', sans-serif;
+			}
+
+			body {
+			  background: var(--bg-color);
+			  color: var(--text-color);
+			  transition: all 0.3s ease;
+			  line-height: 1.6;
+			  position: relative;
+			}
+
+			body::before {
+			  content: '';
+			  position: fixed;
+			  top: 0;
+			  left: 0;
+			  width: 100%;
+			  height: 100%;
+			  background: linear-gradient(135deg, var(--primary-color) 0%, var(--bg-color) 100%);
+			  opacity: 0.1;
+			  z-index: -1;
+			}
+
+			img {
+			  max-width: 100%;
+			  height: auto;
+			}
+
+			/* --- Fixed Top Bar --- */
+			#top-bar {
+			  position: fixed;
+			  top: 0;
+			  left: 0;
+			  width: 100%;
+			  background: var(--frosted-bg);
+			  backdrop-filter: var(--blur-amount);
+			  border-bottom: 1px solid var(--border-color);
+			  color: var(--text-color);
+			  padding: 10px 20px;
+			  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			  z-index: 1000;
+			  display: flex;
+			  justify-content: space-between;
+			  align-items: center;
+			}
+
+			#brand-logo {
+			  display: flex;
+			  align-items: center;
+			  text-decoration: none;
+			  height: 40px; /* Adjust height to fit top bar */
+			}
+
+			#brand-logo img {
+			  height: 100%; /* Make image fill the height */
+			  width: auto;
+			  object-fit: contain;
+			}
+
+			.right-controls {
+			  display: flex;
+			  gap: 10px;
+			  align-items: center;
+			}
+
+			.control-button {
+			  width: 40px;
+			  height: 40px;
+			  border-radius: 50%;
+			  border: 1px solid var(--border-color);
+			  background: var(--frosted-bg);
+			  backdrop-filter: var(--blur-amount);
+			  color: var(--text-color);
+			  font-size: 18px;
+			  cursor: pointer;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  transition: all 0.3s ease;
+			  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+			}
+
+			.control-button:hover {
+			  background: var(--primary-color);
+			  color: #fff;
+			  transform: scale(1.05);
+			}
+
+			.lang-container {
+			  position: relative;
+			  width: 40px;
+			  height: 40px;
+			  border-radius: 50%;
+			  border: 1px solid var(--border-color);
+			  background: var(--frosted-bg);
+			  backdrop-filter: var(--blur-amount);
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+			  transition: all 0.3s ease;
+			  overflow: hidden;
+			}
+			.lang-container:hover {
+			    background: var(--primary-color);
+			    color: #fff;
+			    transform: scale(1.05);
+			}
+			.lang-container #languageSelect {
+			  appearance: none;
+			  -webkit-appearance: none;
+			  -moz-appearance: none;
+			  border: none;
+			  background: transparent;
+			  color: var(--text-color);
+			  font-weight: bold;
+			  cursor: pointer;
+			  font-size: 0.8em;
+			  text-align: center;
+			  line-height: 1;
+			  position: absolute;
+			  width: 100%;
+			  height: 100%;
+			  padding: 0;
+			  left: 0;
+			  top: 0;
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			}
+
+			.lang-container #languageSelect option {
+			    color: var(--text-color);
+			    background: var(--bg-color);
+			}
+			:root[data-theme="dark"] .lang-container #languageSelect option {
+			    color: #f0f0f0;
+			    background: #121212;
+			}
+
+			/* --- Advanced Mobile Nav Menu Styling --- */
+			#menu-overlay {
+			  position: fixed;
+			  top: 0;
+			  left: 0;
+			  width: 100%;
+			  height: 100%;
+			  background: rgba(0, 0, 0, 0.5);
+			  z-index: 997;
+			  opacity: 0;
+			  visibility: hidden;
+			  transition: opacity 0.3s ease;
+			}
+			#menu-overlay.open {
+			  opacity: 1;
+			  visibility: visible;
+			}
+
+			#nav-menu {
+			  position: fixed;
+			  top: 0;
+			  right: 0;
+			  width: 300px;
+			  max-width: 80%;
+			  /* --- CHANGE 1: Menu height adjusted to content + scroll --- */
+			  max-height: 100vh; /* Max height is full viewport */
+			  overflow-y: auto; /* Scroll if content exceeds height */
+			  /* -------------------------------------------------------- */
+			  background: var(--frosted-bg);
+			  backdrop-filter: var(--blur-amount);
+			  border-left: 1px solid var(--border-color);
+			  box-shadow: -8px 0 25px rgba(0,0,0,0.2);
+			  transform: translateX(100%);
+			  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+			  z-index: 998;
+			  padding: 80px 20px 20px;
+			  display: flex;
+			  flex-direction: column;
+			  gap: 15px;
+			}
+
+			#nav-menu.open {
+			  transform: translateX(0);
+			}
+
+			#nav-menu a {
+			  color: var(--text-color);
+			  text-decoration: none;
+			  font-weight: bold;
+			  padding: 12px 15px;
+			  border-radius: 8px;
+			  transition: background 0.3s ease, color 0.3s ease;
+			  display: block;
+			  font-size: 1.1em;
+			  border: 1px solid transparent;
+			}
+
+			#nav-menu a:hover {
+			  background: var(--primary-color);
+			  color: white;
+			  border-color: var(--primary-color);
+			}
+			/* --- End Advanced Mobile Nav Menu Styling --- */
+
+			/* Header for Main Content */
+			header {
+			  background: transparent;
+			  color: var(--text-color);
+			  text-align: center;
+			  padding: 100px 20px 40px;
+			}
+
+			header h1 {
+			  font-size: clamp(28px, 6vw, 42px);
+			  margin-bottom: 5px;
+			}
+
+			header p {
+			  font-size: 18px;
+			  opacity: 0.9;
+			}
+
+			/* --- Adjusted Section Spacing --- */
+			section {
+			  padding: 10px 10px;
+			  max-width: 1000px;
+			  margin: auto;
+			}
+
+			h2 {
+			  text-align: center;
+			  color: var(--primary-color);
+			  margin-bottom: 20px;
+			}
+			/* --- End Adjusted Section Spacing --- */
+
+			#lightbox-overlay {
+			  position: fixed;
+			  top: 0;
+			  left: 0;
+			  width: 100%;
+			  height: 100%;
+			  background: rgba(0,0,0,0.85);
+			  display: none;
+			  justify-content: center;
+			  align-items: center;
+			  z-index: 10000;
+			}
+
+			#lightbox-overlay img {
+			  max-width: 90%;
+			  max-height: 80%;
+			  border-radius: 10px;
+			  box-shadow: 0 0 20px #000;
+			}
+
+			#lightbox-overlay .close-btn {
+			  position: absolute;
+			  top: 20px;
+			  right: 30px;
+			  color: white;
+			  font-size: 30px;
+			  cursor: pointer;
+			  font-weight: bold;
+			  user-select: none;
+			}
+
+			.filter-btn {
+			  margin: 5px;
+			  padding: 8px 15px;
+			  border: none;
+			  border-radius: 5px;
+			  cursor: pointer;
+			  background: var(--frosted-bg);
+			  color: var(--text-color);
+			  backdrop-filter: var(--blur-amount);
+			  border: 1px solid var(--border-color);
+			  transition: all 0.3s ease;
+			}
+
+			.filter-btn.active {
+			  background: var(--primary-color);
+			  color: #fff;
+			  font-weight: bold;
+			  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+			  transition: background 0.3s ease;
+			}
+
+			.form-input {
+			  padding: 12px;
+			  border-radius: 6px;
+			  border: 1px solid var(--border-color);
+			  background: var(--frosted-bg);
+			  backdrop-filter: var(--blur-amount);
+			  color: var(--text-color);
+			}
+
+			.form-button, .card-button {
+			  padding: 10px 15px;
+			  border: none;
+			  background: var(--primary-color);
+			  color: #fff;
+			  font-weight: bold;
+			  border-radius: 6px;
+			  cursor: pointer;
+			  transition: all 0.3s ease;
+			  margin: 5px;
+			}
+
+			.form-button:hover, .card-button:hover {
+			  box-shadow: 0 4px 12px rgba(0, 128, 128, 0.3);
+			}
+
+			.card {
+			  background: var(--card-bg);
+			  backdrop-filter: var(--blur-amount);
+			  border: 1px solid var(--border-color);
+			  border-radius: 20px;
+			  padding: 20px;
+			  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+			  transition: all 0.3s ease;
+			  opacity: 1;
+			}
+
+			.card:hover {
+			  transform: translateY(-5px);
+			  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+			}
+
+			.card_title {
+			  font-size: 18px;
+			  margin-bottom: 10px;
+			}
+
+			.card-tech {
+			  background-color: rgba(224, 247, 250, 0.4);
+			}
+
+			.card-fitness {
+			  background-color: rgba(252, 228, 236, 0.4);
+			}
+
+			.hidden {
+			  display: none;
+			  opacity: 0;
+			  pointer-events: none;
+			  transition: opacity 0.3s ease;
+			}
+
+			.grid {
+			  display: grid;
+			  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			  gap: 20px;
+			}
+
+			#gallery img {
+			  width: 100%;
+			  height: 200px;
+			  object-fit: cover;
+			  border-radius: 8px;
+			  transition: transform 0.3s ease;
+			}
+
+			#gallery img:hover {
+			  transform: scale(1.05);
+			}
+
+			/* --- Improved WhatsApp Float Styling --- */
+			.whatsapp-float {
+			  position: fixed;
+			  bottom: 20px;
+			  right: 20px;
+			  background: #25D366;
+			  color: white;
+			  width: 60px;
+			  height: 60px;
+			  border-radius: 50%;
+			  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+			  z-index: 999;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  text-decoration: none;
+			  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+			}
+
+			.whatsapp-float img {
+			  width: 32px;
+			  height: 32px;
+			  filter: invert(1);
+			}
+
+			.whatsapp-float:hover {
+			  background: #128C7E;
+			  transform: scale(1.1) rotate(5deg);
+			  box-shadow: 0 12px 25px rgba(18, 140, 126, 0.6);
+			}
+			/* --- End WhatsApp Float Styling --- */
+
+			a:focus, button:focus, .filter-btn:focus, .control-button:focus, #languageSelect:focus {
+			  outline: 2px solid var(--primary-color);
+			  outline-offset: 2px;
+			}
+
+			#formStatus.success {
+			  color: green;
+			}
+
+			#formStatus.error {
+			  color: red;
+			}
+
+			/* Small screen adjustments for the brand logo to keep it neat */
+			@media (max-width: 480px) {
+			    #brand-logo img {
+			        height: 30px; /* Smaller logo on small screens */
+			    }
+			}
+		</style>
+	</head>
+	<body>
+		<noscript>
+			<div style="text-align: center; background: #ffebee; color: #d32f2f; padding: 15px; font-weight: bold;">
+				JavaScript is required for full functionality of this site. Please enable JavaScript in your browser settings.
+			</div>
+		</noscript>
+
+		<div id="top-bar">
+			<a href="#" id="brand-logo" aria-label="Naved Ahmad Siddiqui Home">
+				<img src="https://drive.google.com/thumbnail?id=10txJpC8LUL_uXPFBijA7y9kK-2gWG0iD" alt="Naved Ahmad Siddiqui Logo" />
+			</a>
+			<h1>Naved Ahmad Siddiqui</h1>
+			<div class="right-controls">
+				<div class="lang-container control-button" role="button" aria-label="Change Language">
+					<select id="languageSelect" onchange="changeLanguage()">
+						<option value="en">EN</option>
+						<option value="hi">HI</option>
+						<option value="ur">UR</option>
+						<option value="ar">AR</option>
+					</select>
+				</div>
+
+				<button class="control-button" aria-label="Toggle dark mode" onclick="toggleDarkMode()">
+					<span id="darkModeIcon">🌙</span>
+				</button>
+
+				<button class="control-button" id="menuToggle" aria-label="Toggle navigation menu" onclick="toggleMenu()">
+					<i class="fas fa-bars"></i>
+				</button>
+			</div>
+		</div>
+
+		<div id="menu-overlay" onclick="closeMenu()"></div>
+
+		<nav id="nav-menu" role="navigation">
+			<a href="#about" onclick="closeMenu()"><span data-lang-key="about">About</span></a>
+			<a href="#services" onclick="closeMenu()"><span data-lang-key="services">Services</span></a>
+			<a href="#gallery" onclick="closeMenu()"><span data-lang-key="gallery">Gallery</span></a>
+			<a href="#testimonials" onclick="closeMenu()"><span data-lang-key="testimonials">Testimonials</span></a>
+			<a href="#contact" onclick="closeMenu()"><span data-lang-key="contact">Contact</span></a>
+		</nav>
+
+		<header>
+			<!-- <h1>Naved Ahmad Siddiqui</h1> -->
+			<p>Multiservice Professional – Fitness, Tech & More</p>
+		</header>
+
+		<section id="about">
+			<h2><span data-lang-key="about">About Me</span></h2>
+			<p>
+				<span data-lang-key="aboutText">
+					Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai. From personal fitness to tech training, I offer a wide range of services tailored to meet your needs. Whether you need a strong body, a
+					stunning website, or official document help — I’ve got you covered.
+				</span>
+			</p>
+		</section>
+
+		<section id="services">
+			<h2><span data-lang-key="services">My Services</span></h2>
+
+			<div style="text-align:center; margin-bottom: 25px;">
+				<button class="filter-btn active" data-filter="all" aria-label="Filter by all services">All</button>
+				<button class="filter-btn" data-filter="fitness" aria-label="Filter by fitness services">Fitness</button>
+				<button class="filter-btn" data-filter="tech" aria-label="Filter by tech services">Tech</button>
+				<button class="filter-btn" data-filter="documents" aria-label="Filter by documents services">Documents</button>
+				<button class="filter-btn" data-filter="driver" aria-label="Filter by driver services">Driver</button>
+			</div>
+			<p style="text-align: center; margin-bottom: 25px;"><span data-lang-key="servicesIntro">Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional offering various services...</span></p>
+
+			<div class="grid">
+				<div class="card card-fitness" data-category="fitness">
+					<h3 class="card_title">🏋️‍♂️ Personal Fitness Trainer</h3>
+					<p>Customized workout plans, one-on-one training, fat loss, muscle gain & home sessions available.</p>
+					<div style="margin-top: 10px;">
+						<button class="card-button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbwgkXR9eCLsvJnFELjbG8X-jSH3L-nT5xghgh-dvF2A890DTP1reCjFoB7RU-Gix2Q/exec'">Book</button>
+					</div>
+				</div>
+
+				<div class="card card-fitness" data-category="fitness">
+					<h3 class="card_title">💆‍♂️ Body Massage</h3>
+					<p>Relaxing and therapeutic massages to relieve stress, body pain, and improve blood circulation.</p>
+				</div>
+
+				<div class="card card-tech" data-category="tech">
+					<h3 class="card_title">💻 Computer Classes</h3>
+					<p>Basic to advanced computer training for students and adults – MS Office, Internet, Tally, etc.</p>
+					<div style="margin-top: 10px;">
+						<button class="card-button" onclick="window.location.href='https://script.google.com/macros/s/AKfycbz3R3MzYbBFMUSeK3w2_65AL2RSo041fE73rsIYQv13s5Xh12kmo2XKxZto54QUUC1Y/exec'">Exam</button>
+						<button class="card-button" onclick="window.location.href='https://certificates-downloader.netlify.app/'">Certificate</button>
+					</div>
+				</div>
+
+				<div class="card card-tech" data-category="tech">
+					<h3 class="card_title">🎨 Graphic Design</h3>
+					<p>Professional logos, brochures, banners, and social media graphics designed with creativity and precision.</p>
+				</div>
+
+				<div class="card card-documents" data-category="documents">
+					<h3 class="card_title">📄 Govt. & Private Documentation</h3>
+					<p>Help with Aadhar, PAN, Passport, Ration Card, forms, printing, scanning, etc.</p>
+				</div>
+
+				<div class="card card-tech" data-category="tech">
+					<h3 class="card_title">🌐 Website Development</h3>
+					<p>Affordable website design & development for small businesses, portfolios, and blogs.</p>
+				</div>
+
+				<div class="card card-driver" data-category="driver">
+					<h3 class="card_title">🚗 Driver Services</h3>
+					<p>Experienced driver for Ola, Uber, Rapido & private hire. Safe, punctual and professional service.</p>
+				</div>
+
+				<div class="card card-misc" data-category="misc">
+					<h3 class="card_title">✨ And Many More...</h3>
+					<p>Need something else? Just ask! I handle multiple other services as per client requirements.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="gallery">
+			<h2><span data-lang-key="gallery">Gallery</span></h2>
+			<div class="grid">
+				<div class="card">
+					<img src="Personal fitness training session.jpg" alt="Personal fitness training session" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged personal fitness training session image" />
+				</div>
+				<div class="card"><img src="Computer classes in Mumbai.jpg" alt="Computer classes in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged computer classes in Mumbai image" /></div>
+				<div class="card"><img src="Government documentation help.jpg" alt="Government documentation help" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged government documentation help image" /></div>
+				<div class="card">
+					<img src="Private driver service in Mumbai.jpg" alt="Private driver service in Mumbai" loading="lazy" width="300" height="200" role="button" aria-label="View enlarged private driver service in Mumbai image" />
+				</div>
+			</div>
+		</section>
+
+		<section id="testimonials">
+			<h2><span data-lang-key="testimonials">Testimonials</span></h2>
+			<div class="grid">
+				<div class="card">
+					<p>"Naved bhai ka workout plan bahut effective hai. Sirf 3 mahine me fat loss ho gaya!"</p>
+					<p><strong>– Rahul S.</strong></p>
+				</div>
+				<div class="card">
+					<p>"Website banwane ke liye contact kiya tha, time pe delivery mili. Design bhi top-class!"</p>
+					<p><strong>– Priya T.</strong></p>
+				</div>
+				<div class="card">
+					<p>"Government documents ka kaam fast aur sahi tarike se kiya. Highly recommended!"</p>
+					<p><strong>– Imran K.</strong></p>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact">
+			<h2><span data-lang-key="contact">Contact Me</span></h2>
+			<div style="text-align:center;">
+				<p>
+					<strong><span data-lang-key="location">Location:</span></strong> Mumbai, Maharashtra 400095
+				</p>
+				<p><strong>Phone:</strong> <a href="tel:+919082009795">+91 9082009795</a></p>
+				<p><strong>Email:</strong> <a href="mailto:nssidd0@gmail.com">nssidd0@gmail.com</a></p>
+			</div>
+
+			<iframe
+				class="map"
+				style="width:100%; height:300px; margin-top:20px; border-radius:10px; border:0;"
+				data-src="https://www.google.com/maps?q=Mumbai,+Maharashtra+400095&output=embed"
+				allowfullscreen=""
+				loading="lazy"
+				aria-label="Map showing location in Mumbai, Maharashtra 400095"
+				title="Map of Mumbai, Maharashtra 400095"
+			>
+			</iframe>
+
+			<div style="max-width:600px; margin: 30px auto;">
+				<form action="https://formsubmit.co/nssidd0@gmail.com" method="POST" id="contactForm" style="display:flex; flex-direction:column; gap:15px;">
+					<input type="hidden" name="_next" value="https://navedsiddiqui.in/thank-you.html" />
+					<input type="hidden" name="_honeypot" style="display:none;" tabindex="-1" />
+
+					<label for="fullName" data-lang-key="fullName">Your Name</label>
+					<input type="text" id="fullName" name="name" class="form-input" placeholder="Your Name" data-lang-placeholder="fullNamePlaceholder" required />
+
+					<label for="email" data-lang-key="email">Your Email</label>
+					<input type="email" id="email" name="email" class="form-input" placeholder="Your Email" data-lang-placeholder="emailPlaceholder" required />
+
+					<label for="message" data-lang-key="message">Your Message</label>
+					<textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
+
+					<button type="submit" class="form-button" data-lang-key="send">Send Message</button>
+				</form>
+
+				<p id="formStatus" aria-live="polite" style="text-align:center; margin-top:10px;"></p>
+			</div>
+		</section>
+
+		<footer style="background:var(--frosted-bg); backdrop-filter: var(--blur-amount); color:var(--text-color); text-align:center; padding:20px; margin-top:40px; border-top: 1px solid var(--border-color);">
+			<p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
+			<div>
+				<a href="www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color); margin:0 10px;">LinkedIn</a>
+				<a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color); margin:0 10px;">Instagram</a>
+			</div>
+		</footer>
+
+		<a href="https://wa.me/919082009795" class="whatsapp-float" target="_blank" aria-label="Chat with Naved on WhatsApp">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" />
+		</a>
+
+		<div id="lightbox-overlay">
+			<span class="close-btn" onclick="closeLightbox()">×</span>
+			<img src="" alt="Expanded Image" loading="lazy" />
+		</div>
+
+		<script defer>
+			const navMenu = document.getElementById('nav-menu');
+			const menuToggle = document.getElementById('menuToggle');
+			const menuOverlay = document.getElementById('menu-overlay');
+			const darkModeIcon = document.getElementById('darkModeIcon');
+
+			function toggleMenu() {
+			    navMenu.classList.toggle('open');
+			    menuOverlay.classList.toggle('open');
+			    const isMenuOpen = navMenu.classList.contains('open');
+			    menuToggle.querySelector('i').className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
+			    menuToggle.setAttribute('aria-expanded', isMenuOpen);
+			    // Removed document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+			    // as the menu no longer takes full height, hiding body scroll is less necessary
+			}
+
+			function closeMenu() {
+			    navMenu.classList.remove('open');
+			    menuOverlay.classList.remove('open');
+			    menuToggle.querySelector('i').className = 'fas fa-bars';
+			    menuToggle.setAttribute('aria-expanded', 'false');
+			    // Removed document.body.style.overflow = '';
+			}
+
+			function toggleDarkMode() {
+			  const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+			  document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
+			  darkModeIcon.textContent = isDark ? '🌙' : '☀️';
+			  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+			}
+
+			// Set initial dark mode state
+			const savedTheme = localStorage.getItem('theme');
+			if (savedTheme === 'dark') {
+			    document.documentElement.setAttribute('data-theme', 'dark');
+			    darkModeIcon.textContent = '☀️';
+			} else {
+			    document.documentElement.setAttribute('data-theme', 'light');
+			    darkModeIcon.textContent = '🌙';
+			}
+
+
+			const lightboxOverlay = document.getElementById('lightbox-overlay');
+			const lightboxImage = lightboxOverlay.querySelector('img');
+
+			document.querySelectorAll('#gallery img').forEach(img => {
+			  img.style.cursor = 'pointer';
+			  img.addEventListener('click', () => {
+			    lightboxImage.src = img.src;
+			    lightboxImage.alt = img.alt;
+			    lightboxOverlay.style.display = 'flex';
+			  });
+			});
+
+			function closeLightbox() {
+			  lightboxOverlay.style.display = 'none';
+			  lightboxImage.src = '';
+			}
+
+			lightboxOverlay.addEventListener('click', e => {
+			  if (e.target === lightboxOverlay) closeLightbox();
+			});
+
+			document.addEventListener('keydown', e => {
+			  if (e.key === 'Escape') closeLightbox();
+			});
+
+			const filterButtons = document.querySelectorAll('.filter-btn');
+			const serviceCards = document.querySelectorAll('#services .card');
+
+			filterButtons.forEach(button => {
+			  button.addEventListener('click', () => {
+			    filterButtons.forEach(btn => btn.classList.remove('active'));
+			    button.classList.add('active');
+
+			    const filter = button.getAttribute('data-filter');
+
+			    serviceCards.forEach(card => {
+			      const cardCategory = card.getAttribute('data-category');
+			      if (filter === 'all' || cardCategory === filter) {
+			        card.classList.remove('hidden');
+			      } else {
+			        card.classList.add('hidden');
+			      }
+			    });
+			  });
+			});
+
+			const translations = {
+			  en: {
+			    about: "About Me",
+			    aboutText: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai. From personal fitness to tech training, I offer a wide range of services tailored to meet your needs. Whether you need a strong body, a stunning website, or official document help — I’ve got you covered.",
+			    services: "My Services",
+			    servicesIntro: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional offering various services...",
+			    gallery: "Gallery",
+			    testimonials: "Testimonials",
+			    contact: "Contact Me",
+			    location: "Location:",
+			    fullName: "Your Name",
+			    fullNamePlaceholder: "Enter your name",
+			    email: "Your Email",
+			    emailPlaceholder: "Enter your email",
+			    message: "Your Message",
+			    send: "Send Message",
+			    sending: "Sending...",
+			    footer: "© 2025 Naved Ahmad Siddiqui. All rights reserved.",
+			    successMessage: "Message sent successfully!",
+			    errorMessage: "Failed to send message. Please try again."
+			  },
+			  hi: {
+			    about: "मेरे बारे में",
+			    aboutText: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल। व्यक्तिगत फिटनेस से लेकर टेक ट्रेनिंग तक, मैं आपकी जरूरतों के अनुसार विभिन्न सेवाएं प्रदान करता हूं। चाहे आपको मजबूत शरीर चाहिए, एक शानदार वेबसाइट, या आधिकारिक दस्तावेज़ मदद — मैंने आपको कवर किया है।",
+			    services: "मेरी सेवाएं",
+			    servicesIntro: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल...",
+			    gallery: "गेलरी",
+			    testimonials: "प्रशंसापत्र",
+			    contact: "संपर्क करें",
+			    location: "स्थान:",
+			    fullName: "आपका नाम",
+			    fullNamePlaceholder: "अपना नाम दर्ज करें",
+			    email: "आपका ईमेल",
+			    emailPlaceholder: "अपना ईमेल दर्ज करें",
+			    message: "आपका संदेश",
+			    send: "संदेश भेजें",
+			    sending: "भेज रहा है...",
+			    footer: "© 2025 नवेद अहमद सिद्दीकी. सर्वाधिकार सुरक्षित।",
+			    successMessage: "संदेश सफलतापूर्वक भेजा गया!",
+			    errorMessage: "संदेश भेजने में विफल। कृपया फिर से प्रयास करें।"
+			  },
+			  ur: {
+			    about: "میرے بارے میں",
+			    aboutText: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص۔ ذاتی فٹنس سے لے کر ٹیک ٹریننگ تک، میں آپ کی ضروریات کے مطابق وسیع خدمات پیش کرتا ہوں۔ چاہے آپ کو مضبوط جسم چاہیے، ایک شاندار ویب سائٹ، یا سرکاری دستاویز کی مدد — میں آپ کو کور کرتا ہوں۔",
+			    services: "میری خدمات",
+			    servicesIntro: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص...",
+			    gallery: "گیلری",
+			    testimonials: "تعریفیں",
+			    contact: "رابطہ کریں",
+			    location: "مقام:",
+			    fullName: "آپ کا نام",
+			    fullNamePlaceholder: "اپنا نام درج کریں",
+			    email: "آپ کا ای میل",
+			    emailPlaceholder: "اپنا ای میل درج کریں",
+			    message: "آپ کا پیغام",
+			    send: "پیغام بھیجیں",
+			    sending: "بھیج رہا ہے...",
+			    footer: "© 2025 نوید احمد صدیقی. جملہ حقوق محفوظ ہیں۔",
+			    successMessage: "پیغام کامیابی سے بھیج دیا گیا!",
+			    errorMessage: "پیغام بھیجنے میں ناکامی۔ براہ کرم دوبارہ کوشش کریں۔"
+			  },
+			  ar: {
+			    about: "من أنا",
+			    aboutText: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي. من اللياقة البدنية الشخصية إلى التدريب التقني، أقدم مجموعة واسعة من الخدمات المصممة لتلبية احتياجاتك. سواء كنت بحاجة إلى جسم قوي، موقع إلكتروني مذهل، أو مساعدة في الوثائق الرسمية — أنا مغطيك.",
+			    services: "خدماتي",
+			    servicesIntro: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي...",
+			    gallery: "معرض الصور",
+			    testimonials: "الشهادات",
+			    contact: "اتصل بي",
+			    location: "الموقع:",
+			    fullName: "اسمك",
+			    fullNamePlaceholder: "أدخل اسمك",
+			    email: "بريدك الإلكتروني",
+			    emailPlaceholder: "أدخل بريدك الإلكتروني",
+			    message: "رسالتك",
+			    send: "أرسل رسالة",
+			    sending: "جارٍ الإرسال...",
+			    footer: "© 2025 نويد أحمد صديقي. جميع الحقوق محفوظة.",
+			    successMessage: "تم إرسال الرسالة بنجاح!",
+			    errorMessage: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
+			  }
+			};
+
+			function changeLanguage() {
+			  const selectedLang = document.getElementById("languageSelect").value;
+			  document.documentElement.lang = selectedLang;
+			  if (['ar', 'ur'].includes(selectedLang)) {
+			    document.documentElement.dir = "rtl";
+			  } else {
+			    document.documentElement.dir = "ltr";
+			  }
+			  localStorage.setItem('selectedLang', selectedLang);
+			  document.querySelectorAll("[data-lang-key]").forEach(el => {
+			    const key = el.getAttribute("data-lang-key");
+			    el.textContent = translations[selectedLang][key] || translations["en"][key] || "Translation missing";
+			    if (!translations[selectedLang][key]) {
+			      console.warn(`Translation missing for key "${key}" in language "${selectedLang}"`);
+			    }
+			  });
+			  document.querySelectorAll("[data-lang-placeholder]").forEach(el => {
+			    const key = el.getAttribute("data-lang-placeholder");
+			    el.placeholder = translations[selectedLang][key] || translations["en"][key] || "Translation missing";
+			    if (!translations[selectedLang][key]) {
+			      console.warn(`Translation missing for placeholder key "${key}" in language "${selectedLang}"`);
+			    }
+			  });
+			}
+
+			window.addEventListener('DOMContentLoaded', () => {
+			  const savedLang = localStorage.getItem('selectedLang') || 'en';
+			  document.getElementById("languageSelect").value = savedLang;
+			  changeLanguage();
+
+			  const mapIframe = document.querySelector('.map');
+			  const observer = new IntersectionObserver((entries) => {
+			    if (entries[0].isIntersecting) {
+			      mapIframe.src = mapIframe.dataset.src;
+			      observer.disconnect();
+			    }
+			  });
+			  observer.observe(mapIframe);
+
+			  // Contact Form Submission (unchanged)
+			  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+			    e.preventDefault();
+			    const form = e.target;
+			    const formData = new FormData(form);
+			    const formStatus = document.getElementById('formStatus');
+			    const formButton = form.querySelector('.form-button');
+			    const selectedLang = document.getElementById("languageSelect").value;
+
+			    formButton.disabled = true;
+			    formButton.textContent = translations[selectedLang].sending || 'Sending...';
+
+			    try {
+			      const response = await fetch(form.action, {
+			        method: 'POST',
+			        body: formData
+			      });
+			      if (response.ok) {
+			        formStatus.textContent = translations[selectedLang].successMessage || 'Message sent successfully!';
+			        formStatus.classList.add('success');
+			        formStatus.classList.remove('error');
+			        form.reset();
+			      } else {
+			        formStatus.textContent = translations[selectedLang].errorMessage || `Failed to send message: ${response.statusText}`;
+			        formStatus.classList.add('error');
+			        formStatus.classList.remove('success');
+			      }
+			    } catch (error) {
+			      formStatus.textContent = translations[selectedLang].errorMessage || `An error occurred: ${error.message}. Please try again.`;
+			      formStatus.classList.add('error');
+			      formStatus.classList.remove('success');
+			    } finally {
+			      formButton.disabled = false;
+			      formButton.textContent = translations[selectedLang].send || 'Send Message';
+			    }
+			  });
+
+			  // Service Worker (unchanged)
+			  if ('serviceWorker' in navigator) {
+			    window.addEventListener('load', async () => {
+			      const registerServiceWorker = async (attempts = 3, delay = 1000) => {
+			        for (let i = 0; i < attempts; i++) {
+			          try {
+			            const response = await fetch('/sw.js', { method: 'HEAD', cache: 'no-store' });
+			            if (!response.ok) {
+			              console.error(`Service Worker file (/sw.js) not found or inaccessible: ${response.status} ${response.statusText}`);
+			              return;
+			            }
+			            const registration = await navigator.serviceWorker.register('/sw.js');
+			            console.log('Service Worker registered with scope:', registration.scope);
+			            return;
+			          } catch (error) {
+			            console.error(`Service Worker registration attempt ${i + 1} failed:`, error.message, error);
+			            if (i < attempts - 1) {
+			              await new Promise(resolve => setTimeout(resolve, delay));
+			            }
+			          }
+			        }
+			        console.error('Service Worker registration failed after all attempts.');
+			      };
+			      registerServiceWorker();
+			    });
+			  } else {
+			    console.log('Service Workers are not supported in this browser.');
+			  }
+			});
+		</script>
+
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-XXXXXXX');
+		</script>
+
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "Person",
+			  "name": "Naved Ahmad Siddiqui",
+			  "jobTitle": "Multiservice Professional",
+			  "address": {
+			    "@type": "PostalAddress",
+			    "addressLocality": "Mumbai",
+			    "addressRegion": "Maharashtra",
+			    "postalCode": "400095",
+			    "addressCountry": "IN"
+			  },
+			  "telephone": "+91-9082009795",
+			  "email": "nssidd0@gmail.com",
+			  "url": "https://navedsiddiqui.in"
+			}
+		</script>
+	</body>
 </html>
