@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Naved Ahmad Siddiqui – Multiservice Professional offering Fitness, Tech Training, Govt. Documentation, and more in Mumbai." />
-  <meta name="keywords" content="Naved Siddiqui, fitness trainer Mumbai, computer classes Mumbai, website development, documentation services, body massage Mumbai, graphic design, driver services Mumbai">
+  <meta name="keywords" content="Naved Ahmad Siddiqui, fitness trainer Mumbai, personal training Mumbai, computer classes Mumbai, website development Mumbai, graphic design Mumbai, government documentation Mumbai, driver services Mumbai, body massage Mumbai">
   <meta property="og:title" content="Naved Ahmad Siddiqui – Fitness & Tech Expert in Mumbai">
   <meta property="og:description" content="Offering fitness, computer training, document assistance, and more.">
   <meta property="og:image" content="https://via.placeholder.com/600x400.png?text=Naved+Siddiqui+Portfolio">
@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <title>Naved Ahmad Siddiqui | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYu6r03S/31fO12A7C3+A58S6fW0g01v5t0jR8kYg1v6/w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     html {
       scroll-behavior: smooth;
@@ -131,10 +131,11 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .control-button:hover {
+    .control-button:hover, .filter-btn:hover, .form-button:hover, .card-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       background: var(--primary-color);
       color: #fff;
-      transform: scale(1.05);
     }
 
     .lang-container {
@@ -358,11 +359,8 @@
       margin: 5px;
     }
 
-    .form-button:hover, .card-button:hover {
-      box-shadow: 0 4px 12px rgba(0, 128, 128, 0.3);
-    }
-
     .card {
+      cursor: pointer;
       background: var(--card-bg);
       backdrop-filter: var(--blur-amount);
       border: 1px solid var(--border-color);
@@ -371,6 +369,12 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       opacity: 1;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card:hover {
@@ -448,6 +452,31 @@
     }
     /* --- End WhatsApp Float Styling --- */
 
+    #backToTop {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--frosted-bg);
+  backdrop-filter: var(--blur-amount);
+  color: var(--text-color);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+#backToTop:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.g-recaptcha {
+  margin: 10px 0;
+}
+
     a:focus, button:focus, .filter-btn:focus, .control-button:focus, #languageSelect:focus {
       outline: 2px solid var(--primary-color);
       outline-offset: 2px;
@@ -467,6 +496,34 @@
             height: 30px; /* Smaller logo on small screens */
         }
     }
+
+    @media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* Single column for cards */
+  }
+  #nav-menu {
+    width: 100%; /* Full-width menu on mobile */
+  }
+  header {
+    padding: 80px 10px 20px; /* Less padding for header */
+  }
+  #top-bar h1 {
+    font-size: 1.2em; /* Smaller title in top bar */
+  }
+}
+@media (max-width: 480px) {
+  .card {
+    padding: 15px; /* Less padding for cards on small screens */
+  }
+  .whatsapp-float {
+    width: 50px;
+    height: 50px; /* Smaller WhatsApp button */
+  }
+  .whatsapp-float img {
+    width: 28px;
+    height: 28px;
+  }
+}
   </style>
 </head>
 <body>
@@ -506,6 +563,7 @@
   <nav id="nav-menu" role="navigation">
     <a href="#about" onclick="closeMenu()"><span data-lang-key="about">About</span></a>
     <a href="#services" onclick="closeMenu()"><span data-lang-key="services">Services</span></a>
+    <a href="#blog" onclick="closeMenu()"><span data-lang-key="blog">Blog</span></a>
     <a href="#gallery" onclick="closeMenu()"><span data-lang-key="gallery">Gallery</span></a>
     <a href="#testimonials" onclick="closeMenu()"><span data-lang-key="testimonials">Testimonials</span></a>
     <a href="#contact" onclick="closeMenu()"><span data-lang-key="contact">Contact</span></a>
@@ -588,6 +646,22 @@
     </div>
   </section>
 
+    <section id="blog">
+  <h2><span data-lang-key="blog">Blog</span></h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Fitness Tips for Beginners</h3>
+      <p>Start your fitness journey with these simple tips...</p>
+      <a href="/blog/fitness-tips" class="card-button">Read More</a>
+    </div>
+    <div class="card">
+      <h3>Learn Basic HTML in 1 Hour</h3>
+      <p>Master the basics of HTML quickly...</p>
+      <a href="/blog/html-guide" class="card-button">Read More</a>
+    </div>
+  </div>
+</section>
+
   <section id="gallery">
     <h2><span data-lang-key="gallery">Gallery</span></h2>
     <div class="grid">
@@ -648,6 +722,9 @@
         <label for="message" data-lang-key="message">Your Message</label>
         <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
 
+        <!-- Add this reCAPTCHA div -->
+        <div class="g-recaptcha" data-sitekey="6LfDx9srAAAAADuLFT0VQgXjgkB8rM6MODBtuEXZ" data-callback="onRecaptchaSuccess"></div>
+
         <button type="submit" class="form-button" data-lang-key="send">Send Message</button>
       </form>
 
@@ -657,9 +734,9 @@
 
   <footer style="background:var(--frosted-bg); backdrop-filter: var(--blur-amount); color:var(--text-color); text-align:center; padding:20px; margin-top:40px; border-top: 1px solid var(--border-color);">
     <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
-    <div>
-      <a href="www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color); margin:0 10px;">LinkedIn</a>
-      <a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color); margin:0 10px;">Instagram</a>
+        <div style="display: flex; justify-content: center; gap: 15px;">
+      <a href="https://www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color);" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+      <a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color);" aria-label="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
     </div>
   </footer>
 
@@ -667,13 +744,17 @@
     class="whatsapp-float"
     target="_blank"
     aria-label="Chat with Naved on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" loading="lazy">
   </a>
 
   <div id="lightbox-overlay">
     <span class="close-btn" onclick="closeLightbox()">×</span>
     <img src="" alt="Expanded Image" loading="lazy">
   </div>
+
+  <button id="backToTop" class="control-button" style="position:fixed; bottom:90px; right:20px; display:none;">↑</button>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <script defer>
     const navMenu = document.getElementById('nav-menu');
@@ -764,7 +845,7 @@
     });
 
     const translations = {
-      en: {
+      en: { blog: "Blog"
         about: "About Me",
         aboutText: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai. From personal fitness to tech training, I offer a wide range of services tailored to meet your needs. Whether you need a strong body, a stunning website, or official document help — I’ve got you covered.",
         services: "My Services",
@@ -784,7 +865,7 @@
         successMessage: "Message sent successfully!",
         errorMessage: "Failed to send message. Please try again."
       },
-      hi: {
+      hi: { blog: "ब्लॉग"
         about: "मेरे बारे में",
         aboutText: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल। व्यक्तिगत फिटनेस से लेकर टेक ट्रेनिंग तक, मैं आपकी जरूरतों के अनुसार विभिन्न सेवाएं प्रदान करता हूं। चाहे आपको मजबूत शरीर चाहिए, एक शानदार वेबसाइट, या आधिकारिक दस्तावेज़ मदद — मैंने आपको कवर किया है।",
         services: "मेरी सेवाएं",
@@ -804,7 +885,7 @@
         successMessage: "संदेश सफलतापूर्वक भेजा गया!",
         errorMessage: "संदेश भेजने में विफल। कृपया फिर से प्रयास करें।"
       },
-      ur: {
+      ur: { blog: "بلاگ" 
         about: "میرے بارے میں",
         aboutText: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص۔ ذاتی فٹنس سے لے کر ٹیک ٹریننگ تک، میں آپ کی ضروریات کے مطابق وسیع خدمات پیش کرتا ہوں۔ چاہے آپ کو مضبوط جسم چاہیے، ایک شاندار ویب سائٹ، یا سرکاری دستاویز کی مدد — میں آپ کو کور کرتا ہوں۔",
         services: "میری خدمات",
@@ -824,7 +905,7 @@
         successMessage: "پیغام کامیابی سے بھیج دیا گیا!",
         errorMessage: "پیغام بھیجنے میں ناکامی۔ براہ کرم دوبارہ کوشش کریں۔"
       },
-      ar: {
+      ar: { blog: "مدونة"
         about: "من أنا",
         aboutText: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي. من اللياقة البدنية الشخصية إلى التدريب التقني، أقدم مجموعة واسعة من الخدمات المصممة لتلبية احتياجاتك. سواء كنت بحاجة إلى جسم قوي، موقع إلكتروني مذهل، أو مساعدة في الوثائق الرسمية — أنا مغطيك.",
         services: "خدماتي",
@@ -951,14 +1032,27 @@
         console.log('Service Workers are not supported in this browser.');
       }
     });
+
+    document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', () => {
+    const bookButton = card.querySelector('.card-button');
+    if (bookButton) bookButton.click(); // Trigger existing button if present
+  });
+});
+
+    const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+backToTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
   </script>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKSLDER0SG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
+    gtag('config', 'G-XKSLDER0SG');
   </script>
 
   <script type="application/ld+json">
