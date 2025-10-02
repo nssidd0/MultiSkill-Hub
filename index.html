@@ -1216,11 +1216,19 @@
         console.log('Service Workers are not supported in this browser.');
       }
 
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+          const bookButton = card.querySelector('.card-button');
+          if (bookButton) bookButton.click();
+        });
+      });
+
+      // Add this to prevent card click from overriding button clicks
       document.querySelectorAll('.card-button').forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent the card's click event from firing
-  });
-});
+        button.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent the card's click event from firing
+        });
+      });
 
       const backToTop = document.getElementById('backToTop');
       window.addEventListener('scroll', () => {
