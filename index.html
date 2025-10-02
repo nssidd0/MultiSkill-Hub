@@ -60,6 +60,88 @@
       transition: all 0.3s ease;
       line-height: 1.6;
       position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Loading Animation Styles */
+    #loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    #loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #loading-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Star Animation Styles */
+    .stars-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 5s infinite ease-in-out;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+
+    :root[data-theme="dark"] .star {
+      background: #f0f0f0;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 0.7; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+
+    .star:nth-child(1) { width: 2px; height: 2px; top: 10%; left: 15%; animation-delay: 0s; }
+    .star:nth-child(2) { width: 3px; height: 3px; top: 20%; left: 30%; animation-delay: 1s; }
+    .star:nth-child(3) { width: 1.5px; height: 1.5px; top: 30%; left: 45%; animation-delay: 2s; }
+    .star:nth-child(4) { width: 2.5px; height: 2.5px; top: 40%; left: 60%; animation-delay: 3s; }
+    .star:nth-child(5) { width: 2px; height: 2px; top: 50%; left: 75%; animation-delay: 4s; }
+    .star:nth-child(6) { width: 3px; height: 3px; top: 60%; left: 20%; animation-delay: 0.5s; }
+    .star:nth-child(7) { width: 1.8px; height: 1.8px; top: 70%; left: 35%; animation-delay: 1.5s; }
+    .star:nth-child(8) { width: 2.2px; height: 2.2px; top: 80%; left: 50%; animation-delay: 2.5s; }
+    .star:nth-child(9) { width: 2.7px; height: 2.7px; top: 90%; left: 65%; animation-delay: 3.5s; }
+    .star:nth-child(10) { width: 1.5px; height: 1.5px; top: 15%; left: 80%; animation-delay: 4.5s; }
+
+    @media (max-width: 768px) {
+      .star { transform: scale(0.8); }
     }
 
     body::before {
@@ -101,11 +183,11 @@
       display: flex;
       align-items: center;
       text-decoration: none;
-      height: 40px; /* Adjust height to fit top bar */
+      height: 40px;
     }
 
     #brand-logo img {
-      height: 100%; /* Make image fill the height */
+      height: 100%;
       width: auto;
       object-fit: contain;
     }
@@ -216,10 +298,8 @@
       right: 0;
       width: 300px; 
       max-width: 80%; 
-      /* --- CHANGE 1: Menu height adjusted to content + scroll --- */
-      max-height: 100vh; /* Max height is full viewport */
-      overflow-y: auto; /* Scroll if content exceeds height */
-      /* -------------------------------------------------------- */
+      max-height: 100vh;
+      overflow-y: auto;
       background: var(--frosted-bg);
       backdrop-filter: var(--blur-amount);
       border-left: 1px solid var(--border-color);
@@ -254,7 +334,24 @@
       color: white;
       border-color: var(--primary-color);
     }
-    /* --- End Advanced Mobile Nav Menu Styling --- */
+
+    /* Scroll Progress Bar */
+    #scroll-progress {
+      position: fixed;
+      top: 60px; /* Adjust based on top-bar height */
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      z-index: 999;
+    }
+
+    #scroll-progress-bar {
+      width: 0;
+      height: 100%;
+      background: var(--primary-color);
+      transition: width 0.3s ease;
+    }
 
     /* Header for Main Content */
     header {
@@ -274,7 +371,6 @@
       opacity: 0.9;
     }
 
-    /* --- Adjusted Section Spacing --- */
     section {
       padding: 10px 10px; 
       max-width: 1000px;
@@ -286,7 +382,6 @@
       color: var(--primary-color);
       margin-bottom: 20px; 
     }
-    /* --- End Adjusted Section Spacing --- */
 
     #lightbox-overlay {
       position: fixed;
@@ -422,7 +517,6 @@
       transform: scale(1.05);
     }
 
-    /* --- Improved WhatsApp Float Styling --- */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -452,101 +546,100 @@
       transform: scale(1.1) rotate(5deg);
       box-shadow: 0 12px 25px rgba(18, 140, 126, 0.6);
     }
-    /* --- End WhatsApp Float Styling --- */
 
     #backToTop {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  background: var(--frosted-bg);
-  backdrop-filter: var(--blur-amount);
-  color: var(--text-color);
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-#backToTop:hover {
-  background: var(--primary-color);
-  color: #fff;
-  transform: scale(1.1);
-}
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      color: var(--text-color);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    #backToTop:hover {
+      background: var(--primary-color);
+      color: #fff;
+      transform: scale(1.1);
+    }
 
-.g-recaptcha {
-  margin: 10px 0;
-}
+    .g-recaptcha {
+      margin: 10px 0;
+    }
 
-.form-button.loading .fa-spinner {
-  animation: spin 1s linear infinite;
-}
+    .form-button.loading .fa-spinner {
+      animation: spin 1s linear infinite;
+    }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-#formStatus.success {
-  color: #28a745;
-  font-weight: bold;
-  background: rgba(40, 167, 69, 0.1);
-  padding: 10px;
-  border-radius: 5px;
-}
+    #formStatus.success {
+      color: #28a745;
+      font-weight: bold;
+      background: rgba(40, 167, 69, 0.1);
+      padding: 10px;
+      border-radius: 5px;
+    }
 
-#formStatus.error {
-  color: #dc3545;
-  font-weight: bold;
-  background: rgba(220, 53, 69, 0.1);
-  padding: 10px;
-  border-radius: 5px;
-}
+    #formStatus.error {
+      color: #dc3545;
+      font-weight: bold;
+      background: rgba(220, 53, 69, 0.1);
+      padding: 10px;
+      border-radius: 5px;
+    }
 
     a:focus, button:focus, .filter-btn:focus, .control-button:focus, #languageSelect:focus {
       outline: 2px solid var(--primary-color);
       outline-offset: 2px;
     }
 
-    #formStatus.success {
-      color: green;
-    }
-
-    /* Small screen adjustments for the brand logo to keep it neat */
     @media (max-width: 480px) {
         #brand-logo img {
-            height: 30px; /* Smaller logo on small screens */
+            height: 30px;
+        }
+        #loading-logo {
+            width: 80px;
+            height: 80px;
         }
     }
 
     @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr; /* Single column for cards */
-  }
-  #nav-menu {
-    width: 100%; /* Full-width menu on mobile */
-  }
-  header {
-    padding: 80px 10px 20px; /* Less padding for header */
-  }
-  #top-bar h1 {
-    font-size: 1.2em; /* Smaller title in top bar */
-  }
-}
-@media (max-width: 480px) {
-  .card {
-    padding: 15px; /* Less padding for cards on small screens */
-  }
-  .whatsapp-float {
-    width: 50px;
-    height: 50px; /* Smaller WhatsApp button */
-  }
-  .whatsapp-float img {
-    width: 28px;
-    height: 28px;
-  }
-}
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      #nav-menu {
+        width: 100%;
+      }
+      header {
+        padding: 80px 10px 20px;
+      }
+      #top-bar h1 {
+        font-size: 1.2em;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .card {
+        padding: 15px;
+      }
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+      }
+      .whatsapp-float img {
+        width: 28px;
+        height: 28px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -555,6 +648,25 @@
       JavaScript is required for full functionality of this site. Please enable JavaScript in your browser settings.
     </div>
   </noscript>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay">
+    <img id="loading-logo" src="https://drive.google.com/thumbnail?id=10txJpC8LUL_uXPFBijA7y9kK-2gWG0iD" alt="Naved Ahmad Siddiqui Loading Logo">
+  </div>
+
+  <!-- Star Animation Container -->
+  <div class="stars-container">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
 
   <div id="top-bar">
     <a href="#" id="brand-logo" aria-label="Naved Ahmad Siddiqui Home">
@@ -581,6 +693,11 @@
     </div>
   </div>
 
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress">
+    <div id="scroll-progress-bar"></div>
+  </div>
+
   <div id="menu-overlay" onclick="closeMenu()"></div> 
 
   <nav id="nav-menu" role="navigation">
@@ -593,7 +710,6 @@
   </nav>
 
   <header>
-    <!-- <h1>Naved Ahmad Siddiqui</h1> -->
     <p>Multiservice Professional – Fitness, Tech & More</p>
   </header>
 
@@ -669,21 +785,21 @@
     </div>
   </section>
 
-    <section id="blog">
-  <h2><span data-lang-key="blog">Blog</span></h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Fitness Tips for Beginners</h3>
-      <p>Start your fitness journey with these simple tips...</p>
-      <a href="/blog/fitness-tips" class="card-button">Read More</a>
+  <section id="blog">
+    <h2><span data-lang-key="blog">Blog</span></h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Fitness Tips for Beginners</h3>
+        <p>Start your fitness journey with these simple tips...</p>
+        <a href="/blog/fitness-tips" class="card-button">Read More</a>
+      </div>
+      <div class="card">
+        <h3>Learn Basic HTML in 1 Hour</h3>
+        <p>Master the basics of HTML quickly...</p>
+        <a href="/blog/html-guide" class="card-button">Read More</a>
+      </div>
     </div>
-    <div class="card">
-      <h3>Learn Basic HTML in 1 Hour</h3>
-      <p>Master the basics of HTML quickly...</p>
-      <a href="/blog/html-guide" class="card-button">Read More</a>
-    </div>
-  </div>
-</section>
+  </section>
 
   <section id="gallery">
     <h2><span data-lang-key="gallery">Gallery</span></h2>
@@ -745,7 +861,6 @@
         <label for="message" data-lang-key="message">Your Message</label>
         <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
 
-        <!-- Add this reCAPTCHA div -->
         <div class="g-recaptcha" data-sitekey="6LfDx9srAAAAADuLFT0VQgXjgkB8rM6MODBtuEXZ" data-callback="onRecaptchaSuccess" data-error-callback="onRecaptchaError"></div>
 
         <button type="submit" class="form-button" data-lang-key="send">Send Message</button>
@@ -757,7 +872,7 @@
 
   <footer style="background:var(--frosted-bg); backdrop-filter: var(--blur-amount); color:var(--text-color); text-align:center; padding:20px; margin-top:40px; border-top: 1px solid var(--border-color);">
     <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
-        <div style="display: flex; justify-content: center; gap: 15px;">
+    <div style="display: flex; justify-content: center; gap: 15px;">
       <a href="https://www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color);" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
       <a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color);" aria-label="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
     </div>
@@ -781,329 +896,346 @@
 
   <script defer>
     const navMenu = document.getElementById('nav-menu');
-const menuToggle = document.getElementById('menuToggle');
-const menuOverlay = document.getElementById('menu-overlay');
-const darkModeIcon = document.getElementById('darkModeIcon');
+    const menuToggle = document.getElementById('menuToggle');
+    const menuOverlay = document.getElementById('menu-overlay');
+    const darkModeIcon = document.getElementById('darkModeIcon');
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const scrollProgressBar = document.getElementById('scroll-progress-bar');
 
-function onRecaptchaSuccess(token) {
-  console.log('reCAPTCHA verified!');
-  document.querySelector('.form-button').disabled = false;
-}
+    function onRecaptchaSuccess(token) {
+      console.log('reCAPTCHA verified!');
+      document.querySelector('.form-button').disabled = false;
+    }
 
-function onRecaptchaError() {
-  const selectedLang = document.getElementById('languageSelect').value;
-  document.getElementById('formStatus').textContent = translations[selectedLang].errorMessage || 'reCAPTCHA verification failed. Please try again.';
-  document.getElementById('formStatus').classList.add('error');
-}
+    function onRecaptchaError() {
+      const selectedLang = document.getElementById('languageSelect').value;
+      document.getElementById('formStatus').textContent = translations[selectedLang].errorMessage || 'reCAPTCHA verification failed. Please try again.';
+      document.getElementById('formStatus').classList.add('error');
+    }
 
-function toggleMenu() {
-  navMenu.classList.toggle('open');
-  menuOverlay.classList.toggle('open');
-  const isMenuOpen = navMenu.classList.contains('open');
-  menuToggle.querySelector('i').className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
-  menuToggle.setAttribute('aria-expanded', isMenuOpen);
-}
+    function toggleMenu() {
+      navMenu.classList.toggle('open');
+      menuOverlay.classList.toggle('open');
+      const isMenuOpen = navMenu.classList.contains('open');
+      menuToggle.querySelector('i').className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
+      menuToggle.setAttribute('aria-expanded', isMenuOpen);
+    }
 
-function closeMenu() {
-  navMenu.classList.remove('open');
-  menuOverlay.classList.remove('open');
-  menuToggle.querySelector('i').className = 'fas fa-bars';
-  menuToggle.setAttribute('aria-expanded', 'false');
-}
+    function closeMenu() {
+      navMenu.classList.remove('open');
+      menuOverlay.classList.remove('open');
+      menuToggle.querySelector('i').className = 'fas fa-bars';
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
 
-function toggleDarkMode() {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  darkModeIcon.textContent = isDark ? '🌙' : '☀️';
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
-}
+    function toggleDarkMode() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      darkModeIcon.textContent = isDark ? '🌙' : '☀️';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
 
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-  document.documentElement.setAttribute('data-theme', 'dark');
-  darkModeIcon.textContent = '☀️';
-} else {
-  document.documentElement.setAttribute('data-theme', 'light');
-  darkModeIcon.textContent = '🌙';
-}
-
-const lightboxOverlay = document.getElementById('lightbox-overlay');
-const lightboxImage = lightboxOverlay.querySelector('img');
-
-document.querySelectorAll('#gallery img').forEach(img => {
-  img.style.cursor = 'pointer';
-  img.addEventListener('click', () => {
-    lightboxImage.src = img.src;
-    lightboxImage.alt = img.alt;
-    lightboxOverlay.style.display = 'flex';
-    gtag('event', 'gallery_image_click', {
-      'event_category': 'Gallery',
-      'event_label': img.alt
-    });
-  });
-});
-
-function closeLightbox() {
-  lightboxOverlay.style.display = 'none';
-  lightboxImage.src = '';
-}
-
-lightboxOverlay.addEventListener('click', e => {
-  if (e.target === lightboxOverlay) closeLightbox();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox();
-});
-
-const filterButtons = document.querySelectorAll('.filter-btn');
-const serviceCards = document.querySelectorAll('#services .card');
-
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-    const filter = button.getAttribute('data-filter');
-    serviceCards.forEach(card => {
-      const cardCategory = card.getAttribute('data-category');
-      if (filter === 'all' || cardCategory === filter) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-    gtag('event', 'filter_click', {
-      'event_category': 'Services',
-      'event_label': `Filter_${filter}`
-    });
-  });
-});
-
-const translations = {
-  en: {
-    blog: "Blog",
-    about: "About Me",
-    aboutText: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai. From personal fitness to tech training, I offer a wide range of services tailored to meet your needs. Whether you need a strong body, a stunning website, or official document help — I’ve got you covered.",
-    services: "My Services",
-    servicesIntro: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional offering various services...",
-    gallery: "Gallery",
-    testimonials: "Testimonials",
-    contact: "Contact Me",
-    location: "Location:",
-    fullName: "Your Name",
-    fullNamePlaceholder: "Enter your name",
-    email: "Your Email",
-    emailPlaceholder: "Enter your email",
-    message: "Your Message",
-    send: "Send Message",
-    sending: "Sending...",
-    footer: "© 2025 Naved Ahmad Siddiqui. All rights reserved.",
-    successMessage: "Message sent successfully!",
-    errorMessage: "Failed to send message. Please try again."
-  },
-  hi: {
-    blog: "ब्लॉग",
-    about: "मेरे बारे में",
-    aboutText: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल। व्यक्तिगत फिटनेस से लेकर टेक ट्रेनिंग तक, मैं आपकी जरूरतों के अनुसार विभिन्न सेवाएं प्रदान करता हूं। चाहे आपको मजबूत शरीर चाहिए, एक शानदार वेबसाइट, या आधिकारिक दस्तावेज़ मदद — मैंने आपको कवर किया है।",
-    services: "मेरी सेवाएं",
-    servicesIntro: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल...",
-    gallery: "गेलरी",
-    testimonials: "प्रशंसापत्र",
-    contact: "संपर्क करें",
-    location: "स्थान:",
-    fullName: "आपका नाम",
-    fullNamePlaceholder: "अपना नाम दर्ज करें",
-    email: "आपका ईमेल",
-    emailPlaceholder: "अपना ईमेल दर्ज करें",
-    message: "आपका संदेश",
-    send: "संदेश भेजें",
-    sending: "भेज रहा है...",
-    footer: "© 2025 नवेद अहमद सिद्दीकी. सर्वाधिकार सुरक्षित।",
-    successMessage: "संदेश सफलतापूर्वक भेजा गया!",
-    errorMessage: "संदेश भेजने में विफल। कृपया फिर से प्रयास करें।"
-  },
-  ur: {
-    blog: "بلاگ",
-    about: "میرے بارے میں",
-    aboutText: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص۔ ذاتی فٹنس سے لے کر ٹیک ٹریننگ تک، میں آپ کی ضروریات کے مطابق وسیع خدمات پیش کرتا ہوں۔ چاہے آپ کو مضبوط جسم چاہیے، ایک شاندار ویب سائٹ، یا سرکاری دستاویز کی مدد — میں آپ کو کور کرتا ہوں۔",
-    services: "میری خدمات",
-    servicesIntro: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص...",
-    gallery: "گیلری",
-    testimonials: "تعریفیں",
-    contact: "رابطہ کریں",
-    location: "مقام:",
-    fullName: "آپ کا نام",
-    fullNamePlaceholder: "اپنا نام درج کریں",
-    email: "آپ کا ای میل",
-    emailPlaceholder: "اپنا ای میل درج کریں",
-    message: "آپ کا پیغام",
-    send: "پیغام بھیجیں",
-    sending: "بھیج رہا ہے...",
-    footer: "© 2025 نوید احمد صدیقی. جملہ حقوق محفوظ ہیں۔",
-    successMessage: "پیغام کامیابی سے بھیج دیا گیا!",
-    errorMessage: "پیغام بھیجنے میں ناکامی۔ براہ کرم دوبارہ کوشش کریں۔"
-  },
-  ar: {
-    blog: "مدونة",
-    about: "من أنا",
-    aboutText: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي. من اللياقة البدنية الشخصية إلى التدريب التقني، أقدم مجموعة واسعة من الخدمات المصممة لتلبية احتياجاتك. سواء كنت بحاجة إلى جسم قوي، موقع إلكتروني مذهل، أو مساعدة في الوثائق الرسمية — أنا مغطيك.",
-    services: "خدماتي",
-    servicesIntro: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي...",
-    gallery: "معرض الصور",
-    testimonials: "الشهادات",
-    contact: "اتصل بي",
-    location: "الموقع:",
-    fullName: "اسمك",
-    fullNamePlaceholder: "أدخل اسمك",
-    email: "بريدك الإلكتروني",
-    emailPlaceholder: "أدخل بريدك الإلكتروني",
-    message: "رسالتك",
-    send: "أرسل رسالة",
-    sending: "جارٍ الإرسال...",
-    footer: "© 2025 نويد أحمد صديقي. جميع الحقوق محفوظة.",
-    successMessage: "تم إرسال الرسالة بنجاح!",
-    errorMessage: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
-  }
-};
-
-function changeLanguage() {
-  const selectedLang = document.getElementById('languageSelect').value;
-  if (!translations[selectedLang]) {
-    console.warn(`No translations for ${selectedLang}, falling back to English`);
-    document.getElementById('languageSelect').value = 'en';
-    document.documentElement.lang = 'en';
-    document.documentElement.dir = 'ltr';
-    localStorage.setItem('selectedLang', 'en');
-  } else {
-    document.documentElement.lang = selectedLang;
-    if (['ar', 'ur'].includes(selectedLang)) {
-      document.documentElement.dir = 'rtl';
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      darkModeIcon.textContent = '☀️';
     } else {
-      document.documentElement.dir = 'ltr';
+      document.documentElement.setAttribute('data-theme', 'light');
+      darkModeIcon.textContent = '🌙';
     }
-    localStorage.setItem('selectedLang', selectedLang);
-  }
-  document.querySelectorAll('[data-lang-key]').forEach(el => {
-    const key = el.getAttribute('data-lang-key');
-    el.textContent = translations[selectedLang][key] || translations['en'][key] || 'Translation missing';
-    if (!translations[selectedLang][key]) {
-      console.warn(`Translation missing for key "${key}" in language "${selectedLang}"`);
-    }
-  });
-  document.querySelectorAll('[data-lang-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-lang-placeholder');
-    el.placeholder = translations[selectedLang][key] || translations['en'][key] || 'Translation missing';
-    if (!translations[selectedLang][key]) {
-      console.warn(`Translation missing for placeholder key "${key}" in language "${selectedLang}"`);
-    }
-  });
-}
 
-window.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem('selectedLang') || 'en';
-  document.getElementById('languageSelect').value = savedLang;
-  changeLanguage();
+    const lightboxOverlay = document.getElementById('lightbox-overlay');
+    const lightboxImage = lightboxOverlay.querySelector('img');
 
-  const mapIframe = document.querySelector('.map');
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      mapIframe.src = mapIframe.dataset.src;
-      observer.disconnect();
-    }
-  });
-  observer.observe(mapIframe);
-
-  document.getElementById('contactForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    const formStatus = document.getElementById('formStatus');
-    const formButton = form.querySelector('.form-button');
-    const selectedLang = document.getElementById('languageSelect').value;
-
-    formButton.disabled = true;
-    formButton.classList.add('loading');
-    formButton.innerHTML = '<i class="fas fa-spinner"></i> ' + (translations[selectedLang].sending || 'Sending...');
-
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData
+    document.querySelectorAll('#gallery img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightboxOverlay.style.display = 'flex';
+        gtag('event', 'gallery_image_click', {
+          'event_category': 'Gallery',
+          'event_label': img.alt
+        });
       });
-      if (response.ok) {
-        formStatus.textContent = translations[selectedLang].successMessage || 'Message sent successfully!';
-        formStatus.classList.add('success');
-        formStatus.classList.remove('error');
-        form.reset();
-        grecaptcha.reset();
-        gtag('event', 'form_submission', {
-          'event_category': 'Contact',
-          'event_label': 'Contact Form'
+    });
+
+    function closeLightbox() {
+      lightboxOverlay.style.display = 'none';
+      lightboxImage.src = '';
+    }
+
+    lightboxOverlay.addEventListener('click', e => {
+      if (e.target === lightboxOverlay) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const serviceCards = document.querySelectorAll('#services .card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.getAttribute('data-filter');
+        serviceCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (filter === 'all' || cardCategory === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+        gtag('event', 'filter_click', {
+          'event_category': 'Services',
+          'event_label': `Filter_${filter}`
+        });
+      });
+    });
+
+    // Scroll Progress Animation
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      scrollProgressBar.style.width = `${scrollPercent}%`;
+    }
+
+    window.addEventListener('scroll', updateScrollProgress);
+
+    const translations = {
+      en: {
+        blog: "Blog",
+        about: "About Me",
+        aboutText: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional based in Mumbai. From personal fitness to tech training, I offer a wide range of services tailored to meet your needs. Whether you need a strong body, a stunning website, or official document help — I’ve got you covered.",
+        services: "My Services",
+        servicesIntro: "Hello! I’m Naved Ahmad Siddiqui, a multi-talented professional offering various services...",
+        gallery: "Gallery",
+        testimonials: "Testimonials",
+        contact: "Contact Me",
+        location: "Location:",
+        fullName: "Your Name",
+        fullNamePlaceholder: "Enter your name",
+        email: "Your Email",
+        emailPlaceholder: "Enter your email",
+        message: "Your Message",
+        send: "Send Message",
+        sending: "Sending...",
+        footer: "© 2025 Naved Ahmad Siddiqui. All rights reserved.",
+        successMessage: "Message sent successfully!",
+        errorMessage: "Failed to send message. Please try again."
+      },
+      hi: {
+        blog: "ब्लॉग",
+        about: "मेरे बारे में",
+        aboutText: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल। व्यक्तिगत फिटनेस से लेकर टेक ट्रेनिंग तक, मैं आपकी जरूरतों के अनुसार विभिन्न सेवाएं प्रदान करता हूं। चाहे आपको मजबूत शरीर चाहिए, एक शानदार वेबसाइट, या आधिकारिक दस्तावेज़ मदद — मैंने आपको कवर किया है।",
+        services: "मेरी सेवाएं",
+        servicesIntro: "नमस्ते! मैं नवेद अहमद सिद्दीकी हूं, मुंबई का एक मल्टी-टैलेंटेड प्रोफेशनल...",
+        gallery: "गेलरी",
+        testimonials: "प्रशंसापत्र",
+        contact: "संपर्क करें",
+        location: "स्थान:",
+        fullName: "आपका नाम",
+        fullNamePlaceholder: "अपना नाम दर्ज करें",
+        email: "आपका ईमेल",
+        emailPlaceholder: "अपना ईमेल दर्ज करें",
+        message: "आपका संदेश",
+        send: "संदेश भेजें",
+        sending: "भेज रहा है...",
+        footer: "© 2025 नवेद अहमद सिद्दीकी. सर्वाधिकार सुरक्षित।",
+        successMessage: "संदेश सफलतापूर्वक भेजा गया!",
+        errorMessage: "संदेश भेजने में विफल। कृपया फिर से प्रयास करें।"
+      },
+      ur: {
+        blog: "بلاگ",
+        about: "میرے بارے میں",
+        aboutText: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص۔ ذاتی فٹنس سے لے کر ٹیک ٹریننگ تک، میں آپ کی ضروریات کے مطابق وسیع خدمات پیش کرتا ہوں۔ چاہے آپ کو مضبوط جسم چاہیے، ایک شاندار ویب سائٹ، یا سرکاری دستاویز کی مدد — میں آپ کو کور کرتا ہوں۔",
+        services: "میری خدمات",
+        servicesIntro: "ہیلو! میں نوید احمد صدیقی ہوں، ممبئی سے ایک ماہرِ فنون شخص...",
+        gallery: "گیلری",
+        testimonials: "تعریفیں",
+        contact: "رابطہ کریں",
+        location: "مقام:",
+        fullName: "آپ کا نام",
+        fullNamePlaceholder: "اپنا نام درج کریں",
+        email: "آپ کا ای میل",
+        emailPlaceholder: "اپنا ای میل درج کریں",
+        message: "آپ کا پیغام",
+        send: "پیغام بھیجیں",
+        sending: "بھیج رہا ہے...",
+        footer: "© 2025 نوید احمد صدیقی. جملہ حقوق محفوظ ہیں۔",
+        successMessage: "پیغام کامیابی سے بھیج دیا گیا!",
+        errorMessage: "پیغام بھیجنے میں ناکامی۔ براہ کرم دوبارہ کوشش کریں۔"
+      },
+      ar: {
+        blog: "مدونة",
+        about: "من أنا",
+        aboutText: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي. من اللياقة البدنية الشخصية إلى التدريب التقني، أقدم مجموعة واسعة من الخدمات المصممة لتلبية احتياجاتك. سواء كنت بحاجة إلى جسم قوي، موقع إلكتروني مذهل، أو مساعدة في الوثائق الرسمية — أنا مغطيك.",
+        services: "خدماتي",
+        servicesIntro: "مرحبًا! أنا نويد أحمد صديقي، محترف متعدد المهارات من مومباي...",
+        gallery: "معرض الصور",
+        testimonials: "الشهادات",
+        contact: "اتصل بي",
+        location: "الموقع:",
+        fullName: "اسمك",
+        fullNamePlaceholder: "أدخل اسمك",
+        email: "بريدك الإلكتروني",
+        emailPlaceholder: "أدخل بريدك الإلكتروني",
+        message: "رسالتك",
+        send: "أرسل رسالة",
+        sending: "جارٍ الإرسال...",
+        footer: "© 2025 نويد أحمد صديقي. جميع الحقوق محفوظة.",
+        successMessage: "تم إرسال الرسالة بنجاح!",
+        errorMessage: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
+      }
+    };
+
+    function changeLanguage() {
+      const selectedLang = document.getElementById('languageSelect').value;
+      if (!translations[selectedLang]) {
+        console.warn(`No translations for ${selectedLang}, falling back to English`);
+        document.getElementById('languageSelect').value = 'en';
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+        localStorage.setItem('selectedLang', 'en');
+      } else {
+        document.documentElement.lang = selectedLang;
+        if (['ar', 'ur'].includes(selectedLang)) {
+          document.documentElement.dir = 'rtl';
+        } else {
+          document.documentElement.dir = 'ltr';
+        }
+        localStorage.setItem('selectedLang', selectedLang);
+      }
+      document.querySelectorAll('[data-lang-key]').forEach(el => {
+        const key = el.getAttribute('data-lang-key');
+        el.textContent = translations[selectedLang][key] || translations['en'][key] || 'Translation missing';
+        if (!translations[selectedLang][key]) {
+          console.warn(`Translation missing for key "${key}" in language "${selectedLang}"`);
+        }
+      });
+      document.querySelectorAll('[data-lang-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-lang-placeholder');
+        el.placeholder = translations[selectedLang][key] || translations['en'][key] || 'Translation missing';
+        if (!translations[selectedLang][key]) {
+          console.warn(`Translation missing for placeholder key "${key}" in language "${selectedLang}"`);
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Hide loading overlay after page load
+      setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+      }, 1500); // Adjust delay as needed
+
+      const savedLang = localStorage.getItem('selectedLang') || 'en';
+      document.getElementById('languageSelect').value = savedLang;
+      changeLanguage();
+
+      const mapIframe = document.querySelector('.map');
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          mapIframe.src = mapIframe.dataset.src;
+          observer.disconnect();
+        }
+      });
+      observer.observe(mapIframe);
+
+      document.getElementById('contactForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const formStatus = document.getElementById('formStatus');
+        const formButton = form.querySelector('.form-button');
+        const selectedLang = document.getElementById('languageSelect').value;
+
+        formButton.disabled = true;
+        formButton.classList.add('loading');
+        formButton.innerHTML = '<i class="fas fa-spinner"></i> ' + (translations[selectedLang].sending || 'Sending...');
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData
+          });
+          if (response.ok) {
+            formStatus.textContent = translations[selectedLang].successMessage || 'Message sent successfully!';
+            formStatus.classList.add('success');
+            formStatus.classList.remove('error');
+            form.reset();
+            grecaptcha.reset();
+            gtag('event', 'form_submission', {
+              'event_category': 'Contact',
+              'event_label': 'Contact Form'
+            });
+          } else {
+            formStatus.textContent = translations[selectedLang].errorMessage || `Failed to send message: ${response.statusText}`;
+            formStatus.classList.add('error');
+            formStatus.classList.remove('success');
+          }
+        } catch (error) {
+          formStatus.textContent = translations[selectedLang].errorMessage || `An error occurred: ${error.message}. Please try again.`;
+          formStatus.classList.add('error');
+          formStatus.classList.remove('success');
+        } finally {
+          formButton.disabled = false;
+          formButton.classList.remove('loading');
+          formButton.textContent = translations[selectedLang].send || 'Send Message';
+        }
+      });
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', async () => {
+          const registerServiceWorker = async (attempts = 3, delay = 1000) => {
+            for (let i = 0; i < attempts; i++) {
+              try {
+                const response = await fetch('/sw.js', { method: 'HEAD', cache: 'no-store' });
+                if (!response.ok) {
+                  console.error(`Service Worker file (/sw.js) not found or inaccessible: ${response.status} ${response.statusText}. Offline support may not work.`);
+                  return;
+                }
+                const registration = await navigator.serviceWorker.register('/sw.js');
+                console.log('Service Worker registered successfully with scope:', registration.scope);
+                return;
+              } catch (error) {
+                console.error(`Service Worker registration attempt ${i + 1} failed: ${error.message}`);
+                if (i < attempts - 1) {
+                  await new Promise(resolve => setTimeout(resolve, delay));
+                }
+              }
+            }
+            console.error('Service Worker registration failed after all attempts. Please check if /sw.js exists and is accessible.');
+          };
+          registerServiceWorker();
         });
       } else {
-        formStatus.textContent = translations[selectedLang].errorMessage || `Failed to send message: ${response.statusText}`;
-        formStatus.classList.add('error');
-        formStatus.classList.remove('success');
+        console.log('Service Workers are not supported in this browser.');
       }
-    } catch (error) {
-      formStatus.textContent = translations[selectedLang].errorMessage || `An error occurred: ${error.message}. Please try again.`;
-      formStatus.classList.add('error');
-      formStatus.classList.remove('success');
-    } finally {
-      formButton.disabled = false;
-      formButton.classList.remove('loading');
-      formButton.textContent = translations[selectedLang].send || 'Send Message';
-    }
-  });
 
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-      const registerServiceWorker = async (attempts = 3, delay = 1000) => {
-        for (let i = 0; i < attempts; i++) {
-          try {
-            const response = await fetch('/sw.js', { method: 'HEAD', cache: 'no-store' });
-            if (!response.ok) {
-              console.error(`Service Worker file (/sw.js) not found or inaccessible: ${response.status} ${response.statusText}. Offline support may not work.`);
-              return;
-            }
-            const registration = await navigator.serviceWorker.register('/sw.js');
-            console.log('Service Worker registered successfully with scope:', registration.scope);
-            return;
-          } catch (error) {
-            console.error(`Service Worker registration attempt ${i + 1} failed: ${error.message}`);
-            if (i < attempts - 1) {
-              await new Promise(resolve => setTimeout(resolve, delay));
-            }
-          }
-        }
-        console.error('Service Worker registration failed after all attempts. Please check if /sw.js exists and is accessible.');
-      };
-      registerServiceWorker();
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+          const bookButton = card.querySelector('.card-button');
+          if (bookButton) bookButton.click();
+        });
+      });
+
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+      backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      document.querySelector('.whatsapp-float').addEventListener('click', () => {
+        gtag('event', 'whatsapp_click', {
+          'event_category': 'Social',
+          'event_label': 'WhatsApp Button'
+        });
+      });
     });
-  } else {
-    console.log('Service Workers are not supported in this browser.');
-  }
-
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-      const bookButton = card.querySelector('.card-button');
-      if (bookButton) bookButton.click();
-    });
-  });
-
-  const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-  });
-  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  document.querySelector('.whatsapp-float').addEventListener('click', () => {
-    gtag('event', 'whatsapp_click', {
-      'event_category': 'Social',
-      'event_label': 'WhatsApp Button'
-    });
-  });
-});
   </script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKSLDER0SG"></script>
