@@ -35,7 +35,7 @@
       --frosted-bg: rgba(255, 255, 255, 0.05);
       --blur-amount: blur(25px);
       --border-color: rgba(255, 255, 255, 0.1);
-      --glow-color: rgba(0, 191, 165, 0.5);
+      --glow-color: rgba(0, 191, 165, 0.2);
     }
 
     :root {
@@ -46,7 +46,7 @@
       --frosted-bg: rgba(255, 255, 255, 0.4);
       --blur-amount: blur(25px);
       --border-color: rgba(255, 255, 255, 0.3);
-      --glow-color: rgba(0, 128, 128, 0.5);
+      --glow-color: rgba(0, 128, 128, 0.2);
     }
 
     * {
@@ -64,6 +64,7 @@
       position: relative;
       overflow-x: hidden;
       cursor: none;
+      padding-bottom: 120px; /* Increased space for fixed footer */
     }
 
     /* Custom Cursor */
@@ -77,7 +78,7 @@
       z-index: 9999;
       transition: transform 0.1s ease;
       mix-blend-mode: difference;
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 3px var(--glow-color);
     }
 
     .cursor::after {
@@ -124,26 +125,13 @@
       height: 100px;
       object-fit: contain;
       animation: pulse 1.5s infinite ease-in-out;
-      box-shadow: 0 0 20px var(--glow-color);
+      box-shadow: 0 0 5px var(--glow-color);
     }
 
     @keyframes pulse {
       0% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.2); opacity: 0.7; }
       100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* Parallax Background for Header */
-    .parallax-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(135deg, var(--primary-color) 0%, transparent 100%);
-      z-index: -1;
-      transform: translateY(0);
-      transition: transform 0.1s ease;
     }
 
     /* Star Animation Styles */
@@ -221,7 +209,7 @@
       border-bottom: 1px solid var(--border-color);
       color: var(--text-color);
       padding: 10px 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), 0 0 20px var(--glow-color);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
@@ -239,7 +227,7 @@
       height: 100%;
       width: auto;
       object-fit: contain;
-      box-shadow: 0 0 15px var(--glow-color);
+      box-shadow: 0 0 3px var(--glow-color);
       border-radius: 10px;
     }
 
@@ -263,12 +251,12 @@
       justify-content: center;
       align-items: center;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1), 0 0 10px var(--glow-color);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 0 3px var(--glow-color);
     }
 
     .control-button:hover, .filter-btn:hover, .form-button:hover, .card-button:hover, .slider-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 20px var(--primary-color);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 5px var(--primary-color);
       background: var(--primary-color);
       color: #fff;
     }
@@ -284,7 +272,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1), 0 0 10px var(--glow-color);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 0 3px var(--glow-color);
       transition: all 0.3s ease;
       overflow: hidden; 
     }
@@ -293,36 +281,93 @@
         color: #fff;
         transform: scale(1.05);
     }
-    .lang-container #languageSelect {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      border: none;
-      background: transparent;
-      color: var(--text-color);
+    .lang-container #languageIcon {
       font-weight: bold;
-      cursor: none;
       font-size: 0.8em; 
       text-align: center;
       line-height: 1;
-      position: absolute; 
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      left: 0;
-      top: 0;
-      display: flex; 
-      align-items: center;
-      justify-content: center;
+      cursor: none;
     }
 
-    .lang-container #languageSelect option {
-        color: var(--text-color);
-        background: var(--bg-color);
+    /* --- Language Menu Styling --- */
+    #lang-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent; 
+      z-index: 996; 
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
     }
-    :root[data-theme="dark"] .lang-container #languageSelect option {
-        color: #f0f0f0;
-        background: #121212;
+    #lang-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #lang-menu {
+      position: fixed;
+      top: 0; 
+      right: 0;
+      width: 280px; 
+      max-width: 75%; 
+      max-height: 100vh;
+      overflow-y: auto;
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      border-left: 1px solid var(--border-color);
+      box-shadow: -2px 0 6px rgba(0,0,0,0.05), 0 0 8px var(--glow-color);
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+      z-index: 997;
+      padding: 80px 20px 20px; 
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      border-radius: 0 30px 30px 0;
+    }
+
+    #lang-menu.open {
+      transform: translateX(0);
+    }
+
+    #lang-menu a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      display: block;
+      font-size: 1.1em;
+      border: 1px solid transparent; 
+      box-shadow: 0 0 3px var(--glow-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #lang-menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    #lang-menu a:hover::before {
+      left: 100%;
+    }
+
+    #lang-menu a:hover {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      transform: translateX(10px);
     }
 
     /* --- Advanced Mobile Nav Menu Styling --- */
@@ -332,12 +377,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6); 
+      background: transparent; 
       z-index: 997; 
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease;
-      backdrop-filter: var(--blur-amount);
     }
     #menu-overlay.open {
       opacity: 1;
@@ -348,14 +392,14 @@
       position: fixed;
       top: 0; 
       right: 0;
-      width: 300px; 
-      max-width: 80%; 
+      width: 280px; 
+      max-width: 75%; 
       max-height: 100vh;
       overflow-y: auto;
       background: var(--frosted-bg);
       backdrop-filter: var(--blur-amount);
       border-left: 1px solid var(--border-color);
-      box-shadow: -8px 0 25px rgba(0,0,0,0.2), 0 0 30px var(--glow-color);
+      box-shadow: -2px 0 6px rgba(0,0,0,0.05), 0 0 8px var(--glow-color);
       transform: translateX(100%);
       transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
       z-index: 998;
@@ -380,7 +424,7 @@
       display: block;
       font-size: 1.1em;
       border: 1px solid transparent; 
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 3px var(--glow-color);
       position: relative;
       overflow: hidden;
     }
@@ -407,15 +451,15 @@
       transform: translateX(10px);
     }
 
-    /* Scroll Progress Bar */
+    /* Scroll Progress Bar inside top-bar */
     #scroll-progress {
-      position: fixed;
-      top: 60px; /* Adjust based on top-bar height */
+      position: absolute;
+      bottom: 0;
       left: 0;
       width: 100%;
-      height: 4px;
+      height: 2px;
       background: transparent;
-      z-index: 999;
+      z-index: 1001;
     }
 
     #scroll-progress-bar {
@@ -423,7 +467,7 @@
       height: 100%;
       background: var(--primary-color);
       transition: width 0.3s ease;
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 3px var(--glow-color);
     }
 
     /* Header for Main Content */
@@ -436,28 +480,14 @@
       overflow: hidden;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--primary-color) 0%, transparent 50%);
-      z-index: -1;
-      transform: translateY(0);
-    }
-
     header h1 {
       font-size: clamp(28px, 6vw, 42px);
       margin-bottom: 5px;
-      text-shadow: 0 0 10px var(--glow-color);
     }
 
     header p {
       font-size: 18px;
       opacity: 0.9;
-      text-shadow: 0 0 5px var(--glow-color);
     }
 
     section {
@@ -470,7 +500,6 @@
       text-align: center;
       color: var(--primary-color);
       margin-bottom: 20px; 
-      text-shadow: 0 0 10px var(--glow-color);
     }
 
     #lightbox-overlay {
@@ -490,7 +519,7 @@
       max-width: 90%;
       max-height: 80%;
       border-radius: 10px;
-      box-shadow: 0 0 20px #000, 0 0 30px var(--primary-color);
+      box-shadow: 0 0 10px #000, 0 0 8px var(--primary-color);
     }
 
     #lightbox-overlay .close-btn {
@@ -515,14 +544,14 @@
       backdrop-filter: var(--blur-amount);
       border: 1px solid var(--border-color);
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 3px var(--glow-color);
     }
 
     .filter-btn.active {
       background: var(--primary-color);
       color: #fff;
       font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 0 20px var(--primary-color);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 0 5px var(--primary-color);
       transition: background 0.3s ease;
     }
 
@@ -533,7 +562,7 @@
       background: var(--frosted-bg);
       backdrop-filter: var(--blur-amount);
       color: var(--text-color);
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 3px var(--glow-color);
     }
 
     .form-button, .card-button {
@@ -546,7 +575,7 @@
       cursor: none;
       transition: all 0.3s ease;
       margin: 5px;
-      box-shadow: 0 0 15px var(--glow-color);
+      box-shadow: 0 0 4px var(--glow-color);
     }
 
     .card {
@@ -556,7 +585,7 @@
       border: 1px solid var(--border-color);
       border-radius: 25px;
       padding: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1), 0 0 20px var(--glow-color);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 0 5px var(--glow-color);
       transition: all 0.3s ease;
       opacity: 1;
       animation: fadeIn 0.5s ease-in;
@@ -587,7 +616,7 @@
 
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15), 0 0 30px var(--primary-color);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05), 0 0 8px var(--primary-color);
     }
 
     .card_title {
@@ -622,25 +651,25 @@
       object-fit: cover;
       border-radius: 15px;
       transition: transform 0.3s ease;
-      box-shadow: 0 0 15px var(--glow-color);
+      box-shadow: 0 0 4px var(--glow-color);
     }
 
     #gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 25px var(--primary-color);
+      box-shadow: 0 0 8px var(--primary-color);
     }
 
     .whatsapp-float {
       position: fixed;
-      bottom: 20px;
+      bottom: 140px;
       right: 20px;
       background: #25D366;
       color: white;
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5), 0 0 20px #25D366; 
-      z-index: 999;
+      box-shadow: 0 2px 5px rgba(37, 211, 102, 0.2), 0 0 5px #25D366; 
+      z-index: 1001;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -657,30 +686,59 @@
     .whatsapp-float:hover {
       background: #128C7E;
       transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 12px 25px rgba(18, 140, 126, 0.6), 0 0 30px #128C7E;
+      box-shadow: 0 3px 8px rgba(18, 140, 126, 0.3), 0 0 8px #128C7E;
+    }
+
+    .cv-float {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      background: #007bff;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2), 0 0 5px #007bff; 
+      z-index: 1001;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      font-size: 24px;
+    }
+
+    .cv-float:hover {
+      background: #0056b3;
+      transform: scale(1.1) rotate(360deg);
+      box-shadow: 0 3px 8px rgba(0, 86, 179, 0.3), 0 0 8px #0056b3;
     }
 
     #backToTop {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       border: 1px solid var(--border-color);
       background: var(--frosted-bg);
       backdrop-filter: var(--blur-amount);
       color: var(--text-color);
-      font-size: 18px;
+      font-size: 20px;
       cursor: none;
       display: flex;
       justify-content: center;
       align-items: center;
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 3px var(--glow-color);
+      position: fixed;
+      bottom: 210px;
+      right: 20px;
+      z-index: 1001;
     }
     #backToTop:hover {
       background: var(--primary-color);
       color: #fff;
       transform: scale(1.1);
-      box-shadow: 0 0 20px var(--primary-color);
+      box-shadow: 0 0 5px var(--primary-color);
     }
 
     .g-recaptcha {
@@ -702,7 +760,7 @@
       background: rgba(40, 167, 69, 0.1);
       padding: 10px;
       border-radius: 15px;
-      box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+      box-shadow: 0 0 3px rgba(40, 167, 69, 0.2);
     }
 
     #formStatus.error {
@@ -711,10 +769,10 @@
       background: rgba(220, 53, 69, 0.1);
       padding: 10px;
       border-radius: 15px;
-      box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+      box-shadow: 0 0 3px rgba(220, 53, 69, 0.2);
     }
 
-    a:focus, button:focus, .filter-btn:focus, .control-button:focus, #languageSelect:focus {
+    a:focus, button:focus, .filter-btn:focus, .control-button:focus, #languageIcon:focus {
       outline: 2px solid var(--primary-color);
       outline-offset: 2px;
     }
@@ -726,7 +784,7 @@
       margin: 0 auto;
       overflow: hidden;
       border-radius: 25px;
-      box-shadow: 0 0 20px var(--glow-color);
+      box-shadow: 0 0 5px var(--glow-color);
     }
 
     .testimonial-slide {
@@ -758,10 +816,96 @@
       justify-content: center;
       align-items: center;
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px var(--glow-color);
+      box-shadow: 0 0 3px var(--glow-color);
     }
 
-    @media (max-width: 480px) {
+    /* Fixed Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--frosted-bg);
+      backdrop-filter: var(--blur-amount);
+      color: var(--text-color);
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid var(--border-color);
+      box-shadow: 0 -1px 2px rgba(0,0,0,0.05), 0 0 3px var(--glow-color);
+      z-index: 1000;
+    }
+
+    #footer-progress {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+      background: transparent;
+      z-index: 1001;
+    }
+
+    #footer-progress-bar {
+      height: 100%;
+      background: var(--primary-color);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 3px var(--glow-color);
+    }
+
+    /* Contact Section Layout */
+    .contact-layout {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+      align-items: flex-start;
+    }
+
+    .contact-map {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 15px;
+      border: 0;
+      box-shadow: 0 0 5px var(--glow-color);
+    }
+
+    .contact-form-container {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .contact-info a {
+      color: var(--text-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-info i {
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 768px) {
+        .contact-layout {
+          flex-direction: column;
+          gap: 20px;
+        }
         #brand-logo img {
             height: 45px;
         }
@@ -769,16 +913,6 @@
             width: 80px;
             height: 80px;
         }
-    }
-
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      #nav-menu {
-        width: 100%;
-        border-radius: 0 30px 30px 0;
-      }
       header {
         padding: 80px 10px 20px;
       }
@@ -791,13 +925,16 @@
       .card {
         padding: 15px;
       }
-      .whatsapp-float {
+      .whatsapp-float, .cv-float {
         width: 50px;
         height: 50px;
       }
       .whatsapp-float img {
         width: 28px;
         height: 28px;
+      }
+      .cv-float i {
+        font-size: 20px;
       }
     }
   </style>
@@ -829,18 +966,16 @@
   </div>
 
   <div id="top-bar">
+    <div id="scroll-progress">
+      <div id="scroll-progress-bar"></div>
+    </div>
     <a href="#" id="brand-logo" aria-label="Naved Ahmad Siddiqui Home">
         <img src="https://drive.google.com/thumbnail?id=10txJpC8LUL_uXPFBijA7y9kK-2gWG0iD" alt="Naved Ahmad Siddiqui Logo">
     </a>
     <h1>Naved Ahmad Siddiqui</h1>
     <div class="right-controls">
-        <div class="lang-container control-button" role="button" aria-label="Change Language">
-            <select id="languageSelect" aria-label="Select language" onchange="changeLanguage()">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="ur">UR</option>
-                <option value="ar">AR</option>
-            </select>
+        <div class="lang-container control-button" role="button" aria-label="Toggle language menu" onclick="toggleLangMenu()">
+            <span id="languageIcon">EN</span>
         </div>
         
         <button class="control-button" aria-label="Toggle dark mode" onclick="toggleDarkMode()">
@@ -853,10 +988,14 @@
     </div>
   </div>
 
-  <!-- Scroll Progress Bar -->
-  <div id="scroll-progress">
-    <div id="scroll-progress-bar"></div>
-  </div>
+  <div id="lang-overlay" onclick="closeLangMenu()"></div> 
+
+  <nav id="lang-menu" role="navigation">
+    <a href="#" data-lang="en" onclick="setLanguage('en'); closeLangMenu()"><span>English (EN)</span></a>
+    <a href="#" data-lang="hi" onclick="setLanguage('hi'); closeLangMenu()"><span>हिंदी (HI)</span></a>
+    <a href="#" data-lang="ur" onclick="setLanguage('ur'); closeLangMenu()"><span>اردو (UR)</span></a>
+    <a href="#" data-lang="ar" onclick="setLanguage('ar'); closeLangMenu()"><span>العربية (AR)</span></a>
+  </nav>
 
   <div id="menu-overlay" onclick="closeMenu()"></div> 
 
@@ -870,7 +1009,6 @@
   </nav>
 
   <header>
-    <div class="parallax-bg"></div>
     <p>Multiservice Professional – Fitness, Tech & More</p>
   </header>
 
@@ -1005,51 +1143,55 @@
 
   <section id="contact">
     <h2><span data-lang-key="contact">Contact Me</span></h2>
-    <div style="text-align:center;">
-      <p><strong><span data-lang-key="location">Location:</span></strong> Mumbai, Maharashtra 400095</p>
+    <div class="contact-layout">
+      <div class="contact-map">
+    <div style="text-align:center; flex; justify-content: center; gap: 15px;">
+      <a href="https://www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color);" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+      <a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color);" aria-label="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
       <p><strong>Phone:</strong> <a href="tel:+919082009795" style="color:var(--text-color); text-decoration:none; margin-left:5px;" aria-label="Call Naved"><i class="fas fa-phone fa-lg"></i> +91 9082009795</a></p>
       <p><strong>Email:</strong> <a href="mailto:nssidd0@gmail.com" style="color:var(--text-color); text-decoration:none; margin-left:5px;" aria-label="Email Naved"><i class="fas fa-envelope fa-lg"></i> nssidd0@gmail.com</a></p>
+      <p><strong><span data-lang-key="location">Location:</span></strong>Malad (w), Mumbai, Maharashtra 400095.</p>
     </div>
 
-    <iframe
-      class="map"
-      style="width:100%; height:300px; margin-top:20px; border-radius:15px; border:0; box-shadow: 0 0 20px var(--glow-color);"
-      data-src="https://www.google.com/maps?q=Mumbai,+Maharashtra+400095&output=embed"
-      allowfullscreen=""
-      loading="lazy"
-      aria-label="Map showing location in Mumbai, Maharashtra 400095"
-      title="Map of Mumbai, Maharashtra 400095">
-    </iframe>
+        <iframe
+          class="map"
+          data-src="https://www.google.com/maps?q=Mumbai,+Maharashtra+400095&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          aria-label="Map showing location in Mumbai, Maharashtra 400095"
+          title="Map of Mumbai, Maharashtra 400095">
+        </iframe>
+      </div>
 
-    <div style="max-width:600px; margin: 30px auto;">
-      <form action="https://formsubmit.co/nssidd0@gmail.com" method="POST" id="contactForm" style="display:flex; flex-direction:column; gap:15px;">
-        <input type="hidden" name="_next" value="https://navedsiddiqui.in/thank-you.html">
-        <input type="hidden" name="_honeypot" style="display:none;" tabindex="-1">
+      <div class="contact-form-container">
+        <form action="https://formsubmit.co/nssidd0@gmail.com" method="POST" id="contactForm" style="display:flex; flex-direction:column; gap:15px;">
+          <input type="hidden" name="_next" value="https://navedsiddiqui.in/thank-you.html">
+          <input type="hidden" name="_honeypot" style="display:none;" tabindex="-1">
 
-        <label for="fullName" data-lang-key="fullName">Your Name</label>
-        <input type="text" id="fullName" name="name" class="form-input" placeholder="Your Name" data-lang-placeholder="fullNamePlaceholder" required>
-        
-        <label for="email" data-lang-key="email">Your Email</label>
-        <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" data-lang-placeholder="emailPlaceholder" required>
-        
-        <label for="message" data-lang-key="message">Your Message</label>
-        <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
+          <label for="fullName" data-lang-key="fullName">Your Name</label>
+          <input type="text" id="fullName" name="name" class="form-input" placeholder="Your Name" data-lang-placeholder="fullNamePlaceholder" required>
+          
+          <label for="email" data-lang-key="email">Your Email</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="Your Email" data-lang-placeholder="emailPlaceholder" required>
+          
+          <label for="message" data-lang-key="message">Your Message</label>
+          <textarea id="message" name="message" class="form-input" placeholder="Your Message" required rows="5"></textarea>
 
-        <div class="g-recaptcha" data-sitekey="6LfDx9srAAAAADuLFT0VQgXjgkB8rM6MODBtuEXZ" data-callback="onRecaptchaSuccess" data-error-callback="onRecaptchaError"></div>
+          <div class="g-recaptcha" data-sitekey="6LfDx9srAAAAADuLFT0VQgXjgkB8rM6MODBtuEXZ" data-callback="onRecaptchaSuccess" data-error-callback="onRecaptchaError"></div>
 
-        <button type="submit" class="form-button" data-lang-key="send">Send Message</button>
-      </form>
+          <button type="submit" class="form-button" data-lang-key="send">Send Message</button>
+        </form>
 
-      <p id="formStatus" aria-live="polite" style="text-align:center; margin-top:10px;"></p>
+        <p id="formStatus" aria-live="polite" style="text-align:center; margin-top:10px;"></p>
+      </div>
     </div>
   </section>
 
-  <footer style="background:var(--frosted-bg); backdrop-filter: var(--blur-amount); color:var(--text-color); text-align:center; padding:20px; margin-top:40px; border-top: 1px solid var(--border-color); box-shadow: 0 0 20px var(--glow-color);">
-    <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
-    <div style="display: flex; justify-content: center; gap: 15px;">
-      <a href="https://www.linkedin.com/in/naved-ahmad-siddiqui-565528200" style="color:var(--text-color);" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
-      <a href="https://www.instagram.com/nssiddtutorial" style="color:var(--text-color);" aria-label="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
+  <footer>
+    <div id="footer-progress">
+      <div id="footer-progress-bar"></div>
     </div>
+    <p data-lang-key="footer">© 2025 Naved Ahmad Siddiqui. All rights reserved.</p>
   </footer>
 
   <a href="https://wa.me/919082009795"
@@ -1059,12 +1201,16 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp icon" loading="lazy">
   </a>
 
+  <a href="cv.pdf" download="Naved Ahmad Siddiqui.pdf" class="cv-float" aria-label="Download CV">
+    <i class="fas fa-download"></i>
+  </a>
+
   <div id="lightbox-overlay">
     <span class="close-btn" onclick="closeLightbox()" aria-label="Close image lightbox">×</span>
     <img src="" alt="Expanded Image" loading="lazy">
   </div>
 
-  <button id="backToTop" class="control-button" style="position:fixed; bottom:90px; right:20px; display:none;">↑</button>
+  <button id="backToTop" class="control-button">↑</button>
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
@@ -1072,10 +1218,13 @@
     const navMenu = document.getElementById('nav-menu');
     const menuToggle = document.getElementById('menuToggle');
     const menuOverlay = document.getElementById('menu-overlay');
+    const langMenu = document.getElementById('lang-menu');
+    const langOverlay = document.getElementById('lang-overlay');
     const darkModeIcon = document.getElementById('darkModeIcon');
     const loadingOverlay = document.getElementById('loading-overlay');
     const scrollProgressBar = document.getElementById('scroll-progress-bar');
-    const parallaxBg = document.querySelector('.parallax-bg');
+    const footerProgressBar = document.getElementById('footer-progress-bar');
+    const languageIcon = document.getElementById('languageIcon');
 
     // Custom Cursor
     const cursor = document.createElement('div');
@@ -1087,21 +1236,13 @@
       cursor.style.top = e.clientY + 'px';
     });
 
-    // Parallax Effect
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      if (parallaxBg) {
-        parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-      }
-    });
-
     function onRecaptchaSuccess(token) {
       console.log('reCAPTCHA verified!');
       document.querySelector('.form-button').disabled = false;
     }
 
     function onRecaptchaError() {
-      const selectedLang = document.getElementById('languageSelect').value;
+      const selectedLang = getCurrentLang();
       document.getElementById('formStatus').textContent = translations[selectedLang].errorMessage || 'reCAPTCHA verification failed. Please try again.';
       document.getElementById('formStatus').classList.add('error');
     }
@@ -1119,6 +1260,29 @@
       menuOverlay.classList.remove('open');
       menuToggle.querySelector('i').className = 'fas fa-bars';
       menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleLangMenu() {
+      langMenu.classList.toggle('open');
+      langOverlay.classList.toggle('open');
+      const isLangOpen = langMenu.classList.contains('open');
+      langContainer.setAttribute('aria-expanded', isLangOpen);
+    }
+
+    function closeLangMenu() {
+      langMenu.classList.remove('open');
+      langOverlay.classList.remove('open');
+      langContainer.setAttribute('aria-expanded', 'false');
+    }
+
+    function setLanguage(lang) {
+      changeLanguage(lang);
+      languageIcon.textContent = lang.toUpperCase();
+      localStorage.setItem('selectedLang', lang);
+    }
+
+    function getCurrentLang() {
+      return localStorage.getItem('selectedLang') || 'en';
     }
 
     function toggleDarkMode() {
@@ -1217,6 +1381,9 @@
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrollPercent = (scrollTop / scrollHeight) * 100;
       scrollProgressBar.style.width = `${scrollPercent}%`;
+      if (footerProgressBar) {
+        footerProgressBar.style.transform = `scaleX(${scrollPercent / 100})`;
+      }
     }
 
     window.addEventListener('scroll', updateScrollProgress);
@@ -1308,35 +1475,29 @@
       }
     };
 
-    function changeLanguage() {
-      const selectedLang = document.getElementById('languageSelect').value;
-      if (!translations[selectedLang]) {
-        console.warn(`No translations for ${selectedLang}, falling back to English`);
-        document.getElementById('languageSelect').value = 'en';
-        document.documentElement.lang = 'en';
-        document.documentElement.dir = 'ltr';
-        localStorage.setItem('selectedLang', 'en');
+    function changeLanguage(lang) {
+      if (!translations[lang]) {
+        console.warn(`No translations for ${lang}, falling back to English`);
+        lang = 'en';
+      }
+      document.documentElement.lang = lang;
+      if (['ar', 'ur'].includes(lang)) {
+        document.documentElement.dir = 'rtl';
       } else {
-        document.documentElement.lang = selectedLang;
-        if (['ar', 'ur'].includes(selectedLang)) {
-          document.documentElement.dir = 'rtl';
-        } else {
-          document.documentElement.dir = 'ltr';
-        }
-        localStorage.setItem('selectedLang', selectedLang);
+        document.documentElement.dir = 'ltr';
       }
       document.querySelectorAll('[data-lang-key]').forEach(el => {
         const key = el.getAttribute('data-lang-key');
-        el.textContent = translations[selectedLang][key] || translations['en'][key] || 'Translation missing';
-        if (!translations[selectedLang][key]) {
-          console.warn(`Translation missing for key "${key}" in language "${selectedLang}"`);
+        el.textContent = translations[lang][key] || translations['en'][key] || 'Translation missing';
+        if (!translations[lang][key]) {
+          console.warn(`Translation missing for key "${key}" in language "${lang}"`);
         }
       });
       document.querySelectorAll('[data-lang-placeholder]').forEach(el => {
         const key = el.getAttribute('data-lang-placeholder');
-        el.placeholder = translations[selectedLang][key] || translations['en'][key] || 'Translation missing';
-        if (!translations[selectedLang][key]) {
-          console.warn(`Translation missing for placeholder key "${key}" in language "${selectedLang}"`);
+        el.placeholder = translations[lang][key] || translations['en'][key] || 'Translation missing';
+        if (!translations[lang][key]) {
+          console.warn(`Translation missing for placeholder key "${key}" in language "${lang}"`);
         }
       });
     }
@@ -1347,9 +1508,9 @@
         loadingOverlay.classList.add('hidden');
       }, 1500); // Adjust delay as needed
 
-      const savedLang = localStorage.getItem('selectedLang') || 'en';
-      document.getElementById('languageSelect').value = savedLang;
-      changeLanguage();
+      const savedLang = getCurrentLang();
+      languageIcon.textContent = savedLang.toUpperCase();
+      changeLanguage(savedLang);
 
       const mapIframe = document.querySelector('.map');
       const observer = new IntersectionObserver((entries) => {
@@ -1366,7 +1527,7 @@
         const formData = new FormData(form);
         const formStatus = document.getElementById('formStatus');
         const formButton = form.querySelector('.form-button');
-        const selectedLang = document.getElementById('languageSelect').value;
+        const selectedLang = getCurrentLang();
 
         formButton.disabled = true;
         formButton.classList.add('loading');
